@@ -20,7 +20,7 @@ public class HomePageTest extends WebAPI {
 
 
     @Test(enabled = true)
-    public void testSearchBox() throws InterruptedException, AWTException {
+    public void testRefreshPage() throws InterruptedException, AWTException {
        Robot robot = new Robot();
        robot.keyPress(KeyEvent.VK_F5);
        sleepFor(5);
