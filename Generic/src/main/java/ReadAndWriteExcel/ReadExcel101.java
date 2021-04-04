@@ -59,7 +59,7 @@ public class ReadExcel101 {
             //Returns true if the iteration has more elements
             while(cite.hasNext()){
 
-                // Fetches The Next Cell, Than The Cell After Until Nomore Cells Are Left To Fetch
+                // Fetches The Next Cell, Than The Cell After Until no more Cells Are Left To Fetch
                 Cell c = cite.next();
 
                 //Returns a string representation of the object.
@@ -69,7 +69,7 @@ public class ReadExcel101 {
                 //Print all of the cells in a String format
             }
             System.out.println();
-            //Print in the order that it was receieved
+            //Print in the order that it was received
         }
         //Close fileInputStream
         fis.close();

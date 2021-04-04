@@ -20,6 +20,8 @@ import org.testng.annotations.*;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -754,6 +756,27 @@ public class WebAPI {
         String url = driver.getCurrentUrl();
         return url;
     }
+    public void refresh() throws AWTException, InterruptedException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_F5);
+        sleepFor(3);
+
+
+    }//use if click interception pops up as error
+    public void clickByXpathUsingJavaScript(String locator) {
+        WebElement element = driver.findElement(By.xpath(locator));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click()", element);
+
+    }//use cssSelector
+    public void clickByCssUsingJavaScript(String locator){
+        WebElement element = driver.findElement(By.cssSelector(locator));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click()", element);
+
+    }
+
+
 
 
 }

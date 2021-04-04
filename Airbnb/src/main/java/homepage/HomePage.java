@@ -26,6 +26,9 @@ public class HomePage  extends WebAPI {
        /////////////////////////////////////////////////////////////////////////////////////////
 
     // Action Method class
+    public void example(){
+
+    }
 
 //    // Find By Annotation: First Approach
 //    @FindBy (how = How.XPATH, using =searchBoxLocator ) public WebElement searchBox;
