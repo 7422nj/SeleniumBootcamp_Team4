@@ -11,16 +11,14 @@
     <modules>
         <module>Generic</module>
         <module>Ebay</module>
-        <module>FoxNews</module>
         <module>BankOfAmerica</module>
-        <module>StateFarm</module>
         <module>BMW</module>
         <module>ATT</module>
         <module>CbsSports</module>
         <module>ESPN</module>
         <module>Expedia</module>
         <module>Macys</module>
-        <module>MercedesBens</module>
+        <module>MercedesBenz</module>
         <module>Redfin</module>
         <module>Trulia</module>
         <module>Verizon</module>
