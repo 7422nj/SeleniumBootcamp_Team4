@@ -38,6 +38,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.slf4j.helpers.Util.report;
+
 public class WebAPI {
     // Config class :
 
@@ -773,6 +775,29 @@ public class WebAPI {
         WebElement element = driver.findElement(By.cssSelector(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click()", element);
+
+    }
+    /**
+     * This method lets you test for the existence of an element.
+     *
+     * @param xpath = xpath selector text
+     * @return TRUE if xpath element isDisplayed, false with no error if not
+     */
+    public boolean tryByXpath(String xpath) {
+        try {
+            new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            return true;
+        } catch (TimeoutException e) {
+            report("Xpath element not found: " + xpath);
+            return false;
+
+            //How to use this method to get a boolean return
+
+            //boolean closeButton = tryByXpath("//*[text()='close']");
+            //if (!closeButton) { report.report("problem with closeButton"); }
+        }
+
 
     }
 

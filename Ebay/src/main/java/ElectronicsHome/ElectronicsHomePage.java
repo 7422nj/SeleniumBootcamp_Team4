@@ -50,7 +50,7 @@ public class ElectronicsHomePage extends WebAPI {
         waitTimeExplicit(webElementButtonElectronics); //explicit wait to click on  electronics tab
         clickByXpath(webElementButtonElectronics); //click on electronics tab
 
-        // Initialize and wait till element(link) became clickable - timeout in 10 seconds
+        // Initialize and wait till element(link) became clickable - timeout in 20 seconds
         WebElement firstResult = new WebDriverWait(driver,20)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkSmartHome)));
         clickByXpath(webElementLinkSmartHome); //click on smart home
@@ -66,7 +66,7 @@ public class ElectronicsHomePage extends WebAPI {
         robot.keyPress(KeyEvent.VK_DOWN); //scrolls down
         WebDriverWait wait4 = new WebDriverWait(driver,20);
 
-        // Initialize and wait till element(link) became clickable - timeout in 10 seconds
+        // Initialize and wait till element(link) became clickable - timeout in 20 seconds
         WebElement secondResult = new WebDriverWait(driver,20)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkGoogleItems)));
         clickByXpath(webElementLinkGoogleItems);

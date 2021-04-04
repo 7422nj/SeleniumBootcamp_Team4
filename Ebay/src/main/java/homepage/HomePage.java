@@ -49,7 +49,7 @@ public class HomePage  extends WebAPI {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    // Action Method class
+    // Action Method
     public void exampleActionMethod() throws InterruptedException {
 
 

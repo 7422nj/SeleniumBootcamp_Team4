@@ -11,6 +11,6 @@ public class ElectronicsWebElements {
     public static final String webElementButtonElectronics = "//ul[@class='hl-cat-nav__container']/li[@class='hl-cat-nav__js-tab']/a[.='Electronics']";
     public static final String webElementLinkSmartHome = "//a[.='Smart Home']";
     public static final String webElementLinkGoogleItems = "//a[@href='https://www.ebay.com/b/Google/85898/bn_7001775175']";
-    public static final String webElementVerifyGoogleLinkGetText = "//span[@class='b-pageheader__text']";
+    public static final String webElementVerifyGoogleLinkText = "//span[@class='b-pageheader__text']";
 
 }

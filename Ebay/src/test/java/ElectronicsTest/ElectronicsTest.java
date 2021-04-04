@@ -6,18 +6,19 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static ElectronicsHome.ElectronicsWebElements.webElementVerifyGoogleLinkGetText;
+import static ElectronicsHome.ElectronicsWebElements.webElementVerifyGoogleLinkText;
 
 public class ElectronicsTest extends WebAPI {
 
-    ElectronicsHomePage Electronics;
+    ///////////////////  Object of Electronics Class /////////////////////
+    ElectronicsHomePage electronics = new ElectronicsHomePage();
+    /////////////////////////////////////////////////////////////////////
 
     @Test
     public void testGoogleLinkInElectronics() throws InterruptedException {
-        ElectronicsHomePage electronics = new ElectronicsHomePage();
         electronics.ElectronicsClickSmartHome();
         String expectedText = "Google";
-        String actualText = driver.findElement(By.xpath(webElementVerifyGoogleLinkGetText)).getText();
+        String actualText = driver.findElement(By.xpath(webElementVerifyGoogleLinkText)).getText();
         Assert.assertEquals(actualText,expectedText,"\n*** Test Fail - Try Again ***");
 
     }
