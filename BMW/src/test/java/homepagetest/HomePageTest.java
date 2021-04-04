@@ -13,15 +13,10 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class HomePageTest extends WebAPI {
+
     // Test class
     HomePage homePage;
-   // Registration registration;
-
-    @BeforeMethod
-    public void getInit(){
-        homePage= PageFactory.initElements(driver,HomePage.class);
-       // registration= PageFactory.initElements(driver,Registration.class);
-    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
     //@Ignore
     @Test(enabled = true)

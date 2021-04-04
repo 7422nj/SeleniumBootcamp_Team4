@@ -20,11 +20,11 @@ import static homepage.HomePageWebElement.*;
 
 public class HomePage  extends WebAPI {
 
-    public HomePage (){
-       PageFactory.initElements(driver,this);
-
-       /////////////////////////////////////////////////////////////////////////////////////////
+    public HomePage () {
+        PageFactory.initElements(driver, this);
     }
+       /////////////////////////////////////////////////////////////////////////////////////////
+
     // Action Method class
 
 //    // Find By Annotation: First Approach

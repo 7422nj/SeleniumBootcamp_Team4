@@ -22,7 +22,7 @@ public class HomePage  extends WebAPI {
 
     public HomePage() {
         PageFactory.initElements(driver, this);
-
+    }
         /////////////////////////////////////////////////////////////////////////////////////////
         // Action Method class
 
@@ -37,7 +37,7 @@ public class HomePage  extends WebAPI {
     }
 // first commit
 
-}
+
 
 
 
