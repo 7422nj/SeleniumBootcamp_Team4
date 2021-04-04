@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="MacysTestSuit" parallel="none" thread-count="2">
+<suite name="AirbnbTestSuit" parallel="none" thread-count="2">
 <!--    parallel="none"  Working Fine-->
 <!--    parallel="classes"  Working Fine-->
 <!--    parallel="tests"  Working Fine but have issue-->
@@ -17,11 +17,11 @@
 <!--    <parameter name="browserVersion" value="89"/>-->
     <!--        <parameter name="browserName" value="firefox"/>-->
     <!--        <parameter name="browserVersion" value="76.0"/>-->
-    <parameter name="url" value="https://www.macys.com/"/>
+    <parameter name="url" value="https://www.airbnb.com/"/>
     <parameter name="browserName" value="chrome"/>
     <parameter name="browserVersion" value="89"/>
 
-    <test name="Macys Automation Test Script using chrome">
+    <test name="Airbnb Automation Test Script using chrome">
 <!--        <parameter name="browserName" value="chrome"/>-->
 <!--        <parameter name="browserVersion" value="89"/>-->
         <classes>
