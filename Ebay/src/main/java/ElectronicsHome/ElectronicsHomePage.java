@@ -44,6 +44,12 @@ public class ElectronicsHomePage extends WebAPI {
     // Find By Annotation: First Approach <- Used to Convert String into WebElements
     @FindBy(how = How.XPATH, using = exampleLocator)
     public WebElement ExampleName;
+    @FindBy(how = How.XPATH, using = webElementButtonElectronics)
+    public WebElement electronics;
+    @FindBy(how = How.XPATH, using = webElementLinkSmartHome)
+    public WebElement smartHome;
+    @FindBy(how = How.XPATH, using = webElementLinkGoogleItems)
+    public WebElement googly;
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,12 +58,12 @@ public class ElectronicsHomePage extends WebAPI {
     // Action Method class
     public void ElectronicsClickSmartHome() throws InterruptedException {
         waitTimeExplicit(webElementButtonElectronics); //explicit wait to click on  electronics tab
-        clickByXpath(webElementButtonElectronics); //click on electronics tab
+        electronics.click();
 
         // Initialize and wait till element(link) became clickable - timeout in 20 seconds
         WebElement firstResult = new WebDriverWait(driver, 20)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkSmartHome)));
-        clickByXpath(webElementLinkSmartHome); //click on smart home
+        smartHome.click();
 
         robot.keyPress(KeyEvent.VK_DOWN);//scrolls down
         WebDriverWait wait = new WebDriverWait(driver, 20); //waits for 20 seconds
@@ -73,7 +79,7 @@ public class ElectronicsHomePage extends WebAPI {
         // Initialize and wait till element(link) became clickable - timeout in 20 seconds
         WebElement secondResult = new WebDriverWait(driver, 20)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkGoogleItems)));
-        clickByXpath(webElementLinkGoogleItems);
+        googly.click();
     }
 
     /**
@@ -86,7 +92,7 @@ public class ElectronicsHomePage extends WebAPI {
         //Click on electronics
         WebDriverWait sleep = new WebDriverWait(driver,10);
         sleep.until(ExpectedConditions.elementToBeClickable(By.xpath(webElementButtonElectronics)));
-        clickByXpath(webElementButtonElectronics); //click on electronics tab
+        electronics.click();
 
         //Hover over Like-New Cams link using Actions
         WebElement ele = driver.findElement(By.xpath(webElementLinkLikeNewCams));
