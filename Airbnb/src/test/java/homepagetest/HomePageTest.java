@@ -2,6 +2,7 @@ package homepagetest;
 
 import common.WebAPI;
 import homepage.HomePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -24,6 +25,7 @@ public class HomePageTest extends WebAPI {
        Robot robot = new Robot();
        robot.keyPress(KeyEvent.VK_F5);
        sleepFor(5);
+
 
     }
 

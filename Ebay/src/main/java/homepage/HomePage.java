@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -42,17 +43,30 @@ public class HomePage  extends WebAPI {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Find By Annotation: First Approach <- Used to Convert String into WebElements
-    @FindBy(how = How.XPATH, using = exampleLocator)
-    public WebElement ExampleName;
+//    @FindBy(how = How.XPATH, using = exampleLocator)
+//    public WebElement ExampleName;
 
+    @FindBy( xpath = WEB_ELEMENT_SEARCH_BAR)
+    public WebElement SearchBar;
 
+    @FindBy( xpath = WEB_ELEMENT_TEXT_SEARCH_BAR)
+    public WebElement SearchText;
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     // Action Method class
     public void exampleActionMethod() throws InterruptedException {
+    waitTimeExplicit(WEB_ELEMENT_SEARCH_BAR);
+    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_TEXT_SEARCH_BAR);//this line work with line 48 and 49
+       // SearchBar.sendKeys(WEB_ELEMENT_TEXT_SEARCH_BAR);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        lowestLaptopPrice();
 
-
+    }
+    public void lowestLaptopPrice(){
+       // waitTimeExplicit(WEB_ELEMENT_LAPTOP_PRICE_SEARCH);
+        clickByXpath(WEB_ELEMENT_LAPTOP_PRICE_SEARCH);
+        clickByXpath(WEB_ELEMENT_CHEAP_DELL_LAPTOP);
     }
 }
 
