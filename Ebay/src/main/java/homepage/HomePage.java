@@ -48,8 +48,6 @@ public class HomePage  extends WebAPI {
     // Find By Annotation: First Approach <- Used to Convert String into WebElements
     @FindBy(xpath = exampleLocator)
     public WebElement ExampleName;
-    @FindBy(xpath = WEB_ELEMENTS_SEARCH_BAR)
-    public WebElement Search;
 
 
 

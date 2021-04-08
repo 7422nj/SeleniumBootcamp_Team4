@@ -1007,7 +1007,7 @@ public class WebAPI<robot> {
             sleepFor(1);
             robot.keyPress(KeyEvent.VK_DOWN);
             System.out.println("\n*** Scrolled Down Page x3 ***");
-        }else if (i <= 6){
+        } else if (i <= 6) {
             robot.keyPress(KeyEvent.VK_DOWN);
             sleepFor(1);
             robot.keyPress(KeyEvent.VK_DOWN);
@@ -1020,7 +1020,7 @@ public class WebAPI<robot> {
             sleepFor(1);
             robot.keyPress(KeyEvent.VK_DOWN);
             System.out.println("\n*** Scrolled Down Page x6 ***");
-    } else if (i <= 10){
+        } else if (i <= 10) {
             robot.keyPress(KeyEvent.VK_DOWN);
             sleepFor(1);
             robot.keyPress(KeyEvent.VK_DOWN);
@@ -1041,32 +1041,56 @@ public class WebAPI<robot> {
             sleepFor(1);
             robot.keyPress(KeyEvent.VK_DOWN);
             System.out.println("\n*** Scrolled Down Page x10 ***");
-        }else{
+        } else {
             System.out.println("\n*** Scrolled Down Limit is x10 ***");
-        } }{ }
+        }
+    }
 
-        public void implicitWait(int seconds){
-            driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
-        }
-        public void enterKey(){
+    {
+    }
+
+    public void implicitWait(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
+
+    public void enterKey() {
         robot.keyPress(KeyEvent.VK_ENTER);
-        }
-        public void scrollToElementUsingJavaScript(String loc){
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            //Find element by link text and store in variable "Element"
-            WebElement Element = driver.findElement(By.xpath(loc));
-            //This will scroll the page till the element is found
-            js.executeScript("arguments[0].scrollIntoView();", Element);
-        }
-        public void scrollToBottomOfPage(){
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            //This will scroll the web page till end.
-            js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        }
-        public void WebDriverWait0(int seconds){
-        WebDriverWait wait = new WebDriverWait(driver,seconds);
-        }
-        }
+    }
+
+    public void scrollToElementUsingJavaScript(String loc) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //Find element by link text and store in variable "Element"
+        WebElement Element = driver.findElement(By.xpath(loc));
+        //This will scroll the page till the element is found
+        js.executeScript("arguments[0].scrollIntoView();", Element);
+    }
+
+    public void scrollToBottomOfPage() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //This will scroll the web page till end.
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
+    public void WebDriverWait0(int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+
+    }
+    public void WebWaitUntilClickByXpath(int seconds,String loc){
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
+        driver.findElement(By.xpath(loc)).click();
+
+}
+public void assertEqualsGetTitleByXpath(String expected){
+        String actual = driver.getTitle();
+    Assert.assertEquals(actual, expected,"\n*** Test Failed - Try Again ***");
+}
+
+        }//public void assertEqualByXpath(String loc, String expValue) {
+    //String act = driver.findElement(By.xpath(loc)).getText();
+    // act is coming from Domain -- the one developer build and release
+    //String exp = expValue; // exp is coming from Requirement or Mock-up
+      //  Assert.assertEquals(act, exp);
 
 
 
