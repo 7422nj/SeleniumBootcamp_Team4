@@ -25,4 +25,14 @@ public class ElectronicsWebElements {
     public static final String webElementClickAddToCart = "//a[@id='atcRedesignId_btn']";
     public static final String webElementTitleAddedToCart = "//div[@class='vi-overlayTitleBar']";
 
+    //Electronics Test #4
+    public static final String WEB_ELEMENT_LINK_SMART_HOME = "//a[.='Smart Home']";
+    public static final String WEB_ELEMENT_CHECKBOX_IRIS = "//ul[@class='x-refine__body']//li[1]//li[4]//input[@class='cbx x-refine__multi-select-checkbox ']";
+    public static final String WEB_ELEMENT_RADIOBUTTON_IRIS = "//input[@aria-label='Buy It Now']";
+    public static final String WEB_ELEMENT_DROPDOWN_MILES = "//select[@class='x-refine__text-list__select']";
+    public static final String WEB_ELEMENT_DROPDOWN_ENTER_KEYS_MILES = "50";
+    public static final String WEB_ELEMENT_ZIP_CODE_MILES = "//div[@class='x-refine__text-list']//input[@name='_stpos']";
+    public static final String WEB_ELEMENT_ENTER_KEYS_MILES = "19082";
+    public static final String WEB_ELEMENT_VERIFY_HEADER_MILES = "//ul[@class='carousel__list']//div[1]//div[.='50 miles from 19082Remove filter']";
+
 }

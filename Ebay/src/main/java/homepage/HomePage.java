@@ -14,9 +14,13 @@ import org.testng.Assert;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import static ElectronicsHome.ElectronicsWebElements.webElementSearchBox;
 import static homepage.HomePageWebElement.*;
 
 public class HomePage  extends WebAPI {
@@ -42,18 +46,22 @@ public class HomePage  extends WebAPI {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Find By Annotation: First Approach <- Used to Convert String into WebElements
-    @FindBy(how = How.XPATH, using = exampleLocator)
+    @FindBy(xpath = exampleLocator)
     public WebElement ExampleName;
+    @FindBy(xpath = WEB_ELEMENTS_SEARCH_BAR)
+    public WebElement Search;
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     // Action Method
-    public void exampleActionMethod() throws InterruptedException {
+    public void exampleActionMethod() throws InterruptedException, IOException {
 
 
     }
+
 }
 
 

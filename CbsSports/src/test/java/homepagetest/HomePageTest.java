@@ -14,16 +14,20 @@ import java.io.IOException;
 
 public class HomePageTest extends WebAPI {
     // Test class
-    HomePage homePage;
+    HomePage homePage = new HomePage();
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
     //@Ignore
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testSearchBox() throws InterruptedException, AWTException {
        Robot robot = new Robot();
        robot.keyPress(KeyEvent.VK_F5);
        sleepFor(5);
 
+    }
+    @Test
+    public void testEnterPassword() throws IOException {
+        homePage.enterPassword();
     }
 
 

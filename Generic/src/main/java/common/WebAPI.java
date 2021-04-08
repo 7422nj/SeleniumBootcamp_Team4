@@ -4,7 +4,12 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,34 +22,68 @@ import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
+import utilities.DataReader;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.slf4j.helpers.Util.report;
 
-public class WebAPI {
+public class WebAPI<robot> {
     // Config class :
+
+    //Robot available for all helper methods -> will not throw exceptions anymore
+    public static Robot robot;
+
+    static {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static WebDriver driver;
+    public static WebDriverWait driverWait;
+    public DataReader dataReader;
+    public Properties properties;
+
+    String propertiesFilePath = "src/main/resources/secret.properties";
+
+    public WebAPI() {
+
+//        try {
+//            properties = new Properties();
+//            FileInputStream fis = new FileInputStream(propertiesFilePath);
+//            properties.load(fis);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        try {
+            dataReader = new DataReader();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     //ExtentReport
     public static ExtentReports extent;
+
 
     @BeforeSuite
     public void extentSetup(ITestContext context) {
@@ -122,7 +161,7 @@ public class WebAPI {
     }
 
     // Browser Setup
-    public static WebDriver driver = null;
+//    public static WebDriver driver = null;
     public static String browserStack_userName = "demo579";
     public static String browserStack_accessKey = "s8gx9NYyS3zW9kLcbmcH";
     public static String sauceLabs_userName = "";
@@ -767,6 +806,7 @@ public class WebAPI {
     }//use if click interception pops up as error
 
     public void clickByXpathUsingJavaScript(String locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = driver.findElement(By.xpath(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click()", element);
@@ -774,30 +814,263 @@ public class WebAPI {
     }//use cssSelector
 
     public void clickByCssUsingJavaScript(String locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = driver.findElement(By.cssSelector(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click()", element);
 
+
     }
 
     /**
-     * This method lets you test for the existence of an element.
-     *
-     * @param xpath = xpath selector text
-     * @return TRUE if xpath element isDisplayed, false with no error if not
+     * Helper Methods
      */
-    public boolean tryByXpath(String xpath) {
-        try {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-            return true;
-        } catch (TimeoutException e) {
-            report("Xpath element not found: " + xpath);
-            return false;
 
-            //How to use this method to get a boolean return
-            //boolean closeButton = tryByXpath("//*[text()='close']");
-            //if (!closeButton) { report.report("problem with closeButton"); }
+    public void sendKeysToElement(WebElement element, String keysToSend) {
+
+        try {
+            driverWait.until(ExpectedConditions.visibilityOf(element));
+            element.sendKeys(keysToSend);
+
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT");
         }
     }
-}
+
+    public void clickElement(WebElement elementToClick) {
+
+        try {
+            driverWait.until(ExpectedConditions.elementToBeClickable(elementToClick));
+            elementToClick.click();
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO CLICK ON WEB ELEMENT");
+        }
+    }
+
+    public String getTextFromElement(WebElement element) {
+        String elementText = "";
+
+        driverWait.until(ExpectedConditions.visibilityOf(element));
+
+        try {
+            elementText = element.getText();
+            return elementText;
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+    public String getAttributeFromElement(WebElement element, String attribute) {
+        String elementText = "";
+
+        driverWait.until(ExpectedConditions.visibilityOf(element));
+
+        try {
+            elementText = element.getAttribute(attribute);
+            return elementText;
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+    public List<WebElement> getListOfWebElements(By by) {
+        List<WebElement> elementList = new ArrayList<>();
+
+        driverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(by)));
+
+        try {
+            elementList = driver.findElements(by);
+            return elementList;
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENTS ARE STALE");
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENTS ARE NOT VISIBLE IN THE DOM");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO LOCATE WEB ELEMENTS");
+        }
+
+        return elementList;
+    }
+
+    /**
+     * Assertion Helper Methods
+     */
+
+    public boolean compareStrings(String str1, String str2) {
+        boolean flag = false;
+
+        if (str1.toLowerCase().equals(str2)) {
+            flag = true;
+            return flag;
+        }
+
+        return flag;
+    }
+
+    // Gets text from List<WebElements> and compares against expected String array from Excel workbook
+    public boolean compareAttributeListToExpectedStringArray(By by, String attribute, FileInputStream path, String sheetName) throws IOException {
+        List<WebElement> actualList = driver.findElements(by);
+        String[] expectedList = dataReader.fileReaderStringXSSF(path, sheetName);
+
+        String[] actual = new String[actualList.size()];
+
+        for (int j = 0; j < actualList.size(); j++) {
+            actual[j] = actualList.get(j).getAttribute(attribute).replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
+            actual[j].replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
+//            escapeHtml4(actual[j]);
+//            escapeHtml3(actual[j]);
+        }
+
+        int falseCount = 0;
+        boolean flag = false;
+
+        for (int i = 0; i < expectedList.length; i++) {
+            if (actual[i].equalsIgnoreCase(expectedList[i])) {
+                flag = true;
+                System.out.println("ACTUAL " + attribute.toUpperCase() + " " + (i + 1) + ": " + actual[i]);
+                System.out.println("EXPECTED " + attribute.toUpperCase() + " " + (i + 1) + ": " + expectedList[i] + "\n");
+            } else {
+                System.out.println("FAILED AT INDEX " + (i + 1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
+                        "\nACTUAL " + attribute.toUpperCase() + ": " + actual[i] + "\n");
+                falseCount++;
+            }
+        }
+        if (falseCount > 0) {
+            flag = false;
+        }
+        return flag;
+    }
+
+    public void readNSend(String pathName, int index) throws IOException {
+
+        FileInputStream fis = new FileInputStream(new File(pathName));
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheet = workbook.getSheetAt(index); //Fetch Data From Index 0
+        Iterator<Row> ite = sheet.rowIterator(); //Fetches rows with data in our worksheet
+        while (ite.hasNext()) {
+            Row row = (Row) ite.next();
+            Iterator<Cell> cite = row.cellIterator();
+            while (cite.hasNext()) {
+                Cell c = cite.next();
+                System.out.print(c.toString() + "  ");
+            }
+            System.out.println();
+        }
+        fis.close();
+    }
+
+    public void robotScrollDown(int i) throws InterruptedException {
+
+        if (i <= 4) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            System.out.println("\n*** Scrolled Down Page x3 ***");
+        }else if (i <= 6){
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            System.out.println("\n*** Scrolled Down Page x6 ***");
+    } else if (i <= 10){
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            System.out.println("\n*** Scrolled Down Page x10 ***");
+        }else{
+            System.out.println("\n*** Scrolled Down Limit is x10 ***");
+        } }{ }
+
+        public void implicitWait(int seconds){
+            driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+        }
+        public void enterKey(){
+        robot.keyPress(KeyEvent.VK_ENTER);
+        }
+        public void scrollToElementUsingJavaScript(String loc){
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            //Find element by link text and store in variable "Element"
+            WebElement Element = driver.findElement(By.xpath(loc));
+            //This will scroll the page till the element is found
+            js.executeScript("arguments[0].scrollIntoView();", Element);
+        }
+        public void scrollToBottomOfPage(){
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            //This will scroll the web page till end.
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        }
+        public void WebDriverWait0(int seconds){
+        WebDriverWait wait = new WebDriverWait(driver,seconds);
+        }
+        }
+
+
+
+
+
+
+

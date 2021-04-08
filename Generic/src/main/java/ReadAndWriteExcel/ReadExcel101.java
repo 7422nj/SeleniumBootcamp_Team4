@@ -23,7 +23,7 @@ public class ReadExcel101 {
         //Similar to FileReader From ReadTextFile Class
         //FileReader Is Used To Read TextFiles and FileInputStream Is Used To Read Binary Data <- For Now Excel
         //FileInputStream(File file) : Creates an input file stream to read from the specified File object.
-        FileInputStream fis = new FileInputStream(new File("DataTest/WriteExcel201.xlsx"));
+        FileInputStream fis = new FileInputStream(new File("C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Ebay\\src\\test\\resources\\test_data\\EbayTestData.xlsx"));
 
         //This is the root class to handle XLSX. It reads excel file from a file input stream.
         //This is the first object most users will construct whether they are reading or writing a workbook.
@@ -36,7 +36,7 @@ public class ReadExcel101 {
         //Returns: an iterator of the PHYSICAL rows.
         //Meaning the 3rd element may not be the third row if say for instance the second row is undefined.
         //Call getRowNum() on each row if you care which one it is.
-        Iterator ite = sheet.rowIterator(); //Fetches rows with data in our worksheet
+        Iterator<Row> ite = sheet.rowIterator(); //Fetches rows with data in our worksheet
 
         //Returns true if the iteration has more elements.
         //In other words, returns true if next would return an element rather than throwing an exception.

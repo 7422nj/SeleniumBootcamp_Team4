@@ -6,14 +6,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static ElectronicsHome.ElectronicsWebElements.*;
@@ -39,17 +37,22 @@ public class ElectronicsHomePage extends WebAPI {
         }
     }
 
+    //JavaScriptExecutor available for all below methods
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Find By Annotation: First Approach <- Used to Convert String into WebElements
-    @FindBy(how = How.XPATH, using = exampleLocator)
+    @FindBy(xpath = exampleLocator)
     public WebElement ExampleName;
-    @FindBy(how = How.XPATH, using = webElementButtonElectronics)
+    @FindBy(xpath = webElementButtonElectronics)
     public WebElement electronics;
-    @FindBy(how = How.XPATH, using = webElementLinkSmartHome)
+    @FindBy(xpath = webElementLinkSmartHome)
     public WebElement smartHome;
-    @FindBy(how = How.XPATH, using = webElementLinkGoogleItems)
+    @FindBy(xpath = webElementLinkGoogleItems)
     public WebElement googly;
+    @FindBy(xpath = WEB_ELEMENT_DROPDOWN_MILES)
+    public WebElement miles;
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,8 +93,7 @@ public class ElectronicsHomePage extends WebAPI {
      */
     public void purchaseArloWireFreeSecurityCamera() {
         //Click on electronics
-        WebDriverWait sleep = new WebDriverWait(driver,10);
-        sleep.until(ExpectedConditions.elementToBeClickable(By.xpath(webElementButtonElectronics)));
+        waitTimeExplicit(webElementButtonElectronics);
         electronics.click();
 
         //Hover over Like-New Cams link using Actions
@@ -102,48 +104,42 @@ public class ElectronicsHomePage extends WebAPI {
         action.moveToElement(ele).perform();
 
         //Click on Like-New Cams link using JavaScriptExecutor
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkLikeNewCams)));
-        WebElement element = driver.findElement(By.xpath(webElementLinkLikeNewCams));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click()", element);
+        waitTimeExplicit(webElementLinkLikeNewCams);
+        clickByXpathUsingJavaScript(webElementLinkLikeNewCams);
 
-        //Scroll down using robot
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait deep = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait down = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait its = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait okay = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait to = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait pawri = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait hawri = new WebDriverWait(driver,10);
+        // This  will scroll down the page by  1000 pixel vertical
+        js.executeScript("window.scrollBy(0,1000)");
+        js.executeScript("window.scrollBy(0,1000)");
 
         //Wait explicitly then clean on Arlo Wireless Camera
         waitTimeExplicit(webElementLinkArloCam);
         clickByXpathUsingJavaScript(webElementLinkArloCam);
 
-        //Scroll down using robot
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait deep1 = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait down1 = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait its1 = new WebDriverWait(driver,10);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        WebDriverWait okay1 = new WebDriverWait(driver,10);
+        // This  will scroll down the page by  1000 pixel vertical
+        js.executeScript("window.scrollBy(0,1000)");
 
         //Click on Add to Cart
         waitTimeExplicit(webElementClickAddToCart);
         clickByXpathUsingJavaScript(webElementClickAddToCart);
 
+    }
+
+    public void findItemWithin50MilesOf19082() throws InterruptedException, AWTException {
+        clickByXpathUsingJavaScript(webElementButtonElectronics);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SMART_HOME);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_IRIS);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_DROPDOWN_MILES);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_DROPDOWN_MILES);
+        typeOnElementNEnter(WEB_ELEMENT_DROPDOWN_MILES, WEB_ELEMENT_DROPDOWN_ENTER_KEYS_MILES);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_ZIP_CODE_MILES);
+        clearField1(WEB_ELEMENT_ZIP_CODE_MILES);
+        implicitWait(10);
+        typeOnElementNEnter(WEB_ELEMENT_ZIP_CODE_MILES, WEB_ELEMENT_ENTER_KEYS_MILES);
 
 
 
     }
+
 }

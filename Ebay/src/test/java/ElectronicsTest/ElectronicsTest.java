@@ -10,6 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+
 import static ElectronicsHome.ElectronicsWebElements.*;
 
 public class ElectronicsTest extends WebAPI {
@@ -39,6 +41,7 @@ public class ElectronicsTest extends WebAPI {
      * @param searchKey
      * @throws InterruptedException
      */
+
     @Test(dataProvider = "SearchProvider", dataProviderClass = DataProviderClass.class)
     @Ignore
     public void testMethod(String author, String searchKey) throws InterruptedException {
@@ -60,11 +63,23 @@ public class ElectronicsTest extends WebAPI {
      * Test #3
      * Description: Purchase a Arlo Cam using javascriptExecutor,Actions and Robot
      */
-    @Test
+
+    @Test(enabled = false)
     public void testPurchaseArloWirelessCam() {
         electronics.purchaseArloWireFreeSecurityCamera();
         String expectedText = "1 item added to cart";
         String actualText = driver.findElement(By.xpath(webElementTitleAddedToCart)).getText();
         Assert.assertEquals(actualText, expectedText, "\n*** Test Failed - Try Again ***");
+
     }
+    @Test
+    public void testProduct() throws InterruptedException, AWTException {
+        electronics.findItemWithin50MilesOf19082();
+        String expectedText = "50 miles from 19082\n" +
+                "Remove filter";
+        assertEqualByXpath(WEB_ELEMENT_VERIFY_HEADER_MILES,expectedText);
+
+
+    }
+
 }
