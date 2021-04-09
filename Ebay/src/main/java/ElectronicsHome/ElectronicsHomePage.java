@@ -91,10 +91,10 @@ public class ElectronicsHomePage extends WebAPI {
      * 3. Click on Like-New Cams link using JavaScriptExecutor
      * 4. Scroll down using Robot
      */
-    public void purchaseArloWireFreeSecurityCamera() {
+    public void purchaseArloWireFreeSecurityCamera() throws InterruptedException {
         //Click on electronics
         waitTimeExplicit(webElementButtonElectronics);
-        electronics.click();
+        clickOnElement1(webElementButtonElectronics);
 
         //Hover over Like-New Cams link using Actions
         WebElement ele = driver.findElement(By.xpath(webElementLinkLikeNewCams));
@@ -108,15 +108,14 @@ public class ElectronicsHomePage extends WebAPI {
         clickByXpathUsingJavaScript(webElementLinkLikeNewCams);
 
         // This  will scroll down the page by  1000 pixel vertical
-        js.executeScript("window.scrollBy(0,1000)");
-        js.executeScript("window.scrollBy(0,1000)");
+        robotScrollDown(4);
 
         //Wait explicitly then clean on Arlo Wireless Camera
         waitTimeExplicit(webElementLinkArloCam);
         clickByXpathUsingJavaScript(webElementLinkArloCam);
 
         // This  will scroll down the page by  1000 pixel vertical
-        js.executeScript("window.scrollBy(0,1000)");
+        robotScrollDown(3);
 
         //Click on Add to Cart
         waitTimeExplicit(webElementClickAddToCart);
@@ -137,7 +136,6 @@ public class ElectronicsHomePage extends WebAPI {
         clearField1(WEB_ELEMENT_ZIP_CODE_MILES);
         implicitWait(10);
         typeOnElementNEnter(WEB_ELEMENT_ZIP_CODE_MILES, WEB_ELEMENT_ENTER_KEYS_MILES);
-
 
 
     }

@@ -679,7 +679,7 @@ public class WebAPI<robot> {
     }
 
     // ---------------- RADIO BUTTON
-    public void assertEqualByXpath(String loc, String expValue) {
+    public static void assertEqualByXpath(String loc, String expValue) {
         String act = driver.findElement(By.xpath(loc)).getText();
         // act is coming from Domain -- the one developer build and release
         String exp = expValue; // exp is coming from Requirement or Mock-up
@@ -1081,7 +1081,7 @@ public class WebAPI<robot> {
         driver.findElement(By.xpath(loc)).click();
 
 }
-public void assertEqualsGetTitleByXpath(String expected){
+public void assertEqualsGetTitle(String expected){
         String actual = driver.getTitle();
     Assert.assertEquals(actual, expected,"\n*** Test Failed - Try Again ***");
 }

@@ -64,16 +64,24 @@ public class ElectronicsTest extends WebAPI {
      * Description: Purchase a Arlo Cam using javascriptExecutor,Actions and Robot
      */
 
-    @Test(enabled = false)
-    public void testPurchaseArloWirelessCam() {
+    @Test(alwaysRun = true)
+    public void testPurchaseArloWirelessCam() throws InterruptedException {
         electronics.purchaseArloWireFreeSecurityCamera();
         String expectedText = "1 item added to cart";
-        String actualText = driver.findElement(By.xpath(webElementTitleAddedToCart)).getText();
-        Assert.assertEquals(actualText, expectedText, "\n*** Test Failed - Try Again ***");
+        assertEqualByXpath(webElementTitleAddedToCart,expectedText);
 
     }
-    @Test
-    public void testProduct() throws InterruptedException, AWTException {
+
+    /**
+     * Test #4
+     * Description: Test functionalities of the left body
+     * Using checkbox,radioButton,dropDown, textField & mouseHover
+     *
+     * @throws InterruptedException
+     * @throws AWTException
+     */
+    @Test(enabled = false)
+    public void testFindProductWithin50MilesOf19082() throws InterruptedException, AWTException {
         electronics.findItemWithin50MilesOf19082();
         String expectedText = "50 miles from 19082\n" +
                 "Remove filter";
