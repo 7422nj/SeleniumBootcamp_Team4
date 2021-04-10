@@ -16,7 +16,7 @@ public class HomePageTest extends WebAPI {
 
 @Test
     public void tesDosearch(){
-        homePage.doSearch("telephones");
+        homePage.doSearching("telephones");
 
 }
 

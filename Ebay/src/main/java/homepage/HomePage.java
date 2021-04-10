@@ -39,7 +39,7 @@ public class HomePage  extends WebAPI {
 
 
 
-        public void doSearch(String searchKeys2){
+        public void doSearching(String searchKeys2){
         sendKeysToSearchBar(searchKeys2);
         clickSearchButton();
 
