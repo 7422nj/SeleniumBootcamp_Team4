@@ -11,6 +11,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import static ElectronicsHome.ElectronicsWebElements.*;
 
@@ -30,8 +31,7 @@ public class ElectronicsTest extends WebAPI {
     public void testGoogleLinkInElectronics() throws InterruptedException {
         electronics.ElectronicsClickSmartHome();
         String expectedText = "Google";
-        String actualText = driver.findElement(By.xpath(webElementVerifyGoogleLinkText)).getText();
-        Assert.assertEquals(actualText, expectedText, "\n*** Test Failed - Try Again ***");
+        assertEqualByXpath(webElementVerifyGoogleLinkText,expectedText);
 
     }
     /**
@@ -64,7 +64,7 @@ public class ElectronicsTest extends WebAPI {
      * Description: Purchase a Arlo Cam using javascriptExecutor,Actions and Robot
      */
 
-    @Test(alwaysRun = true)
+    @Test(alwaysRun = false)
     public void testPurchaseArloWirelessCam() throws InterruptedException {
         electronics.purchaseArloWireFreeSecurityCamera();
         String expectedText = "1 item added to cart";
@@ -80,6 +80,7 @@ public class ElectronicsTest extends WebAPI {
      * @throws InterruptedException
      * @throws AWTException
      */
+
     @Test(enabled = false)
     public void testFindProductWithin50MilesOf19082() throws InterruptedException, AWTException {
         electronics.findItemWithin50MilesOf19082();
@@ -89,5 +90,29 @@ public class ElectronicsTest extends WebAPI {
 
 
     }
-
+    @Test
+    public void robotExample() {
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.delay(300);
+    }
 }

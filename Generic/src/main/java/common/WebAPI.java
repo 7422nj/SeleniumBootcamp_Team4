@@ -946,40 +946,6 @@ public class WebAPI<robot> {
         return flag;
     }
 
-    // Gets text from List<WebElements> and compares against expected String array from Excel workbook
-    public boolean compareAttributeListToExpectedStringArray(By by, String attribute, FileInputStream path, String sheetName) throws IOException {
-        List<WebElement> actualList = driver.findElements(by);
-        String[] expectedList = dataReader.fileReaderStringXSSF(path, sheetName);
-
-        String[] actual = new String[actualList.size()];
-
-        for (int j = 0; j < actualList.size(); j++) {
-            actual[j] = actualList.get(j).getAttribute(attribute).replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
-            actual[j].replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
-//            escapeHtml4(actual[j]);
-//            escapeHtml3(actual[j]);
-        }
-
-        int falseCount = 0;
-        boolean flag = false;
-
-        for (int i = 0; i < expectedList.length; i++) {
-            if (actual[i].equalsIgnoreCase(expectedList[i])) {
-                flag = true;
-                System.out.println("ACTUAL " + attribute.toUpperCase() + " " + (i + 1) + ": " + actual[i]);
-                System.out.println("EXPECTED " + attribute.toUpperCase() + " " + (i + 1) + ": " + expectedList[i] + "\n");
-            } else {
-                System.out.println("FAILED AT INDEX " + (i + 1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
-                        "\nACTUAL " + attribute.toUpperCase() + ": " + actual[i] + "\n");
-                falseCount++;
-            }
-        }
-        if (falseCount > 0) {
-            flag = false;
-        }
-        return flag;
-    }
-
     public void readNSend(String pathName, int index) throws IOException {
 
         FileInputStream fis = new FileInputStream(new File(pathName));
@@ -1075,22 +1041,101 @@ public class WebAPI<robot> {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
 
     }
-    public void WebWaitUntilClickByXpath(int seconds,String loc){
+
+    public void WebWaitUntilClickByXpath(int seconds, String loc) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
         driver.findElement(By.xpath(loc)).click();
 
-}
-public void assertEqualsGetTitle(String expected){
-        String actual = driver.getTitle();
-    Assert.assertEquals(actual, expected,"\n*** Test Failed - Try Again ***");
-}
+    }
 
-        }//public void assertEqualByXpath(String loc, String expValue) {
-    //String act = driver.findElement(By.xpath(loc)).getText();
-    // act is coming from Domain -- the one developer build and release
-    //String exp = expValue; // exp is coming from Requirement or Mock-up
-      //  Assert.assertEquals(act, exp);
+    public void assertEqualsGetTitle(String expected) {
+        String actual = driver.getTitle();
+        Assert.assertEquals(actual, expected, "\n*** Test Failed - Try Again ***");
+    }
+
+    public void useExcelToSendKeys() throws IOException {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\WebAutomationFramework_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
+        File file = new File("C:\\Users\\prita\\IdeaProjects\\WebAutomationFramework_Team4\\Ebay\\DataTest\\EbayData.xlsx");
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        //creating a Sheet object
+        XSSFSheet sheet = wb.getSheet("Products");
+        //get all rows in the sheet
+        int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
+        WebElement username = driver.findElement(By.xpath("//input[@id='gh-ac']"));
+        for (int i = 1; i <= rowCount; i++) {
+            if (i > rowCount) {
+                wb.close();
+            } else {
+                wb.close();
+                //Enter the values read from Excel in firstname,lastname,mobile,email,address
+                try {
+                    typeOnElementNEnter("//input[@id='gh-ac']", sheet.getRow(i).getCell(0).getStringCellValue());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            clickByXpathUsingJavaScript("//img[@id='gh-logo']");
+        }
+        //Close
+        wb.close();
+        driver.close();
+        driver.quit();
+    }
+    public void WebWaitUntilClickableNClick(int seconds, String loc) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
+            driver.findElement(By.xpath(loc)).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n First Attempt Failed ***");
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(loc)));
+                driver.findElement(By.cssSelector(loc)).click();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println("\n Second Attempt Failed ***");
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(By.id(loc)));
+                    driver.findElement(By.id(loc)).click();
+                } catch (Exception ex1) {
+                    ex.printStackTrace();
+                    System.out.println("\n Third Attempt Failed ***");
+                    try {
+                        wait.until(ExpectedConditions.elementToBeClickable(By.className(loc)));
+                        driver.findElement(By.className(loc)).click();
+                    } catch (Exception ex2) {
+                        ex.printStackTrace();
+                        System.out.println("\n Fourth Attempt Failed ***");
+                        try {
+                            wait.until(ExpectedConditions.elementToBeClickable(By.tagName(loc)));
+                            driver.findElement(By.id(loc)).click();
+                        } catch (Exception ex3) {
+                            ex.printStackTrace();
+                            System.out.println("\n Fifth Attempt Failed ***");
+                            try {
+                                wait.until(ExpectedConditions.elementToBeClickable(By.linkText(loc)));
+                                driver.findElement(By.linkText(loc)).click();
+                            } catch (Exception ex4) {
+                                ex.printStackTrace();
+                                System.out.println("\n Fifth Attempt Failed ***");
+                                try {
+                                    wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(loc)));
+                                    driver.findElement(By.partialLinkText(loc)).click();
+                                } catch (Exception ex5) {
+                                    ex.printStackTrace();
+                                    System.out.println("\n Final Attempt Failed ***");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 

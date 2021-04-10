@@ -16,6 +16,16 @@ public class HomePageTest extends WebAPI {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     HomePage homePage = new HomePage();
+
+    Robot robot;
+
+    {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -24,5 +34,8 @@ public class HomePageTest extends WebAPI {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_F5);
         sleepFor(5);
+
+
+
     }
 }
