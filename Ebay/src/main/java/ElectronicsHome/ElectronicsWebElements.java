@@ -35,4 +35,10 @@ public class ElectronicsWebElements {
     public static final String WEB_ELEMENT_ENTER_KEYS_MILES = "19082";
     public static final String WEB_ELEMENT_VERIFY_HEADER_MILES = "//ul[@class='carousel__list']//div[1]//div[.='50 miles from 19082Remove filter']";
 
+    //Electronics Test #5
+    public static final String WEB_ELEMENT_BUTTON_CART = "//a[@aria-label='Your shopping cart']//*[local-name()='svg']";
+
+    //Electronics Test #6
+    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@id='gh-ac']";
+
 }

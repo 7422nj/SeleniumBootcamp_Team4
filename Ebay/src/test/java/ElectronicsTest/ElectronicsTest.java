@@ -11,7 +11,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 import static ElectronicsHome.ElectronicsWebElements.*;
 
@@ -64,7 +64,7 @@ public class ElectronicsTest extends WebAPI {
      * Description: Purchase a Arlo Cam using javascriptExecutor,Actions and Robot
      */
 
-    @Test(alwaysRun = false)
+    @Test(enabled = false)
     public void testPurchaseArloWirelessCam() throws InterruptedException {
         electronics.purchaseArloWireFreeSecurityCamera();
         String expectedText = "1 item added to cart";
@@ -88,31 +88,30 @@ public class ElectronicsTest extends WebAPI {
                 "Remove filter";
         assertEqualByXpath(WEB_ELEMENT_VERIFY_HEADER_MILES,expectedText);
 
+    }
+
+    /**
+     * Test #5
+     *  Send Data To Search Bar Using Excel
+     *  Verify Attribute of Search Bar When Clicked
+     * @throws IOException
+     */
+
+    @Test(enabled = true)
+    public void enterDataIntoSearchNEnterUsingExcel() throws IOException, AWTException, InterruptedException {
+        electronics.searchItemUsingExcel();
+        assertEqualsGetAttribute("gh-tb ui-autocomplete-input ui-autocomplete-loading",webElementSearchBox,"class");
 
     }
-    @Test
-    public void robotExample() {
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.delay(300);
+
+    /**
+     * Test #6
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void enterMacbookInSearchUsingExcel() throws Exception {
+        electronics.enterMacBookIntoSearchUsingExcel();
+        assertEqualByXpath(WEB_ELEMENT_SEARCH_BAR,"Macbook");
     }
 }

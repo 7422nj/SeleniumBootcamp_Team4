@@ -40,6 +40,7 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static common.WebApiWebElements.*;
 import static org.slf4j.helpers.Util.report;
 
 public class WebAPI<robot> {
@@ -1054,35 +1055,31 @@ public class WebAPI<robot> {
         Assert.assertEquals(actual, expected, "\n*** Test Failed - Try Again ***");
     }
 
-    public void useExcelToSendKeys() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\WebAutomationFramework_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
-        File file = new File("C:\\Users\\prita\\IdeaProjects\\WebAutomationFramework_Team4\\Ebay\\DataTest\\EbayData.xlsx");
+    public void enterExcelDataInSearchNRefresh() throws IOException, AWTException, StaleElementReferenceException {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
+        File file = new File("../Ebay/DataTest/Ebay.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        //creating a Sheet object
         XSSFSheet sheet = wb.getSheet("Products");
-        //get all rows in the sheet
         int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
-        WebElement username = driver.findElement(By.xpath("//input[@id='gh-ac']"));
+        WebElement username = driver.findElement(By.xpath(WEB_ELEMENT_SEARCH_BAR_LOCATOR));
         for (int i = 1; i <= rowCount; i++) {
             if (i > rowCount) {
                 wb.close();
             } else {
                 wb.close();
-                //Enter the values read from Excel in firstname,lastname,mobile,email,address
                 try {
-                    typeOnElementNEnter("//input[@id='gh-ac']", sheet.getRow(i).getCell(0).getStringCellValue());
+                    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_LOCATOR, sheet.getRow(i).getCell(0).getStringCellValue());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            clickByXpathUsingJavaScript("//img[@id='gh-logo']");
+            clickByXpathUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON_LOCATOR);
         }
         //Close
         wb.close();
-        driver.close();
-        driver.quit();
     }
+
     public void WebWaitUntilClickableNClick(int seconds, String loc) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
         try {
@@ -1135,11 +1132,58 @@ public class WebAPI<robot> {
             }
         }
     }
+
+    public void basicHoverUsingXpath(String loc) {
+        //Hover over Like-New Cams link using Actions
+        WebElement ele = driver.findElement(By.xpath(loc));
+        //Creating object of an Actions class
+        Actions action = new Actions(driver);
+        //Performing the mouse hover action on the target element.
+        action.moveToElement(ele).perform();
+    }
+
+    public void assertEqualsGetAttribute(String expected, String locator, String attribute) throws InterruptedException {
+        try {
+            String icon = driver.findElement(By.xpath(locator)).getAttribute(attribute);
+            Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+        } catch (Exception e) {
+            System.out.println("\n*** First Attempt Unsuccessful ***");
+            try {
+                String icon = driver.findElement(By.cssSelector(locator)).getAttribute(attribute);
+                Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+            } catch (Exception ex) {
+                System.out.println("\n*** Second Attempt Unsuccessful ***");
+                try {
+                    String icon = driver.findElement(By.className(locator)).getAttribute(attribute);
+                    Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+                } catch (Exception ex1) {
+                    System.out.println("\n*** Fourth Attempt Unsuccessful ***");
+                    try {
+                        String icon = driver.findElement(By.id(locator)).getAttribute(attribute);
+                        Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+                    } catch (Exception ex2) {
+                        System.out.println("\n*** Fifth Attempt Unsuccessful ***");
+                        try {
+                            String icon = driver.findElement(By.tagName(locator)).getAttribute(attribute);
+                            Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+                        } catch (Exception ex3) {
+                            System.out.println("\n*** Last Attempt Unsuccessful ***");
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public void click2ByXpathUsingJavaScript(String locator, String Locator2) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement element = driver.findElement(By.xpath(locator));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click()", element);
+        implicitWait(20);
+        WebElement element1 = driver.findElement(By.xpath(locator));
+        JavascriptExecutor js1 = (JavascriptExecutor) driver;
+        js1.executeScript("arguments[0].click()", element1);
+    }
 }
-
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 package ElectronicsHome;
 
+import DataDriver.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static ElectronicsHome.ElectronicsWebElements.*;
@@ -57,35 +60,25 @@ public class ElectronicsHomePage extends WebAPI {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Action Method #1
+     * @throws InterruptedException
+     */
 
     // Action Method class
     public void ElectronicsClickSmartHome() throws InterruptedException {
-        waitTimeExplicit(webElementButtonElectronics); //explicit wait to click on  electronics tab
-        electronics.click();
-
+        WebWaitUntilClickableNClick(20, webElementButtonElectronics); //explicit wait to click on  electronics tab
         // Initialize and wait till element(link) became clickable - timeout in 20 seconds
-        WebElement firstResult = new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkSmartHome)));
-        smartHome.click();
-
-        robot.keyPress(KeyEvent.VK_DOWN);//scrolls down
-        WebDriverWait wait = new WebDriverWait(driver, 20); //waits for 20 seconds
-        robot.keyPress(KeyEvent.VK_DOWN); //scrolls down
-        WebDriverWait wait1 = new WebDriverWait(driver, 20);
-        robot.keyPress(KeyEvent.VK_DOWN); //scrolls down
-        WebDriverWait wait2 = new WebDriverWait(driver, 20);
-        robot.keyPress(KeyEvent.VK_DOWN); //scrolls down
-        WebDriverWait wait3 = new WebDriverWait(driver, 20);
-        robot.keyPress(KeyEvent.VK_DOWN); //scrolls down
-        WebDriverWait wait4 = new WebDriverWait(driver, 20);
-
+        WebWaitUntilClickableNClick(20, webElementLinkSmartHome);
+        // Robot scrolls down
+        robotScrollDown(4);
         // Initialize and wait till element(link) became clickable - timeout in 20 seconds
-        WebElement secondResult = new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(webElementLinkGoogleItems)));
-        googly.click();
+        WebWaitUntilClickableNClick(20, webElementLinkGoogleItems);
+
     }
 
     /**
+     * Action Method #2
      * 1. Explicit Wait then click on Electronics Link
      * 2. Hover over Like-New Cams using Actions
      * 3. Click on Like-New Cams link using JavaScriptExecutor
@@ -123,9 +116,13 @@ public class ElectronicsHomePage extends WebAPI {
 
     }
 
+    /**
+     * Action Method #3
+     * @throws InterruptedException
+     * @throws AWTException
+     */
     public void findItemWithin50MilesOf19082() throws InterruptedException, AWTException {
-        clickByXpathUsingJavaScript(webElementButtonElectronics);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SMART_HOME);
+        WebWaitUntilClickableNClick(10,WEB_ELEMENT_LINK_SMART_HOME);
         clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_IRIS);
         scrollToElementUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
         clickByXpathUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
@@ -136,8 +133,23 @@ public class ElectronicsHomePage extends WebAPI {
         clearField1(WEB_ELEMENT_ZIP_CODE_MILES);
         implicitWait(10);
         typeOnElementNEnter(WEB_ELEMENT_ZIP_CODE_MILES, WEB_ELEMENT_ENTER_KEYS_MILES);
-
-
     }
 
+    /**
+     * Action Method #4
+     * @throws IOException
+     * @throws AWTException
+     */
+
+    public void searchItemUsingExcel() throws IOException, AWTException {
+        enterExcelDataInSearchNRefresh();
+        WebWaitUntilClickableNClick(20,webElementSearchBox);
+
+    }
+    public void enterMacBookIntoSearchUsingExcel() throws Exception {
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String username = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, username);
+        implicitWait(10);
+    }
 }
