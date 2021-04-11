@@ -84,28 +84,21 @@ public class ElectronicsHomePage extends WebAPI {
         //Click on electronics
         waitTimeExplicit(webElementButtonElectronics);
         clickOnElement1(webElementButtonElectronics);
-
         //Hover over Like-New Cams link using Actions
         WebElement ele = driver.findElement(By.xpath(webElementLinkLikeNewCams));
         //Creating object of an Actions class
         Actions action = new Actions(driver);
         //Performing the mouse hover action on the target element.
         action.moveToElement(ele).perform();
-
         //Click on Like-New Cams link using JavaScriptExecutor
         waitTimeExplicit(webElementLinkLikeNewCams);
         clickByXpathUsingJavaScript(webElementLinkLikeNewCams);
-
-        // This  will scroll down the page by  1000 pixel vertical
         robotScrollDown(4);
-
         //Wait explicitly then clean on Arlo Wireless Camera
         waitTimeExplicit(webElementLinkArloCam);
         clickByXpathUsingJavaScript(webElementLinkArloCam);
-
         // This  will scroll down the page by  1000 pixel vertical
         robotScrollDown(3);
-
         //Click on Add to Cart
         waitTimeExplicit(webElementClickAddToCart);
         clickByXpathUsingJavaScript(webElementClickAddToCart);
@@ -218,5 +211,16 @@ public class ElectronicsHomePage extends WebAPI {
         scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
         clickByXpathUsingJavaScript(webElementClickAddToCart);
+    }
+
+    public void doubleClickOnDropDown() throws InterruptedException {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SMART_HOME);
+        robotScrollDown(6);
+        WebWaitUntilClickableNClick(20,WEB_ELEMENT_CHECKBOX_IRIS1);
+        fluentWait();
+        robotScrollDown(10);
+        doubleClickUsingXpath(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK);
+        sleepFor(3);
+
     }
 }

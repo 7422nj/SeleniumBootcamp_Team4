@@ -1183,7 +1183,98 @@ public class WebAPI<robot> {
         WebElement subMenu = driver.findElement(By.xpath(sub));
         actions.moveToElement(subMenu);
         actions.click().build().perform();
+    }
 
+    public void dragAndDropUsingActions(String drag, String drop) {
+        //Element which to drag.
+        WebElement From = driver.findElement(By.xpath(drag));
+        //Element on where to drop.
+        WebElement To = driver.findElement(By.xpath(drop));
+        //Using Action class for drag and drop.
+        Actions act = new Actions(driver);
+        //Dragged and Dropped.
+        act.dragAndDrop(From, To).build().perform();
+    }
 
+    public void fluentWait() {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .withMessage("\nFluent Wait Successful")
+                .ignoring(NoSuchElementException.class);
+    }
+
+    public void doubleClickUsingXpath(String locator) {
+        Actions actions = new Actions(driver);
+        WebElement elementLocator = driver.findElement(By.xpath(locator));
+        actions.doubleClick(elementLocator).perform();
+    }
+
+    public void doubleClickUsingCss(String locator) {
+        Actions actions = new Actions(driver);
+        WebElement elementLocator = driver.findElement(By.cssSelector(locator));
+        actions.doubleClick(elementLocator).perform();
+    }
+
+    public void assertFalseIsSelected(String locator){
+        try {
+            boolean act = driver.findElement(By.xpath(locator)).isSelected();
+            Assert.assertFalse(act, "\n*** Test Failed - Try Again ***");
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("\n*** First Attempt Failed ***");
+            try {
+                boolean act = driver.findElement(By.cssSelector(locator)).isSelected();
+                Assert.assertFalse(act, "\n*** Test Failed - Try Again ***");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                System.out.println("\n*** Second Attempt Failed ***");
+                try {
+                    boolean act = driver.findElement(By.id(locator)).isSelected();
+                    Assert.assertFalse(act, "\n*** Test Failed - Try Again ***");
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    System.out.println("\n*** Third Attempt Failed ***");
+                    try {
+                        boolean act = driver.findElement(By.tagName(locator)).isSelected();
+                        Assert.assertFalse(act, "\n*** Test Failed - Try Again ***");
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
+                        System.out.println("\n*** Last Attempt Failed ***");
+                    }
+                }
+            }
+        }
+    }
+
+    public void assertTrueIsSelected(String locator) {
+        try {
+            boolean act = driver.findElement(By.xpath(locator)).isSelected();
+            Assert.assertTrue(act, "\n*** Test Passed ***");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** First Attempt Failed ***");
+            try {
+                boolean act = driver.findElement(By.cssSelector(locator)).isSelected();
+                Assert.assertTrue(act, "\n*** Test Passed ***");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                System.out.println("\n*** Second Attempt Failed ***");
+                try {
+                    boolean act = driver.findElement(By.id(locator)).isSelected();
+                    Assert.assertTrue(act, "\n*** Test Passed ***");
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    System.out.println("\n*** Third Attempt Failed ***");
+                    try {
+                        boolean act = driver.findElement(By.tagName(locator)).isSelected();
+                        Assert.assertTrue(act, "\n*** Test Passed ***");
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
+                        System.out.println("\n*** Last Attempt Failed ***");
+                    }
+                }
+            }
+        }
     }
 }

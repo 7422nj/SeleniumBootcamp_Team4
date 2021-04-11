@@ -57,4 +57,7 @@ public class ElectronicsWebElements {
     public static final String WEB_ELEMENT_LINK_VIEW_OPTIONS = "//span[@class='srp-view-options-label']";
     public static final String WEB_ELEMENT_LINK_CHROMEBOOK = "//h3[.='Acer Chromebook 314 - 14\" Intel Celeron N4000 1.1GHz 4GB Ram 32GB Flash ChromeOS']";
 
+    //Electronics Test #10
+    public static final String WEB_ELEMENT_CHECKBOX_IRIS1 = "//input[@aria-label='IRIS']";
+    public static final String WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK = "//div[@class='x-refine__text-list x-refine__text-list--input-hidden']//select[@name='_sadis']";
 }

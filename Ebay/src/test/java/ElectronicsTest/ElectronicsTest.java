@@ -161,9 +161,22 @@ public class ElectronicsTest extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test
+    @Test(enabled = false)
     public void testHoverOverFeaturedItemsNClickLowPrice() throws InterruptedException {
         electronics.hoverOverFeaturedItemsNClick();
         assertEqualByXpath(webElementTitleAddedToCart,"1 item added to cart");
+    }
+
+    /**
+     * Test #11
+     * Double click on DropDown
+     * Verify if selected after DoubleClick
+     * @throws InterruptedException
+     */
+
+    @Test
+    public void testDoubleClickDropDown() throws InterruptedException {
+        electronics.doubleClickOnDropDown();
+        assertFalseIsSelected(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK);
     }
 }
