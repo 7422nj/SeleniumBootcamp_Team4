@@ -1157,12 +1157,12 @@ public class WebAPI<robot> {
                     String icon = driver.findElement(By.className(locator)).getAttribute(attribute);
                     Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
                 } catch (Exception ex1) {
-                    System.out.println("\n*** Fourth Attempt Unsuccessful ***");
+                    System.out.println("\n*** Third Attempt Unsuccessful ***");
                     try {
                         String icon = driver.findElement(By.id(locator)).getAttribute(attribute);
                         Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
                     } catch (Exception ex2) {
-                        System.out.println("\n*** Fifth Attempt Unsuccessful ***");
+                        System.out.println("\n*** Fourth Attempt Unsuccessful ***");
                         try {
                             String icon = driver.findElement(By.tagName(locator)).getAttribute(attribute);
                             Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
@@ -1176,14 +1176,14 @@ public class WebAPI<robot> {
 
     }
 
-    public void click2ByXpathUsingJavaScript(String locator, String Locator2) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement element = driver.findElement(By.xpath(locator));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click()", element);
-        implicitWait(20);
-        WebElement element1 = driver.findElement(By.xpath(locator));
-        JavascriptExecutor js1 = (JavascriptExecutor) driver;
-        js1.executeScript("arguments[0].click()", element1);
+    public void hoverOverDropdownNClickUsingXpath(String main, String sub) {
+        WebElement mainMenu = driver.findElement(By.xpath(main));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(mainMenu);
+        WebElement subMenu = driver.findElement(By.xpath(sub));
+        actions.moveToElement(subMenu);
+        actions.click().build().perform();
+
+
     }
 }

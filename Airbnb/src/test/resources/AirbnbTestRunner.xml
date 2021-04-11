@@ -6,6 +6,9 @@
 <!--    parallel="classes"  Working Fine-->
 <!--    parallel="tests"  Working Fine but have issue-->
 
+    <listeners>
+        <listener class-name="common.ListenerTest"/>
+    </listeners>
 
     <parameter name="useCloudEnv" value="false"/>
     <parameter name="cloudEnvName" value="browserStack"/>

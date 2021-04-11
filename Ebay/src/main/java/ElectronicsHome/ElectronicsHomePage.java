@@ -8,14 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static ElectronicsHome.ElectronicsWebElements.*;
 
@@ -137,6 +133,7 @@ public class ElectronicsHomePage extends WebAPI {
 
     /**
      * Action Method #4
+     * Send Multiple Entries into Search Bar and Enter
      * @throws IOException
      * @throws AWTException
      */
@@ -146,10 +143,80 @@ public class ElectronicsHomePage extends WebAPI {
         WebWaitUntilClickableNClick(20,webElementSearchBox);
 
     }
+
+    /**
+     * Action Method #5
+     * Send a Single Entry into Search Bar
+     * Get Attribute of Search Bar after Clicked
+     * @throws Exception
+     */
+
     public void enterMacBookIntoSearchUsingExcel() throws Exception {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String username = elementFromExcel.get(1);
-        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, username);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_HEAD, username);
         implicitWait(10);
+    }
+
+    /**
+     * Action Method #6
+     * @throws Exception
+     */
+
+    public void findAffordableLaptopUsingExcel() throws Exception {
+        robotScrollDown(4);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String laptop = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS, laptop);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
+
+    }
+
+    /**
+     * Action Method #7
+     * @throws Exception
+     */
+
+    public void findAffordableLaptopUsingMYSQLDB() throws Exception {
+        robotScrollDown(4);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS);
+        DataSource.insertDataIntoDB();
+        List<String> elementFromDatabase = DataSource.getItemsListFromDB();
+        String laptop = elementFromDatabase.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS, laptop);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
+    }
+
+    /**
+     * Action Method #8
+     * @throws InterruptedException
+     */
+
+    public void hoverOverFeaturedItems() throws InterruptedException {
+        robotScrollDown(4);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        robotScrollDown(3);
+        basicHoverUsingXpath(WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS);
+    }
+
+    public void hoverOverFeaturedItemsNClick() throws InterruptedException {
+        robotScrollDown(6);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        robotScrollDown(3);
+        hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS, WEB_ELEMENT_LINK_LOWEST_PRICE);
+        implicitWait(10);
+        hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_DROPDOWN_VIEW_OPTIONS,WEB_ELEMENT_LINK_VIEW_OPTIONS);
+        scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
+        clickByXpathUsingJavaScript(webElementClickAddToCart);
     }
 }

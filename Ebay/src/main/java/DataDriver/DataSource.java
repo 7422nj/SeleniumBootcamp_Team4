@@ -17,20 +17,18 @@ public class DataSource {
     public static void insertDataIntoDB(){
         List<String> list = getItemValue();
         connectToSqlDB = new ConnectToSqlDB();
-        connectToSqlDB.insertDataFromArrayListToSqlTable(list,"AmazonItems","items");
+        connectToSqlDB.insertDataFromArrayListToSqlTable(list,"EbayBootItems","items");
     }
 
     //  From Class/ Same class
     public static List<String> getItemValue() {
         List<String> itemsList = new ArrayList<String>();
-        itemsList.add("Hand sanitizer");
+        itemsList.add("iPhone");
         itemsList.add("iphone 11 pro max");
-        itemsList.add("T-shirt");
-        itemsList.add("Mens shirt");
-        itemsList.add("Shoes");
+        itemsList.add("Airpods");
+        itemsList.add("Macbook");
+        itemsList.add("Television");
         itemsList.add("Camera");
-        itemsList.add("Bike");
-        itemsList.add("Tv");
         return itemsList;
     }
 
@@ -38,7 +36,7 @@ public class DataSource {
     //Database
     public static List<String> getItemsListFromDB() throws Exception, IOException, SQLException, ClassNotFoundException {
         List<String> list = new ArrayList<>();
-        list = connectToSqlDB.readDataBase("AmazonItems", "items");
+        list = connectToSqlDB.readDataBase("EbayBootItems", "items");
         return list;
     }
 

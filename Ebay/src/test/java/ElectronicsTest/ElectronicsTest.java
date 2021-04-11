@@ -30,8 +30,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testGoogleLinkInElectronics() throws InterruptedException {
         electronics.ElectronicsClickSmartHome();
-        String expectedText = "Google";
-        assertEqualByXpath(webElementVerifyGoogleLinkText,expectedText);
+        assertEqualByXpath(webElementVerifyGoogleLinkText,"Google");
 
     }
     /**
@@ -59,6 +58,7 @@ public class ElectronicsTest extends WebAPI {
         Assert.assertTrue(testValue.equalsIgnoreCase(searchKey));
 
     }
+
     /**
      * Test #3
      * Description: Purchase a Arlo Cam using javascriptExecutor,Actions and Robot
@@ -67,8 +67,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testPurchaseArloWirelessCam() throws InterruptedException {
         electronics.purchaseArloWireFreeSecurityCamera();
-        String expectedText = "1 item added to cart";
-        assertEqualByXpath(webElementTitleAddedToCart,expectedText);
+        assertEqualByXpath(webElementTitleAddedToCart,"1 item added to cart");
 
     }
 
@@ -76,7 +75,6 @@ public class ElectronicsTest extends WebAPI {
      * Test #4
      * Description: Test functionalities of the left body
      * Using checkbox,radioButton,dropDown, textField & mouseHover
-     *
      * @throws InterruptedException
      * @throws AWTException
      */
@@ -84,9 +82,8 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindProductWithin50MilesOf19082() throws InterruptedException, AWTException {
         electronics.findItemWithin50MilesOf19082();
-        String expectedText = "50 miles from 19082\n" +
-                "Remove filter";
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_HEADER_MILES,expectedText);
+        assertEqualByXpath(WEB_ELEMENT_VERIFY_HEADER_MILES,"50 miles from 19082\n" +
+                "Remove filter");
 
     }
 
@@ -97,8 +94,8 @@ public class ElectronicsTest extends WebAPI {
      * @throws IOException
      */
 
-    @Test(enabled = true)
-    public void enterDataIntoSearchNEnterUsingExcel() throws IOException, AWTException, InterruptedException {
+    @Test(enabled = false)
+    public void testEnterDataIntoSearchNEnterUsingExcel() throws IOException, AWTException, InterruptedException {
         electronics.searchItemUsingExcel();
         assertEqualsGetAttribute("gh-tb ui-autocomplete-input ui-autocomplete-loading",webElementSearchBox,"class");
 
@@ -110,8 +107,63 @@ public class ElectronicsTest extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void enterMacbookInSearchUsingExcel() throws Exception {
+    public void testEnterMacbookInSearchUsingExcel() throws Exception {
         electronics.enterMacBookIntoSearchUsingExcel();
-        assertEqualByXpath(WEB_ELEMENT_SEARCH_BAR,"Macbook");
+        assertEqualByXpath(WEB_ELEMENT_SEARCH_BAR_HEAD,"Macbook");
+    }
+
+    /**
+     * Test #7
+     * 1.Click on Laptops Link
+     * 2.SendKeys To SearchBar Using Excel
+     * 3.Click on Checkbox for $230 to $450
+     * 4.Click on Affordable Laptop
+     * 5.Confirm Affordable Price
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void testFindAffordableLaptopUsingExcel() throws Exception {
+        electronics.findAffordableLaptopUsingExcel();
+        assertEqualByXpath(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
+    }
+
+    /**
+     * Test #8
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void testFindAffordableLaptopUsingMYSQLDB() throws Exception {
+        electronics.findAffordableLaptopUsingMYSQLDB();
+        assertEqualByXpath(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
+
+    }
+
+    /**
+     * Test #9
+     * Hover over Featured Items Dropdown + getAttribute during Hover
+     * @throws InterruptedException
+     */
+
+    @Test(enabled = false)
+    public void testHoverOverFeaturedItems() throws InterruptedException {
+        electronics.hoverOverFeaturedItems();
+        assertEqualsGetAttribute("srp-controls__control--legacy",WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS,"class");
+    }
+
+    /**
+     * Test #10
+     * 1.Hover over Featured Items Dropdown -> click Lowest Price
+     * 2.Hover over View Options Dropdown -> click View List
+     * 3.Scroll to Element -> click on Chromebook
+     * 4.Add to Cart -> verify Added to Cart Text
+     * @throws InterruptedException
+     */
+
+    @Test
+    public void testHoverOverFeaturedItemsNClickLowPrice() throws InterruptedException {
+        electronics.hoverOverFeaturedItemsNClick();
+        assertEqualByXpath(webElementTitleAddedToCart,"1 item added to cart");
     }
 }

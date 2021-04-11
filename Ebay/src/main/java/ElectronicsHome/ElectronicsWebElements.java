@@ -39,6 +39,22 @@ public class ElectronicsWebElements {
     public static final String WEB_ELEMENT_BUTTON_CART = "//a[@aria-label='Your shopping cart']//*[local-name()='svg']";
 
     //Electronics Test #6
-    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@id='gh-ac']";
+    public static final String WEB_ELEMENT_SEARCH_BAR_HEAD = "//input[@id='gh-ac']";
+
+    //Electronics Test #7
+    public static final String WEB_ELEMENT_LINK_LAPTOP = "//a[.='Laptops']";
+    public static final String WEB_ELEMENT_SEARCH_BAR_ELECTRONICS = "//input[@name='_bkw']";
+    public static final String WEB_ELEMENT_CHECKBOX_$230_TO_$450 = "//div[@class='x-refine__price']/li[2]//input[@class='cbx x-refine__multi-select-checkbox ']";
+    public static final String WEB_ELEMENT_LINK_TO_MACBOOK = "//h3[.='Apple MacBook Air 11\" 1.8GHz i7 4GB RAM 256GB SSD A1370']";
+    public static final String WEB_ELEMENT_VERIFY_MACBOOK_PRICE = "//span[@id='prcIsum']";
+
+    //Electronics Test #8
+    public static final String WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS = "//div[@class='x-flyout']//div[@class='srp-controls__control--legacy']";
+
+    //Electronics Test #9
+    public static final String WEB_ELEMENT_LINK_LOWEST_PRICE = "//span[.='Lowest Price']";
+    public static final String WEB_ELEMENT_DROPDOWN_VIEW_OPTIONS = "//div[@class='x-flyout srp-view-options__flyout']//div[@class='srp-controls__control--legacy']";
+    public static final String WEB_ELEMENT_LINK_VIEW_OPTIONS = "//span[@class='srp-view-options-label']";
+    public static final String WEB_ELEMENT_LINK_CHROMEBOOK = "//h3[.='Acer Chromebook 314 - 14\" Intel Celeron N4000 1.1GHz 4GB Ram 32GB Flash ChromeOS']";
 
 }
