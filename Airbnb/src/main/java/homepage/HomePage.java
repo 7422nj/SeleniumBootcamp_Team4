@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +37,17 @@ public class HomePage  extends WebAPI {
 //    @FindBy (how = How.XPATH, using =searchTextLocator ) public WebElement searchText;
 
     // Action Method
-
+    public void enterTextInLocationField() throws InterruptedException, AWTException {
+        refresh();
+        fluentWait();
+        typeOnElement(WEB_ELEMENT_SEARCH_LOCATION,WEB_ELEMENT_VALUE_SEARCH_LOCATION);
+        implicitWait(10);
+    }
+    public void getCurrentSiteUrl() throws InterruptedException, AWTException {
+        refresh();
+        getCurrentPageUrl();
+        System.out.println("Current Url : "+getCurrentPageUrl());
+    }
 
 
     }

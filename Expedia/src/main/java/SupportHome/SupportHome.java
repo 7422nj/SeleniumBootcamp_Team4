@@ -54,15 +54,12 @@ public class SupportHome extends WebAPI {
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Action Method class
-//    // Find By Annotation: First Approach
-        //WEB_ELEMENT_SEARCH_BOX_MAIN
-//    @FindBy (how = How.XPATH, using =searchButtonLocator ) public WebElement searchButton;
-//    @FindBy (how = How.XPATH, using =searchTextLocator ) public WebElement searchText;
-
-        // Action Method
     }
+
+    /**
+     * Action Method #1
+     * @return
+     */
 
     @DataProvider(name = "SearchProvider")
     public static Object[][] getDataFromDataProvider() {
@@ -75,6 +72,11 @@ public class SupportHome extends WebAPI {
         };
     }
 
+    /**
+     * Action Method #2
+     * @return
+     */
+
     @DataProvider(name = "SearchInterests")
     public static Object[] searchUsingDataProvider() {
         return new Object[]{
@@ -85,6 +87,11 @@ public class SupportHome extends WebAPI {
                 "Condo"
         };
     }
+
+    /**
+     * Action Method #3
+     * @return
+     */
 
     @DataProvider(name = "SendNumbersForApp")
     public static Object[] sendNumbersUsingDataProvider() {
@@ -97,9 +104,19 @@ public class SupportHome extends WebAPI {
         };
     }
 
+    /**
+     * Action Method #4
+     */
+
     public void scrollToAndIdentifyQRCode() {
         scrollToElementUsingJavaScript(WEB_ELEMENT_IMG_QR_CODE_APP);
     }
+
+    /**
+     * Action Method #5
+     * @throws InterruptedException
+     * @throws AWTException
+     */
 
     public void virtualAssistance() throws InterruptedException, AWTException {
         refresh();
@@ -107,10 +124,18 @@ public class SupportHome extends WebAPI {
         WebWaitUntilClickableNClick(20,WEB_ELEMENT_VIRTUAL_ASSISTANCE);
     }
 
+    /**
+     * Action Method #6
+     */
+
     public void checkContactUsLink(){
         waitTimeUsingFluent(WEB_ELEMENT_BUTTON_CONTACT_US);
         hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_BUTTON_CONTACT_US,WEB_ELEMENT_BUTTON_CONTACT_US);
     }
+
+    /**
+     * Action Method #7
+     */
 
     public void changeLanguageAndRegion(){
         clickByXpathUsingJavaScript(WEB_ELEMENT_CHANGE_LANGUAGE);
@@ -122,6 +147,11 @@ public class SupportHome extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_SAVE_BRAZIL);
         clickByXpathUsingJavaScript(WEB_ELEMENT_DONE_LANGUAGE_CHANGE);
     }
+
+    /**
+     * Action Method #8
+     * @throws Exception
+     */
 
     public void searchInterestsUsingExcel() throws Exception {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
@@ -138,9 +168,20 @@ public class SupportHome extends WebAPI {
         implicitWait(10);
     }
 
+    /**
+     * Action Method #9
+     * @throws IOException
+     * @throws AWTException
+     */
+
     public void searchInterestsUsingExcelPart2() throws IOException, AWTException {
          DataSource.enterExcelDataInSearchNRefreshExpedia();
     }
+
+    /**
+     * Action Method #10
+     * @throws Exception
+     */
 
     public void searchItemsUsingMYSQLDB() throws Exception {
         DataSource.insertDataIntoDB();
@@ -161,6 +202,10 @@ public class SupportHome extends WebAPI {
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BOX_MAIN,newItem1);
         implicitWait(10);
     }
+
+    /**
+     * Action Method #11
+     */
 
     public void scrollToExpediaRewards(){
         scrollToElementUsingJavaScript(WEB_ELEMENT_DROP_DOWN_EXPEDIA_REWARDS);

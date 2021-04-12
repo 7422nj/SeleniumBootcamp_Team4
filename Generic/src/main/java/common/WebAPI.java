@@ -1453,4 +1453,9 @@ public class WebAPI<robot> {
         String act = driver.getCurrentUrl();
         Assert.assertEquals(act,exp,"\n*** Test Failed - Try Again ***");
     }
+
+    public void assertTrueIsEnabled(String loc){
+        boolean act = driver.findElement(By.xpath(loc)).isEnabled();
+        Assert.assertTrue(act,"\n*** Test Failed - Try Again ***");
+    }
 }
