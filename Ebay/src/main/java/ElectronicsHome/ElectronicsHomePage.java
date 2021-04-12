@@ -201,6 +201,11 @@ public class ElectronicsHomePage extends WebAPI {
         basicHoverUsingXpath(WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS);
     }
 
+    /**
+     * Action Method #9
+     * @throws InterruptedException
+     */
+
     public void hoverOverFeaturedItemsNClick() throws InterruptedException {
         robotScrollDown(6);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
@@ -213,14 +218,25 @@ public class ElectronicsHomePage extends WebAPI {
         clickByXpathUsingJavaScript(webElementClickAddToCart);
     }
 
+    /**
+     * Action Method #10
+     * @throws InterruptedException
+     */
+
     public void doubleClickOnDropDown() throws InterruptedException {
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SMART_HOME);
         robotScrollDown(6);
         WebWaitUntilClickableNClick(20,WEB_ELEMENT_CHECKBOX_IRIS1);
         fluentWait();
         robotScrollDown(10);
-        doubleClickUsingXpath(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK);
+        doubleClickUsingXAndCSS(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK);
         sleepFor(3);
+    }
+
+    public void rightClick(){
+        rightClick(WEB_ELEMENT_LINK_NEW_ARLO);
+        implicitWait(15);
 
     }
+
 }

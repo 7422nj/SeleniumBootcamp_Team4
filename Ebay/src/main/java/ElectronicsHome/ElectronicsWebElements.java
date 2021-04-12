@@ -60,4 +60,5 @@ public class ElectronicsWebElements {
     //Electronics Test #10
     public static final String WEB_ELEMENT_CHECKBOX_IRIS1 = "//input[@aria-label='IRIS']";
     public static final String WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK = "//div[@class='x-refine__text-list x-refine__text-list--input-hidden']//select[@name='_sadis']";
+    public static final String WEB_ELEMENT_LINK_NEW_ARLO = "//a[.='Like-new cams']";
 }

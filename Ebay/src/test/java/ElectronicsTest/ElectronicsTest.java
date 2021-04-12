@@ -62,6 +62,7 @@ public class ElectronicsTest extends WebAPI {
     /**
      * Test #3
      * Description: Purchase a Arlo Cam using javascriptExecutor,Actions and Robot
+     * @throws InterruptedException
      */
 
     @Test(enabled = false)
@@ -174,9 +175,20 @@ public class ElectronicsTest extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test
+    @Test(enabled = false)
     public void testDoubleClickDropDown() throws InterruptedException {
         electronics.doubleClickOnDropDown();
         assertFalseIsSelected(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK);
+    }
+
+    /**
+     * Test #12
+     * Right Click
+     */
+
+    @Test
+    public void testRightClickNewArlo(){
+        electronics.rightClick();
+        assertEqualsGetTitle("Electronics products for sale | eBay");
     }
 }

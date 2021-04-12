@@ -1204,23 +1204,28 @@ public class WebAPI<robot> {
                 .ignoring(NoSuchElementException.class);
     }
 
-    public void doubleClickUsingXpath(String locator) {
-        Actions actions = new Actions(driver);
-        WebElement elementLocator = driver.findElement(By.xpath(locator));
-        actions.doubleClick(elementLocator).perform();
+    public void doubleClickUsingXAndCSS(String locator) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement elementLocator = driver.findElement(By.xpath(locator));
+            actions.doubleClick(elementLocator).perform();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                Actions actions = new Actions(driver);
+                WebElement elementLocator = driver.findElement(By.cssSelector(locator));
+                actions.doubleClick(elementLocator).perform();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
-    public void doubleClickUsingCss(String locator) {
-        Actions actions = new Actions(driver);
-        WebElement elementLocator = driver.findElement(By.cssSelector(locator));
-        actions.doubleClick(elementLocator).perform();
-    }
-
-    public void assertFalseIsSelected(String locator){
+    public void assertFalseIsSelected(String locator) {
         try {
             boolean act = driver.findElement(By.xpath(locator)).isSelected();
             Assert.assertFalse(act, "\n*** Test Failed - Try Again ***");
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\n*** First Attempt Failed ***");
             try {
@@ -1273,6 +1278,42 @@ public class WebAPI<robot> {
                         e3.printStackTrace();
                         System.out.println("\n*** Last Attempt Failed ***");
                     }
+                }
+            }
+        }
+    }
+
+    public void rightClick(String locator) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement elementLocator = driver.findElement(By.xpath(locator));
+            actions.contextClick(elementLocator).perform();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("First Attempt Failed");
+            try {
+                Actions actions = new Actions(driver);
+                WebElement elementLocator = driver.findElement(By.cssSelector(locator));
+                actions.contextClick(elementLocator).perform();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                System.out.println("Second Attempt Failed");
+                try {
+                    Actions actions = new Actions(driver);
+                    WebElement elementLocator = driver.findElement(By.id(locator));
+                    actions.contextClick(elementLocator).perform();
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    System.out.println("Third Attempt Failed");
+                    try {
+                        Actions actions = new Actions(driver);
+                        WebElement elementLocator = driver.findElement(By.className(locator));
+                        actions.contextClick(elementLocator).perform();
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
+                        System.out.println("Final Attempt Failed");
+                    }
+
                 }
             }
         }
