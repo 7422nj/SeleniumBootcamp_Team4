@@ -32,4 +32,8 @@ public class SupportWebElements {
     //Search Items using Excel
     public static final String WEB_ELEMENT_LOGO = "//a[.='Customer Service']";
 
+    //Scroll To Expedia Rewards
+    public static final String WEB_ELEMENT_DROP_DOWN_EXPEDIA_REWARDS = "//h3[.='What is Expedia Rewards?']";
+    public static final String WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS = "//h3[.='What is Expedia Rewards?']";
+
 }

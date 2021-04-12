@@ -141,4 +141,29 @@ public class SupportHome extends WebAPI {
     public void searchInterestsUsingExcelPart2() throws IOException, AWTException {
          DataSource.enterExcelDataInSearchNRefreshExpedia();
     }
+
+    public void searchItemsUsingMYSQLDB() throws Exception {
+        DataSource.insertDataIntoDB();
+        List<String> elementFromDatabase = DataSource.getItemsListFromDB();
+        String interest = elementFromDatabase.get(0);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BOX_MAIN,interest);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LOGO);
+        WebDriverWait0(20);
+        String item = elementFromDatabase.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BOX_MAIN,item);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LOGO);
+        WebDriverWait0(20);
+        String newItem = elementFromDatabase.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BOX_MAIN,newItem);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LOGO);
+        WebDriverWait0(20);
+        String newItem1 = elementFromDatabase.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BOX_MAIN,newItem1);
+        implicitWait(10);
+    }
+
+    public void scrollToExpediaRewards(){
+        scrollToElementUsingJavaScript(WEB_ELEMENT_DROP_DOWN_EXPEDIA_REWARDS);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_DROP_DOWN_EXPEDIA_REWARDS);
+    }
 }

@@ -153,10 +153,32 @@ public class SupportTestPage extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test
+    @Test(enabled = false)
     public void testSearchItemsUsingExcelPart2() throws IOException, AWTException, InterruptedException {
         support.searchInterestsUsingExcelPart2();
         assertFalseIsSelected(WEB_ELEMENT_SEARCH_BOX_MAIN);
+    }
 
+    /**
+     * Test #11
+     * Search Items + Enter -> Refresh Page
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void testSearchItemsUsingMYSQLDB() throws Exception {
+        support.searchItemsUsingMYSQLDB();
+        assertEqualsGetAttribute("Farm",WEB_ELEMENT_SEARCH_BOX_MAIN,"value");
+    }
+
+    /**
+     * Test #12
+     * Scroll to Expedia Rewards using JavaScriptExecutor
+     */
+
+    @Test
+    public void testScrollToExpediaRewards(){
+        support.scrollToExpediaRewards();
+        assertEqualByXpath(WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS,"What is Expedia Rewards?");
     }
 }
