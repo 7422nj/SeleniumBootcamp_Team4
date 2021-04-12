@@ -946,6 +946,9 @@ public class WebAPI<robot> {
 
         return flag;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void readNSend(String pathName, int index) throws IOException {
 
@@ -1317,5 +1320,33 @@ public class WebAPI<robot> {
                 }
             }
         }
+    }
+    public void enterExcelDataInSearchNRefreshBOA() throws IOException, AWTException, StaleElementReferenceException {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
+        File file = new File("../BankOfAmerica/DataTest/BankOfAmerica.xlsx");
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("Products");
+        int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
+        WebElement username = driver.findElement(By.xpath(WEB_ELEMENT_SEARCH_BANK));
+        implicitWait(15);
+        for (int i = 1; i <= rowCount; i++) {
+            if (i > rowCount) {
+                wb.close();
+            } else {
+                wb.close();
+                try {
+                    implicitWait(15);
+                    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BANK, sheet.getRow(i).getCell(0).getStringCellValue());
+                    clickByXpathUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON);
+                    WebDriverWait0(15);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            clickByXpathUsingJavaScript(WEB_ELEMENT_LOGO_BANK);
+        }
+        //Close
+        wb.close();
     }
 }
