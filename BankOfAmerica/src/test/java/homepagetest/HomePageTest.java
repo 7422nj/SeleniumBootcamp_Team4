@@ -3,10 +3,7 @@ package homepagetest;
 import common.WebAPI;
 import homepage.HomePage;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -139,10 +136,45 @@ public class HomePageTest extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test
+    @Test(enabled = false)
     public void testHoverOverCashRewardsImage() throws InterruptedException {
         home.hoverOverCashRewards();
         assertEqualsGetAttribute("card-cta",WEB_ELEMENT_VERIFY_IMAGE_CARD,"class");
+    }
+
+    /**
+     * Test #11
+     * @throws InterruptedException
+     */
+
+    @Test(enabled = false)
+    public void testFindFinancialCenterNearMe() throws InterruptedException {
+        home.findFinancialCenterNearMe();
+        assertEqualByXpath(WEB_ELEMENT_VERIFY_ERROR,"You Are Leaving Bank of America");
+    }
+
+    /**
+     * Test #12
+     * Open Parent Window then Open Incognito Window
+     * Close both windows
+     */
+
+    @Test(enabled = false)
+    public void testIncognitoMode(){
+        home.IncognitoMode();
+        assertEqualsGetTitle("Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
+    }
+
+    /**
+     * Test #13
+     * Open Parent Window then Child Window -> Close Child Window
+     * Open Incognito Window -> Close Incognito Window -> Close Parent Window
+     */
+
+    @Test
+    public void testSwitchWindow(){
+        home.openParentChildIncognitoWindowNCloseAll();
+        assertEqualsGetTitle("Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
     }
 }
 

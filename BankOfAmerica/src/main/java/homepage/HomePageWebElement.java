@@ -30,6 +30,18 @@ public class HomePageWebElement {
     public static final String WEB_ELEMENT_IMAGE_CARD = "//div[@class='products-container ']/div[1]//span[@class='show-for-large-up']/a[1]";
     public static final String WEB_ELEMENT_VERIFY_IMAGE_CARD = "//div[@class='products-container ']/div[1]//span[@class='show-for-large-up']/a[1]";
 
+    //Find financial center near me
+    public static final String WEB_ELEMENT_LINK_NEAR_ME = "//a[@id='finCenterLocator']";
+    public static final String WEB_ELEMENT_BUTTON_MAP = "//a[@id='externalUrl']";
+    public static final String WEB_ELEMENT_VERIFY_ERROR = "//h3[.='You Are Leaving Bank of America']";
+    public static final String WEB_ELEMENT_MAP_NEAR_ME = "//li[@class='map-list-item-wrap js-live-data-wrap loaded is-visible']//div[@class='map-list-links mt-10']/a[@name='Get_Directions']";
+
+    //Incognito Mode and Switch Window
+    public static final String WEB_ELEMENT_URL_BOA = "https://www.bankofamerica.com/";
+
+    //Open Parent Window, Child Window & Incognito Window -> Close All
+
+
 
 
 

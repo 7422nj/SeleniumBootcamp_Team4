@@ -4,6 +4,7 @@ import BOADataDriver.DataSource;
 import common.WebAPI;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -21,6 +22,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static homepage.HomePageWebElement.*;
@@ -79,6 +81,7 @@ public class HomePage extends WebAPI {
 
     /**
      * Action Method #1
+     *
      * @throws Exception
      */
 
@@ -93,6 +96,7 @@ public class HomePage extends WebAPI {
 
     /**
      * Action Method #2
+     *
      * @throws IOException
      * @throws AWTException
      */
@@ -104,6 +108,7 @@ public class HomePage extends WebAPI {
 
     /**
      * Action Method #3
+     *
      * @throws Exception
      */
 
@@ -119,6 +124,7 @@ public class HomePage extends WebAPI {
 
     /**
      * Action Method #4
+     *
      * @throws InterruptedException
      * @throws AWTException
      */
@@ -155,6 +161,7 @@ public class HomePage extends WebAPI {
 
     /**
      * Action Method #6
+     *
      * @throws InterruptedException
      */
 
@@ -168,15 +175,15 @@ public class HomePage extends WebAPI {
      * Action Method #7
      */
 
-    public void changeLanguageFromEngToEspanol(){
-        WebWaitUntilClickableNClick(20,WEB_ELEMENT_LINK_LANGUAGES);
+    public void changeLanguageFromEngToEspanol() {
+        WebWaitUntilClickableNClick(20, WEB_ELEMENT_LINK_LANGUAGES);
     }
 
     /**
      * Action Method #8
      */
 
-    public void doubleClickCheckBox(){
+    public void doubleClickCheckBox() {
         doubleClickUsingXAndCSS(WEB_ELEMENT_CHECKBOX_SIGN_IN);
     }
 
@@ -184,10 +191,48 @@ public class HomePage extends WebAPI {
      * Action Method #9
      */
 
-    public void hoverOverCashRewards(){
+    public void hoverOverCashRewards() {
         basicHoverUsingXpath(WEB_ELEMENT_IMAGE_CARD);
     }
-}
+
+    /**
+     * Action Method #10
+     *
+     * @throws InterruptedException
+     */
+
+    public void findFinancialCenterNearMe() throws InterruptedException {//needs work
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_NEAR_ME);
+        WebDriverWait0(20);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_MAP_NEAR_ME);
+    }
+
+    public void IncognitoMode() {
+        try {
+            IncognitoMode(WEB_ELEMENT_URL_BOA);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** Incognito Mode Failed ***");
+        } finally {
+            driver.manage().window().setPosition(new Point(0, -2000));
+        }
+    }
+
+    public void openParentChildIncognitoWindowNCloseAll() {
+        try {
+            openNewWindow(WEB_ELEMENT_URL_BOA);
+            switchWindows();
+            WebDriverWait0(20);
+            driver.manage().window().setPosition(new Point(0, -2000));
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println(getCurrentPageUrl());
+        }finally {
+        IncognitoMode();
+            driver.manage().window().setPosition(new Point(0, -2000));
+        }
+    }
+    }
 
 
 

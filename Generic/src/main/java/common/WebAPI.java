@@ -1321,6 +1321,7 @@ public class WebAPI<robot> {
             }
         }
     }
+
     public void enterExcelDataInSearchNRefreshBOA() throws IOException, AWTException, StaleElementReferenceException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
         File file = new File("../BankOfAmerica/DataTest/BankOfAmerica.xlsx");
@@ -1348,5 +1349,82 @@ public class WebAPI<robot> {
         }
         //Close
         wb.close();
+    }
+
+    public void acceptAlerts() {
+        // Switching to Alert
+        Alert alert = driver.switchTo().alert();
+        // Capturing alert message.
+        String alertMessage = driver.switchTo().alert().getText();
+        // Displaying alert message
+        System.out.println(alertMessage);
+        implicitWait(20);
+        // Accepting alert
+        alert.accept();
+    }
+
+    public void robotTab6() {
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_ENTER);
+    }
+
+    public void IncognitoMode(String Url) {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        options.merge(capabilities);
+        ChromeDriver driver = new ChromeDriver(options);
+        driver.get(Url);
+        driver.manage().window().maximize();
+        driver.quit();
+    }
+
+    public void switchWindows() {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> windowHandle = driver.getWindowHandles();
+            for (String handle : windowHandle) {
+                if (!(handle.equals(parentWindow))) {
+                    driver.switchTo().window(parentWindow);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** Window Switch Failed ***");
+        }finally {
+            System.out.println(driver.getTitle());
+        }
+    }
+
+    public void switchHandlesExample() {
+        // Get Parent window handle
+        String winHandleBefore = driver.getWindowHandle();
+        for (String winHandle : driver.getWindowHandles()) {
+            // Switch to child window
+            driver.switchTo().window(winHandle);
+        }
+        // Do some operation on child window and get child window handle.
+        String winHandleAfter = driver.getWindowHandle();
+//switch to child window of 1st child window.
+        for (String winChildHandle : driver.getWindowHandles()) {
+            // Switch to child window of the 1st child window.
+            if (!winChildHandle.equals(winHandleBefore)
+                    && !winChildHandle.equals(winHandleAfter)) {
+                driver.switchTo().window(winChildHandle);
+            }
+        }
+// to switch to parent window.
+        driver.switchTo().window(winHandleBefore);
+    }
+    public void openNewWindow(String Url){
+        ChromeDriver driver = new ChromeDriver();
+        driver.get(Url);
     }
 }
