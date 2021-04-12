@@ -11,4 +11,6 @@ public class WebApiWebElements extends WebAPI {
     public static final String WEB_ELEMENT_LOGO_BANK = "//img[@alt='Bank of America Logo']";
     public static final String WEB_ELEMENT_SUBMIT_BUTTON = "//input[@name='Search Module - Top Result – Search Button']";
 
+    //Expedia
+    public static final String WEB_ELEMENT_SEARCH_SUPPORT = "//input[@id='search-term']";
 }

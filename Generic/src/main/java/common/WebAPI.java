@@ -551,7 +551,7 @@ public class WebAPI<robot> {
     }
 
     public void clearInput(String locator) {
-        driver.findElement(By.cssSelector(locator)).clear();
+        driver.findElement(By.xpath(locator)).clear();
     }
 
     public void keysInput(String locator) {
@@ -806,7 +806,7 @@ public class WebAPI<robot> {
 
     }//use if click interception pops up as error
 
-    public void clickByXpathUsingJavaScript(String locator) {
+    public static void clickByXpathUsingJavaScript(String locator) {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = driver.findElement(By.xpath(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -1058,6 +1058,33 @@ public class WebAPI<robot> {
         Assert.assertEquals(actual, expected, "\n*** Test Failed - Try Again ***");
     }
 
+    public void assertTrueIsDisplayed(String loc) {
+        try {
+            boolean act = driver.findElement(By.xpath(loc)).isDisplayed();
+            Assert.assertTrue(act);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                boolean act = driver.findElement(By.cssSelector(loc)).isDisplayed();
+                Assert.assertTrue(act);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                try {
+                    boolean act = driver.findElement(By.id(loc)).isDisplayed();
+                    Assert.assertTrue(act);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    try {
+                        boolean act = driver.findElement(By.className(loc)).isDisplayed();
+                        Assert.assertTrue(act);
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
     public void enterExcelDataInSearchNRefresh() throws IOException, AWTException, StaleElementReferenceException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
         File file = new File("../Ebay/DataTest/Ebay.xlsx");
@@ -1086,44 +1113,38 @@ public class WebAPI<robot> {
     public void WebWaitUntilClickableNClick(int seconds, String loc) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
-            driver.findElement(By.xpath(loc)).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc))).click();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\n First Attempt Failed ***");
             try {
-                wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(loc)));
-                driver.findElement(By.cssSelector(loc)).click();
+                wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(loc))).click();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 System.out.println("\n Second Attempt Failed ***");
                 try {
-                    wait.until(ExpectedConditions.elementToBeClickable(By.id(loc)));
-                    driver.findElement(By.id(loc)).click();
+                    wait.until(ExpectedConditions.elementToBeClickable(By.id(loc))).click();
                 } catch (Exception ex1) {
                     ex.printStackTrace();
                     System.out.println("\n Third Attempt Failed ***");
                     try {
-                        wait.until(ExpectedConditions.elementToBeClickable(By.className(loc)));
-                        driver.findElement(By.className(loc)).click();
+                        wait.until(ExpectedConditions.elementToBeClickable(By.className(loc))).click();
                     } catch (Exception ex2) {
                         ex.printStackTrace();
                         System.out.println("\n Fourth Attempt Failed ***");
                         try {
-                            wait.until(ExpectedConditions.elementToBeClickable(By.tagName(loc)));
-                            driver.findElement(By.id(loc)).click();
+                            wait.until(ExpectedConditions.elementToBeClickable(By.tagName(loc))).click();
                         } catch (Exception ex3) {
                             ex.printStackTrace();
                             System.out.println("\n Fifth Attempt Failed ***");
                             try {
-                                wait.until(ExpectedConditions.elementToBeClickable(By.linkText(loc)));
-                                driver.findElement(By.linkText(loc)).click();
+                                wait.until(ExpectedConditions.elementToBeClickable(By.linkText(loc))).click();
+
                             } catch (Exception ex4) {
                                 ex.printStackTrace();
                                 System.out.println("\n Fifth Attempt Failed ***");
                                 try {
-                                    wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(loc)));
-                                    driver.findElement(By.partialLinkText(loc)).click();
+                                    wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(loc))).click();
                                 } catch (Exception ex5) {
                                     ex.printStackTrace();
                                     System.out.println("\n Final Attempt Failed ***");
@@ -1426,5 +1447,10 @@ public class WebAPI<robot> {
     public void openNewWindow(String Url){
         ChromeDriver driver = new ChromeDriver();
         driver.get(Url);
+    }
+
+    public void assertEqualsGetCurrentUrl(String exp){
+        String act = driver.getCurrentUrl();
+        Assert.assertEquals(act,exp,"\n*** Test Failed - Try Again ***");
     }
 }
