@@ -1,4 +1,4 @@
 package SignInHome;
 
-public class SingInLocators {
+public class SignInLocators {
 }

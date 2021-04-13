@@ -386,7 +386,6 @@ public class WebAPI {
     }
 
 
-
     public String getCurrentPageUrl() {
         String url = driver.getCurrentUrl();
         return url;
@@ -561,7 +560,7 @@ public class WebAPI {
         //Step:2-->Iterate linksList: exclude all links/images which does not have any href attribute
         List<WebElement> activeLinks = new ArrayList<WebElement>();
         for (int i = 0; i < linksList.size(); i++) {
-           // System.out.println(linksList.get(i).getAttribute("href"));
+            // System.out.println(linksList.get(i).getAttribute("href"));
             if (linksList.get(i).getAttribute("href") != null && (!linksList.get(i).getAttribute("href").contains("javascript") && (!linksList.get(i).getAttribute("href").contains("mailto")))) {
                 activeLinks.add(linksList.get(i));
             }
@@ -756,6 +755,7 @@ public class WebAPI {
         String url = driver.getCurrentUrl();
         return url;
     }
+
     public void refresh() throws AWTException, InterruptedException {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_F5);
@@ -763,20 +763,37 @@ public class WebAPI {
 
 
     }//use if click interception pops up as error
+
     public void clickByXpathUsingJavaScript(String locator) {
         WebElement element = driver.findElement(By.xpath(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click()", element);
 
     }//use cssSelector
-    public void clickByCssUsingJavaScript(String locator){
+
+    public void clickByCssUsingJavaScript(String locator) {
         WebElement element = driver.findElement(By.cssSelector(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click()", element);
 
     }
 
+    public void WebDriverWait0(int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+    }
 
+    public void scrollToElementUsingJavaScript(String loc) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //Find element by link text and store in variable "Element"
+        WebElement Element = driver.findElement(By.xpath(loc));
+        //This will scroll the page till the element is found
+        js.executeScript("arguments[0].scrollIntoView();", Element);
 
+    }
 
+    public void WebWaitUntilClickByXpath(int seconds, String loc) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
+        driver.findElement(By.xpath(loc)).click();
+    }
 }

@@ -1,4 +1,18 @@
-package Singintestpage;
+package Signintestpage;
 
-public class SingInTestPage {
+import SignInHome.SignInHome;
+import common.WebAPI;
+import org.testng.annotations.Test;
+import java.awt.*;
+
+import static SignInHome.SignInLocators.*;
+
+
+
+
+public class SignInTestPage extends WebAPI{
+
+    SignInHome homepage = new SignInHome();
+
 }
+
