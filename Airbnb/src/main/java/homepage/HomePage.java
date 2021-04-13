@@ -2,10 +2,13 @@ package homepage;
 
 import common.WebAPI;
 import homepage.AirDataDriver.DataSource;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.DataProvider;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,7 +22,8 @@ public class HomePage extends WebAPI {
     /////////////////////////////////////////////////////////////////////////////////////////
 
 //    // Find By Annotation: First Approach
-//    @FindBy (how = How.XPATH, using =searchBoxLocator ) public WebElement searchBox;
+    @FindBy(xpath= WEB_ELEMENT_DRAG_START )
+    public WebElement drag;
 //    @FindBy (how = How.XPATH, using =searchButtonLocator ) public WebElement searchButton;
 //    @FindBy (how = How.XPATH, using =searchTextLocator ) public WebElement searchText;
 
@@ -165,6 +169,13 @@ public class HomePage extends WebAPI {
         clickByXNCssUsingJavaScript(WEB_ELEMENT_DATE_LEAVE_PICKED);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_SUBMIT_DATE);
         implicitWait(20);
+    }
+
+    public void dragPrice() throws InterruptedException {
+        typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR,"farm");
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+        click(WEB_ELEMENT_BUTTON_PRICE);
+        sleepFor(5);
     }
 }
 

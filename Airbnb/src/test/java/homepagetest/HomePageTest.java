@@ -218,10 +218,16 @@ public class HomePageTest extends WebAPI {
      * @throws Exception
      */
 
-    @Test
+    @Test(enabled = false)
     public void testFindFarmNCalendarPickDateUsingMYSQLDB() throws Exception {
         home.findADateUsingCalendarPicker();
         assertEqualsGetText("Stays in Farmington", WEB_ELEMENT_VERIFY_FARM_HEADER);
+    }
+
+    @Test
+    public void testDragPrice() throws InterruptedException {
+        home.dragPrice();
+
     }
 }
 

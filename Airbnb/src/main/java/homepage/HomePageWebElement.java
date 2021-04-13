@@ -32,6 +32,11 @@ public class HomePageWebElement {
     public static final String WEB_ELEMENT_SUBMIT_DATE = "//span[@class='_m9v25n']";
     public static final String WEB_ELEMENT_VERIFY_FARM_HEADER = "//h1[@class='_14i3z6h']";
 
+    //Drag Price
+    public static final String WEB_ELEMENT_BUTTON_PRICE = "//button[@class='_qc44h1f']";
+    public static final String WEB_ELEMENT_DRAG_START = "//div[@class='_ejkfvn']/button[1]";
+    public static final String WEB_ELEMENT_DRAG_START_12 = "//div[@class='_1da2uww']/div[12]";
+
 
 
 

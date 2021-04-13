@@ -1541,17 +1541,27 @@ public class WebAPI<robot> {
             }
         }
     }
-        public void click(String loc){
-        try {
-            driver.findElement(By.xpath(loc)).click();
-        } catch (Exception e){
-            e.printStackTrace();
+        public void click(String loc) {
             try {
-                driver.findElement(By.cssSelector(loc)).click();
-            } catch (Exception e1){
-                e1.printStackTrace();
+                driver.findElement(By.xpath(loc)).click();
+            } catch (Exception e) {
+                e.printStackTrace();
+                try {
+                    driver.findElement(By.cssSelector(loc)).click();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         }
+            public void sliderBarAction(WebElement slider){
+                Actions actions = new Actions(driver);
+                actions.clickAndHold(slider);
+                actions.moveByOffset(40,0).build().perform();
 }
+            public void dragAndDrop(WebElement source, WebElement destination){
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(source, destination).build().perform();
+
+            }
 
 }
