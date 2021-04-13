@@ -30,7 +30,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testGoogleLinkInElectronics() throws InterruptedException {
         electronics.ElectronicsClickSmartHome();
-        assertEqualByXpath(webElementVerifyGoogleLinkText,"Google");
+        assertEqualsGetText(webElementVerifyGoogleLinkText,"Google");
 
     }
     /**
@@ -68,7 +68,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testPurchaseArloWirelessCam() throws InterruptedException {
         electronics.purchaseArloWireFreeSecurityCamera();
-        assertEqualByXpath(webElementTitleAddedToCart,"1 item added to cart");
+        assertEqualsGetText(webElementTitleAddedToCart,"1 item added to cart");
 
     }
 
@@ -83,7 +83,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindProductWithin50MilesOf19082() throws InterruptedException, AWTException {
         electronics.findItemWithin50MilesOf19082();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_HEADER_MILES,"50 miles from 19082\n" +
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_HEADER_MILES,"50 miles from 19082\n" +
                 "Remove filter");
 
     }
@@ -110,7 +110,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testEnterMacbookInSearchUsingExcel() throws Exception {
         electronics.enterMacBookIntoSearchUsingExcel();
-        assertEqualByXpath(WEB_ELEMENT_SEARCH_BAR_HEAD,"Macbook");
+        assertEqualsGetText(WEB_ELEMENT_SEARCH_BAR_HEAD,"Macbook");
     }
 
     /**
@@ -126,7 +126,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindAffordableLaptopUsingExcel() throws Exception {
         electronics.findAffordableLaptopUsingExcel();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
     }
 
     /**
@@ -137,7 +137,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindAffordableLaptopUsingMYSQLDB() throws Exception {
         electronics.findAffordableLaptopUsingMYSQLDB();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
 
     }
 
@@ -165,7 +165,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testHoverOverFeaturedItemsNClickLowPrice() throws InterruptedException {
         electronics.hoverOverFeaturedItemsNClick();
-        assertEqualByXpath(webElementTitleAddedToCart,"1 item added to cart");
+        assertEqualsGetText(webElementTitleAddedToCart,"1 item added to cart");
     }
 
     /**

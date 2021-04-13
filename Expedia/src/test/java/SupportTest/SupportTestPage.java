@@ -179,6 +179,6 @@ public class SupportTestPage extends WebAPI {
     @Test
     public void testScrollToExpediaRewards(){
         support.scrollToExpediaRewards();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS,"What is Expedia Rewards?");
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS,"What is Expedia Rewards?");
     }
 }

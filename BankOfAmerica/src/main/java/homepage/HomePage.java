@@ -2,28 +2,15 @@ package homepage;
 
 import BOADataDriver.DataSource;
 import common.WebAPI;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import static homepage.HomePageWebElement.*;
 
@@ -155,7 +142,6 @@ public class HomePage extends WebAPI {
 
     public void signInUsingFluentWait() {
         typeOnElement(WEB_ELEMENT__ENTRY_USERNAME, WEB_ELEMENT_SEND_KEYS_USER);
-        waitTimeUsingFluent(WEB_ELEMENT_ENTRY_PASSWORD);
         typeOnElementNEnter(WEB_ELEMENT_ENTRY_PASSWORD, WEB_ELEMENT_SEND_KEYS_PASS);
     }
 
@@ -202,10 +188,14 @@ public class HomePage extends WebAPI {
      */
 
     public void findFinancialCenterNearMe() throws InterruptedException {//needs work
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_NEAR_ME);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_NEAR_ME);
         WebDriverWait0(20);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_MAP_NEAR_ME);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_MAP_NEAR_ME);
     }
+
+    /**
+     * Action Method #11
+     */
 
     public void IncognitoMode() {
         try {
@@ -217,6 +207,10 @@ public class HomePage extends WebAPI {
             driver.manage().window().setPosition(new Point(0, -2000));
         }
     }
+
+    /**
+     * Action Method #12
+     */
 
     public void openParentChildIncognitoWindowNCloseAll() {
         try {

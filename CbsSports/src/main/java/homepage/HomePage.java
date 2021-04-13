@@ -1,25 +1,15 @@
 package homepage;
 
 import common.WebAPI;
-import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.io.*;
 import java.util.concurrent.TimeUnit;
-
-import static homepage.HomePageWebElement.*;
 
 public class HomePage  extends WebAPI {
 
@@ -57,9 +47,9 @@ public class HomePage  extends WebAPI {
             int rowCount=sheet.getLastRowNum()-sheet.getFirstRowNum();
 
             //Identify the WebElements for the student registration form
-            clickByXpathUsingJavaScript("//input[@id='userid']");////input[@id='userid']
+            clickByXNCssUsingJavaScript("//input[@id='userid']");////input[@id='userid']
             WebElement username=driver.findElement(By.xpath("//input[@id='userid']"));
-            clickByXpathUsingJavaScript("//label[contains(text(),'Password')]");
+            clickByXNCssUsingJavaScript("//label[contains(text(),'Password')]");
             WebElement password=driver.findElement(By.xpath("//label[contains(text(),'Password')]"));
 
 

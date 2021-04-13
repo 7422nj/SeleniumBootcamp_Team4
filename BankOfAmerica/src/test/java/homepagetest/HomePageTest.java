@@ -44,7 +44,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSignInInvalidCredUsingExcel() throws Exception {
         home.signUpUsingExcel();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_ERROR_HEADER, "Forgot ID/Passcode");
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_ERROR_HEADER, "Forgot ID/Passcode");
     }
 
     /**
@@ -71,7 +71,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSignInUsingMYSQLDB() throws Exception {
         home.signInUsingMYSQLDB();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_ERROR_HEADER, "Forgot ID/Passcode");
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_ERROR_HEADER, "Forgot ID/Passcode");
     }
 
     /**
@@ -150,7 +150,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testFindFinancialCenterNearMe() throws InterruptedException {
         home.findFinancialCenterNearMe();
-        assertEqualByXpath(WEB_ELEMENT_VERIFY_ERROR,"You Are Leaving Bank of America");
+        assertEqualsGetText(WEB_ELEMENT_VERIFY_ERROR,"You Are Leaving Bank of America");
     }
 
     /**

@@ -1,12 +1,10 @@
-package SupportHome.SupportDataDriver;
+package homepage.AirDataDriver;
 
 import common.WebAPI;
 import databases.ConnectToSqlDB;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
 import utilities.DataReader;
 
 import java.awt.*;
@@ -17,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SupportHome.SupportWebElements.*;
+import static homepage.HomePageWebElement.*;
 
 
 public class DataSource extends WebAPI {
@@ -29,7 +27,7 @@ public class DataSource extends WebAPI {
     public static void insertDataIntoDB(){
         List<String> list = getItemValue();
         connectToSqlDB = new ConnectToSqlDB();
-        connectToSqlDB.insertDataFromArrayListToSqlTable(list,"ExpediaItems","items");
+        connectToSqlDB.insertDataFromArrayListToSqlTable(list,"AirbnbItems","items");
     }
 
     //  From Class/ Same class
@@ -39,6 +37,9 @@ public class DataSource extends WebAPI {
         itemsList.add("Views");
         itemsList.add("Travel");
         itemsList.add("Farm");
+        itemsList.add("Cottage");
+        itemsList.add("4846239282");
+        itemsList.add("4381313181");
         return itemsList;
     }
 
@@ -46,13 +47,13 @@ public class DataSource extends WebAPI {
     //Database
     public static List<String> getItemsListFromDB() throws Exception, IOException, SQLException, ClassNotFoundException {
         List<String> list = new ArrayList<>();
-        list = connectToSqlDB.readDataBase("ExpediaItems", "items");
+        list = connectToSqlDB.readDataBase("AirbnbItems", "items");
         return list;
     }
 
     //Excel file
     public static List<String> getItemsListFromExcel() throws Exception, IOException, SQLException, ClassNotFoundException{
-        String path = "../Expedia/DataTest/Expedia.xlsx";
+        String path = "../Airbnb/DataTest/Airbnb.xlsx";
         String[] myStringArray = excelReader.fileReader2(path, 0);
         for(int i=1;i<myStringArray.length; i++)
             System.out.println(myStringArray[i] + " ");
@@ -63,26 +64,27 @@ public class DataSource extends WebAPI {
         return list;
     }
 
-    public static void enterExcelDataInSearchNRefreshExpedia() throws IOException, AWTException, StaleElementReferenceException {
+    public static void enterExcelDataInSearchNRefreshAirbnb() throws IOException, AWTException, StaleElementReferenceException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
-        File file = new File("../Expedia/DataTest/Expedia.xlsx");
+        File file = new File("../Airbnb/DataTest/Airbnb.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("Sheet1");
         int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
-        WebElement username = driver.findElement(By.xpath(WEB_ELEMENT_SEARCH_BOX_MAIN));
+        find(WEB_ELEMENT_SEARCH_LOCATOR);
         for (int i = 1; i <= rowCount; i++) {
             if (i > rowCount) {
                 wb.close();
             } else {
                 wb.close();
                 try {
-                    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BOX_MAIN, sheet.getRow(i).getCell(0).getStringCellValue());
+                    typeOnElementNEnter(WEB_ELEMENT_SEARCH_LOCATOR, sheet.getRow(i).getCell(0).getStringCellValue());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_LOGO);
+            clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+            clickByXNCssUsingJavaScript(WEB_ELEMENT_AIRBNB_LOGO);
         }
         //Close
         wb.close();

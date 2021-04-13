@@ -92,16 +92,16 @@ public class ElectronicsHomePage extends WebAPI {
         action.moveToElement(ele).perform();
         //Click on Like-New Cams link using JavaScriptExecutor
         waitTimeExplicit(webElementLinkLikeNewCams);
-        clickByXpathUsingJavaScript(webElementLinkLikeNewCams);
+        clickByXNCssUsingJavaScript(webElementLinkLikeNewCams);
         robotScrollDown(4);
         //Wait explicitly then clean on Arlo Wireless Camera
         waitTimeExplicit(webElementLinkArloCam);
-        clickByXpathUsingJavaScript(webElementLinkArloCam);
+        clickByXNCssUsingJavaScript(webElementLinkArloCam);
         // This  will scroll down the page by  1000 pixel vertical
         robotScrollDown(3);
         //Click on Add to Cart
         waitTimeExplicit(webElementClickAddToCart);
-        clickByXpathUsingJavaScript(webElementClickAddToCart);
+        clickByXNCssUsingJavaScript(webElementClickAddToCart);
 
     }
 
@@ -112,13 +112,13 @@ public class ElectronicsHomePage extends WebAPI {
      */
     public void findItemWithin50MilesOf19082() throws InterruptedException, AWTException {
         WebWaitUntilClickableNClick(10,WEB_ELEMENT_LINK_SMART_HOME);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_IRIS);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_CHECKBOX_IRIS);
         scrollToElementUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_RADIOBUTTON_IRIS);
         scrollToElementUsingJavaScript(WEB_ELEMENT_DROPDOWN_MILES);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_DROPDOWN_MILES);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_DROPDOWN_MILES);
         typeOnElementNEnter(WEB_ELEMENT_DROPDOWN_MILES, WEB_ELEMENT_DROPDOWN_ENTER_KEYS_MILES);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_ZIP_CODE_MILES);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_ZIP_CODE_MILES);
         clearField1(WEB_ELEMENT_ZIP_CODE_MILES);
         implicitWait(10);
         typeOnElementNEnter(WEB_ELEMENT_ZIP_CODE_MILES, WEB_ELEMENT_ENTER_KEYS_MILES);
@@ -158,15 +158,15 @@ public class ElectronicsHomePage extends WebAPI {
 
     public void findAffordableLaptopUsingExcel() throws Exception {
         robotScrollDown(4);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
         scrollToElementUsingJavaScript(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String laptop = elementFromExcel.get(1);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS, laptop);
         scrollToElementUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
         scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
 
     }
 
@@ -177,16 +177,16 @@ public class ElectronicsHomePage extends WebAPI {
 
     public void findAffordableLaptopUsingMYSQLDB() throws Exception {
         robotScrollDown(4);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
         scrollToElementUsingJavaScript(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS);
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
         String laptop = elementFromDatabase.get(3);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS, laptop);
         scrollToElementUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_CHECKBOX_$230_TO_$450);
         scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_TO_MACBOOK);
     }
 
     /**
@@ -196,7 +196,7 @@ public class ElectronicsHomePage extends WebAPI {
 
     public void hoverOverFeaturedItems() throws InterruptedException {
         robotScrollDown(4);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
         robotScrollDown(3);
         basicHoverUsingXpath(WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS);
     }
@@ -208,14 +208,14 @@ public class ElectronicsHomePage extends WebAPI {
 
     public void hoverOverFeaturedItemsNClick() throws InterruptedException {
         robotScrollDown(6);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
         robotScrollDown(3);
         hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS, WEB_ELEMENT_LINK_LOWEST_PRICE);
         implicitWait(10);
         hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_DROPDOWN_VIEW_OPTIONS,WEB_ELEMENT_LINK_VIEW_OPTIONS);
         scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
-        clickByXpathUsingJavaScript(webElementClickAddToCart);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CHROMEBOOK);
+        clickByXNCssUsingJavaScript(webElementClickAddToCart);
     }
 
     /**
@@ -224,7 +224,7 @@ public class ElectronicsHomePage extends WebAPI {
      */
 
     public void doubleClickOnDropDown() throws InterruptedException {
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SMART_HOME);
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_SMART_HOME);
         robotScrollDown(6);
         WebWaitUntilClickableNClick(20,WEB_ELEMENT_CHECKBOX_IRIS1);
         fluentWait();

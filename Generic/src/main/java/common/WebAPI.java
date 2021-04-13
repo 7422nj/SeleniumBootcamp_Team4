@@ -529,17 +529,17 @@ public class WebAPI<robot> {
 
     //Synchronization
     public void waitUntilClickAble(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitUntilVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitUntilSelectable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
     }
 
@@ -680,14 +680,37 @@ public class WebAPI<robot> {
     }
 
     // ---------------- RADIO BUTTON
-    public static void assertEqualByXpath(String loc, String expValue) {
-        String act = driver.findElement(By.xpath(loc)).getText();
-        // act is coming from Domain -- the one developer build and release
-        String exp = expValue; // exp is coming from Requirement or Mock-up
-        Assert.assertEquals(act, exp);
+    public static void assertEqualsGetText(String exp,String loc) {
+        try {
+            String act = driver.findElement(By.xpath(loc)).getText();
+            Assert.assertEquals(act, exp);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                String act = driver.findElement(By.cssSelector(loc)).getText();
+                Assert.assertEquals(act, exp);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                try {
+                    String act = driver.findElement(By.id(loc)).getText();
+                    Assert.assertEquals(act, exp);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    try {
+                        String act = driver.findElement(By.className(loc)).getText();
+                        Assert.assertEquals(act, exp);
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
-    // Slider Handlaing
+    /**
+     * Slider Handling
+      */
+
     // https://stackoverflow.com/questions/15171745/how-to-slidemove-slider-in-selenium-webdriver
 
     public void waitTimeExplicit(String locator) {
@@ -696,8 +719,7 @@ public class WebAPI<robot> {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
     }
 
-    public void waitTimeUsingFluent(String locator) {
-        // Fluent Wait
+    public void waitTimeUsingFluent() {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
@@ -799,18 +821,29 @@ public class WebAPI<robot> {
     }
 
     public void refresh() throws AWTException, InterruptedException {
-        Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_F5);
-        sleepFor(3);
+        waitTimeUsingFluent();
 
 
     }//use if click interception pops up as error
 
-    public static void clickByXpathUsingJavaScript(String locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement element = driver.findElement(By.xpath(locator));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click()", element);
+    public static void clickByXNCssUsingJavaScript(String locator) {
+        try {
+            WebElement element = driver.findElement(By.xpath(locator));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click()", element);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** First Attempt Failed ***");
+            try {
+                WebElement element = driver.findElement(By.cssSelector(locator));
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click()", element);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                System.out.println("\n** Final Attempt Failed ***");
+            }
+        }
 
     }//use cssSelector
 
@@ -1104,7 +1137,7 @@ public class WebAPI<robot> {
                     e.printStackTrace();
                 }
             }
-            clickByXpathUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON_LOCATOR);
+            clickByXNCssUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON_LOCATOR);
         }
         //Close
         wb.close();
@@ -1360,13 +1393,13 @@ public class WebAPI<robot> {
                 try {
                     implicitWait(15);
                     typeOnElementNEnter(WEB_ELEMENT_SEARCH_BANK, sheet.getRow(i).getCell(0).getStringCellValue());
-                    clickByXpathUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON);
+                    clickByXNCssUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON);
                     WebDriverWait0(15);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            clickByXpathUsingJavaScript(WEB_ELEMENT_LOGO_BANK);
+            clickByXNCssUsingJavaScript(WEB_ELEMENT_LOGO_BANK);
         }
         //Close
         wb.close();
@@ -1419,7 +1452,7 @@ public class WebAPI<robot> {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\n*** Window Switch Failed ***");
-        }finally {
+        } finally {
             System.out.println(driver.getTitle());
         }
     }
@@ -1444,18 +1477,81 @@ public class WebAPI<robot> {
 // to switch to parent window.
         driver.switchTo().window(winHandleBefore);
     }
-    public void openNewWindow(String Url){
+
+    public void openNewWindow(String Url) {
         ChromeDriver driver = new ChromeDriver();
         driver.get(Url);
     }
 
-    public void assertEqualsGetCurrentUrl(String exp){
+    public void assertEqualsGetCurrentUrl(String exp) {
         String act = driver.getCurrentUrl();
-        Assert.assertEquals(act,exp,"\n*** Test Failed - Try Again ***");
+        Assert.assertEquals(act, exp, "\n*** Test Failed - Try Again ***");
     }
 
-    public void assertTrueIsEnabled(String loc){
+    public void assertTrueIsEnabled(String loc) {
         boolean act = driver.findElement(By.xpath(loc)).isEnabled();
-        Assert.assertTrue(act,"\n*** Test Failed - Try Again ***");
+        Assert.assertTrue(act, "\n*** Test Failed - Try Again ***");
     }
+
+    public static void find(String locator) {
+        try {
+            driver.findElement(By.xpath(locator));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** First Attempt Failed ***");
+            try {
+                driver.findElement(By.cssSelector(locator));
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                System.out.println("\n*** Second Attempt Failed ***");
+                try {
+                    driver.findElement(By.id(locator));
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    System.out.println("\n*** Third Attempt Failed ***");
+                    try {
+                        driver.findElement(By.className(locator));
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
+                        System.out.println("\n*** Final Attempt Failed ***");
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Switch Tab To Default
+     */
+
+    public void switchTabToDefault() {
+        List<String> tabs = List.copyOf(driver.getWindowHandles());
+        try {
+            driver.switchTo().window(tabs.get(0));
+            waitTimeUsingFluent();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** TAB SWITCH FAILED ***");
+            try {
+                driver.switchTo().defaultContent();
+                waitTimeUsingFluent();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                System.out.println("\n*** DEFAULT TAB NOT FOUND ***");
+            }
+        }
+    }
+        public void click(String loc){
+        try {
+            driver.findElement(By.xpath(loc)).click();
+        } catch (Exception e){
+            e.printStackTrace();
+            try {
+                driver.findElement(By.cssSelector(loc)).click();
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        }
+}
+
 }
