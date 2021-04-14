@@ -37,6 +37,7 @@ public class HomePageWebElement {
     public static final String WEB_ELEMENT_DRAG_START = "//div[@class='_ejkfvn']/button[1]";
     public static final String WEB_ELEMENT_DRAG_END = "//div[@class='_1da2uww']/div[16]";
     public static final String WEB_ELEMENT_ENTRY_DRAG = "farm";
+    public static final String WEB_ELEMENT_VERIFY_PRICE = "//input[@id='price_filter_min']";
 
 
 
