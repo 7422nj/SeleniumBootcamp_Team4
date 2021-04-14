@@ -1066,11 +1066,24 @@ public class WebAPI {
     }
 
     public void scrollToElementUsingJavaScript(String loc) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        //Find element by link text and store in variable "Element"
-        WebElement Element = driver.findElement(By.xpath(loc));
-        //This will scroll the page till the element is found
-        js.executeScript("arguments[0].scrollIntoView();", Element);
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            //Find element by link text and store in variable "Element"
+            WebElement Element = driver.findElement(By.xpath(loc));
+            //This will scroll the page till the element is found
+            js.executeScript("arguments[0].scrollIntoView();", Element);
+        } catch (Exception e){
+            e.printStackTrace();
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                //Find element by link text and store in variable "Element"
+                WebElement Element = driver.findElement(By.cssSelector(loc));
+                //This will scroll the page till the element is found
+                js.executeScript("arguments[0].scrollIntoView();", Element);
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        }
     }
 
     public void scrollToBottomOfPage() {
