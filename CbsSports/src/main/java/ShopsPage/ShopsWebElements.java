@@ -10,4 +10,11 @@ public class ShopsWebElements {
     public static final String WEB_ELEMENT_LINK_JERSEY = "//a[.='Jalen Hurts Philadelphia Eagles Nike Player Jersey - Midnight Green']";
     public static final String WEB_ELEMENT_ADD_TO_CART = "//button[@class='button large team-primary-colors primary']";
     public static final String WEB_ELEMENT_VERIFY_SMALL = "//a[.='S']";
+
+    //Type Search Content in Search Box
+    public static final String WEB_ELEMENT_INPUT_SEARCH_BAR = "//input[@id='typeahead-input-desktop']";
+    public static final String WEB_ELEMENT_INPUT_TEXT = "Bootcamp404";
+
+    //Navigate to Shops Page
+    public static final String WEB_ELEMENT_LINK_CAREERS = "//a[.='Careers']";
 }

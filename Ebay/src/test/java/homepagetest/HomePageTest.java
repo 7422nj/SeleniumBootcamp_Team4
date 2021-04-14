@@ -1,7 +1,7 @@
 package homepagetest;
 
 import common.WebAPI;
-import MercedesMainPage.HomePage;
+import HomePage.HomePage;
 import org.testng.annotations.Test;
 
 import java.awt.*;

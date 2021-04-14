@@ -1,7 +1,7 @@
 package homepagetest;
 
 import common.WebAPI;
-import MercedesMainPage.HomePage;
+import HomePage.HomePage;
 import org.openqa.selenium.Cookie;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import static MercedesMainPage.HomePageWebElement.*;
+import static HomePage.HomePageWebElement.*;
 
 public class HomePageTest extends WebAPI {
     // Test class
