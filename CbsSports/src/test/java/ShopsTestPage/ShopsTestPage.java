@@ -2,7 +2,6 @@ package ShopsTestPage;
 
 import ShopsPage.ShopsPage;
 import common.WebAPI;
-import homepage.HomePage;
 import org.testng.annotations.Test;
 
 import java.awt.*;

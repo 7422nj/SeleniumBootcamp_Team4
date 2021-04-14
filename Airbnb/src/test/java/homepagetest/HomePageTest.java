@@ -1,7 +1,7 @@
 package homepagetest;
 
 import common.WebAPI;
-import homepage.HomePage;
+import MercedesMainPage.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-import static homepage.HomePageWebElement.*;
+import static MercedesMainPage.HomePageWebElement.*;
 
 public class HomePageTest extends WebAPI {
 

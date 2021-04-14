@@ -1,16 +1,11 @@
 package homepagetest;
 
 import common.WebAPI;
-import homepage.HomePage;
-import org.openqa.selenium.By;
-import org.testng.Assert;
+import MercedesMainPage.HomePage;
 import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class HomePageTest extends WebAPI {
 
