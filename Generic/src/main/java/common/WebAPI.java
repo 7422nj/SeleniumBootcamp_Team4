@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 import static common.WebApiWebElements.*;
 import static org.slf4j.helpers.Util.report;
 
-public class WebAPI<robot> {
+public class WebAPI {
     // Config class :
 
     //Robot available for all helper methods -> will not throw exceptions anymore
@@ -503,8 +503,13 @@ public class WebAPI<robot> {
     }
 
     public void cancelAlert() {
-        Alert alert = driver.switchTo().alert();
-        alert.dismiss();
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.dismiss();
+            System.out.println(alert.getText());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     //iFrame Handle
@@ -568,7 +573,7 @@ public class WebAPI<robot> {
     }
 
     public static boolean isPopUpWindowDisplayed(WebDriver driver1, String locator) {
-        boolean value = driver1.findElement(By.cssSelector(locator)).isDisplayed();
+        boolean value = driver1.findElement(By.xpath(locator)).isDisplayed();
         return value;
     }
 
@@ -1234,9 +1239,10 @@ public class WebAPI<robot> {
     }
 
     public void hoverOverDropdownNClickUsingXpath(String main, String sub) {
+        implicitWait(20);
         WebElement mainMenu = driver.findElement(By.xpath(main));
         Actions actions = new Actions(driver);
-        actions.moveToElement(mainMenu);
+        actions.moveToElement(mainMenu).perform();
         WebElement subMenu = driver.findElement(By.xpath(sub));
         actions.moveToElement(subMenu);
         actions.click().build().perform();
@@ -1406,15 +1412,19 @@ public class WebAPI<robot> {
     }
 
     public void acceptAlerts() {
-        // Switching to Alert
-        Alert alert = driver.switchTo().alert();
-        // Capturing alert message.
-        String alertMessage = driver.switchTo().alert().getText();
-        // Displaying alert message
-        System.out.println(alertMessage);
-        implicitWait(20);
-        // Accepting alert
-        alert.accept();
+       try {
+           // Switching to Alert
+           Alert alert = driver.switchTo().alert();
+           // Capturing alert message.
+           String alertMessage = driver.switchTo().alert().getText();
+           // Displaying alert message
+           System.out.println(alertMessage);
+           implicitWait(20);
+           // Accepting alert
+           alert.accept();
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
     }
 
     public void robotTab6() {

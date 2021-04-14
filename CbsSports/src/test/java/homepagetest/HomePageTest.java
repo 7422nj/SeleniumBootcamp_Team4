@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -18,16 +19,10 @@ public class HomePageTest extends WebAPI {
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
     //@Ignore
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSearchBox() throws InterruptedException, AWTException {
-       Robot robot = new Robot();
-       robot.keyPress(KeyEvent.VK_F5);
-       sleepFor(5);
+        refresh();
 
-    }
-    @Test
-    public void testEnterPassword() throws IOException {
-        homePage.enterPassword();
     }
 
 

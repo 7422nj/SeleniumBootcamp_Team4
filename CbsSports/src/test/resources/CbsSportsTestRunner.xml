@@ -20,7 +20,7 @@
 <!--    <parameter name="browserVersion" value="89"/>-->
     <!--        <parameter name="browserName" value="firefox"/>-->
     <!--        <parameter name="browserVersion" value="76.0"/>-->
-    <parameter name="url" value="https://www.cbssports.com/"/>
+    <parameter name="url" value="https://www.fanatics.com/"/>
     <parameter name="browserName" value="chrome"/>
     <parameter name="browserVersion" value="89"/>
 
@@ -29,19 +29,15 @@
 <!--        <parameter name="browserVersion" value="89"/>-->
         <classes>
             <!--        Calling Test class-->
-            <class name="homepagetest.HomePageTest">
+            <class name="ShopsTestPage.ShopsTestPage">
                 <methods>
                     <!--               Test case include or exclude-->
                     <!--               <exclude name="testSearchbox"></exclude>-->
                     <!--               <include name="testLogin"></include>-->
                 </methods>
-
             </class>
-
             <!--        Add more Test classes-->
-
         </classes>
-
     </test>
 
 <!--    <test name="Amazon Automation Test Script using Firefox">-->
@@ -60,7 +56,6 @@
 
 <!--        </classes>-->
 <!--    </test>-->
-
 </suite>
 
 
