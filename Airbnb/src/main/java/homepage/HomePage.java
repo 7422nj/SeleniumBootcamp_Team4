@@ -2,6 +2,7 @@ package homepage;
 
 import common.WebAPI;
 import homepage.AirDataDriver.DataSource;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -135,12 +136,22 @@ public class HomePage extends WebAPI {
         switchTabToDefault();
     }
 
+    /**
+     * Action Method #8
+     * @throws Exception
+     */
+
     public void searchFarmUsingMYSQLDB() throws Exception {
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
         String interest = elementFromDatabase.get(3);
         typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR, interest);
     }
+
+    /**
+     * Action Method #9
+     * @throws Exception
+     */
 
     public void signUpUsingMYSQLDB() throws Exception {
         clickByXNCssUsingJavaScript(WEB_ELEMENT_DROP_DOWN_MENU);
@@ -151,6 +162,11 @@ public class HomePage extends WebAPI {
         find(WEB_ELEMENT_TEXT_FIELD_SIGN_UP);
         typeOnElementNEnter(WEB_ELEMENT_TEXT_FIELD_SIGN_UP, number);
     }
+
+    /**
+     * Action Method #10
+     * @throws Exception
+     */
 
     public void findADateUsingCalendarPicker() throws Exception {
         DataSource.insertDataIntoDB();
@@ -171,11 +187,18 @@ public class HomePage extends WebAPI {
         implicitWait(20);
     }
 
+    /**
+     * Action Method #11
+     * @throws InterruptedException
+     */
+
     public void dragPrice() throws InterruptedException {
-        typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR,"farm");
+        typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR,WEB_ELEMENT_ENTRY_DRAG);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+        find(WEB_ELEMENT_BUTTON_PRICE);
         click(WEB_ELEMENT_BUTTON_PRICE);
-        sleepFor(5);
+        waitTimeExplicit(WEB_ELEMENT_DRAG_START);
+        dragAndDropUsingActions(WEB_ELEMENT_DRAG_START,WEB_ELEMENT_DRAG_END);
     }
 }
 

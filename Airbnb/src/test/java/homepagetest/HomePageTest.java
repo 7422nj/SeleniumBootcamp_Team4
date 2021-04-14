@@ -224,6 +224,12 @@ public class HomePageTest extends WebAPI {
         assertEqualsGetText("Stays in Farmington", WEB_ELEMENT_VERIFY_FARM_HEADER);
     }
 
+    /**
+     * Test #14
+     * Enter in Search "farm" -> Submit -> Price Button -> Adjust Price using Drag And Drop
+     * @throws InterruptedException
+     */
+
     @Test
     public void testDragPrice() throws InterruptedException {
         home.dragPrice();
