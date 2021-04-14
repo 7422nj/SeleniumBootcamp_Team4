@@ -106,7 +106,7 @@ public class HomePageTest extends WebAPI {
      * Test #9
      */
 
-    @Test
+    @Test(enabled = false)
     public void testChaseLogoInspectionIsClickable(){
         chase.chaseLogoInspectionIsClickable();
         assertTrueIsEnabled(WEB_ELEMENT_LOGO_CHASE);
@@ -116,7 +116,7 @@ public class HomePageTest extends WebAPI {
      * Test 10
      */
 
-    @Test
+    @Test(enabled = false)
     public void testChaseLogoInspectionIsDisplayed(){
         chase.chaseLogoInspectionIsDisplayed();
         assertTrueIsDisplayed(WEB_ELEMENT_LOGO_CHASE);
@@ -126,7 +126,7 @@ public class HomePageTest extends WebAPI {
      * Test #11
      */
 
-    @Test
+    @Test(enabled = false)
     public void testChaseLogoInspectionIsSelected(){
         chase.chaseLogoInspectionIsSelected();
         assertFalseIsSelected(WEB_ELEMENT_LOGO_CHASE);
@@ -136,7 +136,7 @@ public class HomePageTest extends WebAPI {
      * Test #12
      */
 
-    @Test
+    @Test(enabled = false)
     public void testRefreshPageUsingChaseLogo(){
         chase.chaseLogoInspectionIsSelected();
         assertEqualsGetCurrentUrl("https://www.chase.com/");
