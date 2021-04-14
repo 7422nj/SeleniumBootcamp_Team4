@@ -21,6 +21,12 @@ public class ShopsPage extends WebAPI {
     @FindBy(xpath = WEB_ELEMENT_BUTTON_NFL)
     public WebElement NFL;
 
+    /**
+     * Action Method #1
+     * @throws InterruptedException
+     * @throws AWTException
+     */
+
     public void findPerfectEaglesJerseyUsingSizeTable() throws InterruptedException, AWTException {
         try {
             implicitWait(25);
@@ -39,6 +45,10 @@ public class ShopsPage extends WebAPI {
 
     }
 
+    /**
+     * Action Method #2
+     */
+
     public void hoverOverNFLButton() {
         try {
             basicHoverUsingXpath(WEB_ELEMENT_BUTTON_NFL);
@@ -47,10 +57,21 @@ public class ShopsPage extends WebAPI {
         }
     }
 
+    /**
+     * Action Method #3
+     * @throws InterruptedException
+     * @throws AWTException
+     */
+
     public void sendKeysToSearchField() throws InterruptedException, AWTException {
         refresh();
         typeOnElement(WEB_ELEMENT_INPUT_SEARCH_BAR, WEB_ELEMENT_INPUT_TEXT);
     }
+
+    /**
+     * Action Method #4
+     * @return
+     */
 
     @DataProvider(name = "SearchInterests")
     public static Object[] searchUsingDataProvider() {
@@ -63,6 +84,11 @@ public class ShopsPage extends WebAPI {
         };
     }
 
+    /**
+     * Action Method #5
+     * @return
+     */
+
     @DataProvider(name = "SearchProvider")
     public static Object[][] getDataFromDataProvider() {
         return new Object[][]{
@@ -73,6 +99,12 @@ public class ShopsPage extends WebAPI {
                 {"Mariam", "Bootcamp404"}
         };
     }
+
+    /**
+     * Action Method #6
+     * @throws InterruptedException
+     * @throws AWTException
+     */
 
     public void navigateBackToShopsPage() throws InterruptedException, AWTException {
         robotScrollDown(10);

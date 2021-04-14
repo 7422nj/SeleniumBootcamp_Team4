@@ -155,6 +155,14 @@ public class SupportPage extends WebAPI {
         System.out.println("" + cal.getTime());
         navigateBack();
     }
+
+    /**
+     * Action Method #11
+     */
+
+    public void clickOnImageLogo(){
+        click(WEB_ELEMENT_LOGO_TRULIA);
+    }
 }
 
 

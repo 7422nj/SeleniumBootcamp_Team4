@@ -233,6 +233,10 @@ public class ElectronicsHomePage extends WebAPI {
         sleepFor(3);
     }
 
+    /**
+     * Action Method #11
+     */
+
     public void rightClick(){
         rightClick(WEB_ELEMENT_LINK_NEW_ARLO);
         implicitWait(15);

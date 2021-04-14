@@ -230,7 +230,7 @@ public class HomePageTest extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test
+    @Test(enabled = false)
     public void testDragPrice() throws InterruptedException {
         home.dragPrice();
         assertEqualsGetAttribute("108",WEB_ELEMENT_VERIFY_PRICE,"value");

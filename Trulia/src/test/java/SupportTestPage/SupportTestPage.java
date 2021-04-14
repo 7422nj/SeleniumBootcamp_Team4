@@ -155,6 +155,26 @@ public class SupportTestPage extends WebAPI {
         assertEqualsGetTitle("trulia");
     }
 
+    /**
+     * Test #11
+     */
+
+    @Test(enabled = false)
+    public void testClickOnLogoImage(){
+        help.clickOnImageLogo();
+        assertEqualsGetCurrentUrl("https://support.trulia.com/hc/en-us");
+    }
+
+    /**
+     * Test #12
+     */
+
+    @Test(enabled = false)
+    public void testLogoIsClickable(){
+        help.clickOnImageLogo();
+        assertTrueIsEnabled(WEB_ELEMENT_LOGO_TRULIA);
+    }
+
 
 
 }

@@ -24,6 +24,11 @@ public class ChaseMainPage extends WebAPI {
 //    @FindBy (how = How.XPATH, using =searchBoxLocator ) public WebElement searchBox;
 
 
+    /**
+     * Action Method #1
+     * @throws InterruptedException
+     */
+
     public void navigateToMainPage() throws InterruptedException {
         robotScrollDown(10);
         find(WEB_ELEMENT_LINK_CAREERS);
@@ -31,9 +36,18 @@ public class ChaseMainPage extends WebAPI {
         navigateBack();
     }
 
+    /**
+     * Action Method #2
+     */
+
     public void hoverOverOpenAccount() {
         basicHoverUsingXpath(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT);
     }
+
+    /**
+     * Action Method #3
+     * @throws Exception
+     */
 
     public void signInUsingInvalidCredsUsingExcel() throws Exception {
         WebElement element = driver.findElement(By.xpath(WEB_ELEMENT_IFRAME_HANDLE));
@@ -51,24 +65,41 @@ public class ChaseMainPage extends WebAPI {
         sleepFor(30);
     }
 
+    /**
+     * Action Method #4
+     */
     public void changeLanguageToEspanol() {
         hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_LINK_ESPANOL, WEB_ELEMENT_LINK_ESPANOL);
     }
 
+    /**
+     * Action Method #5
+     */
+
     public void scrollToBottomFindCompanyOwnerJPMorganChaseNCo() {
         scrollToBottomOfPage();
         find(WEB_ELEMENT_TEXT_JPMORGAN);
-
     }
+
+    /**
+     * Action Method #6
+     */
 
     public void chaseLogoInspectionIsClickable() {
         find(WEB_ELEMENT_LOGO_CHASE);
-
     }
+
+    /**
+     * Action Method #7
+     */
 
     public void chaseLogoInspectionIsDisplayed() {
         find(WEB_ELEMENT_LOGO_CHASE);
     }
+
+    /**
+     * Action Method #8
+     */
 
     public void chaseLogoInspectionIsSelected() {
         find(WEB_ELEMENT_LOGO_CHASE);
