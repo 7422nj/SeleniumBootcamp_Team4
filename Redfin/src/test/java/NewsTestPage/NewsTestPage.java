@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static NewsPage.NewsWebElements.*;
 
@@ -15,6 +16,7 @@ public class NewsTestPage extends WebAPI {
 
     ////////////////////////////////////////
     NewsPage news = new NewsPage();
+    SoftAssert softAssert = new SoftAssert();
     ///////////////////////////////////////
 
 
@@ -163,8 +165,32 @@ public class NewsTestPage extends WebAPI {
         assertTrueIsDisplayed(WEB_ELEMENT_KING_FARM);
     }
 
-    @Test(enabled = false)
-    public void testGetListOfDropDown(){
+    /**
+     * Test #13
+     */
 
+    @Test(enabled = false)
+    public void testVerifyPageTitle(){
+        //Page Title in All Caps
+        String exp = "REDFIN REAL ESTATE NEWS";
+        //Receives Actual Title of Page
+        String act = driver.getTitle();
+        //Compares 2 Strings -> equalsIgnoreCase Will Compare Strings Even If in Higher or Lower Case
+        Assert.assertTrue(exp.equalsIgnoreCase(act));
+
+    }
+
+    /**
+     * Test #14
+     */
+
+    @Test
+    public void testPageTitleInspection(){
+        String expectedTitle = "Redfin Real Estate News";
+        String actualTitle = driver.getTitle();
+        softAssert.assertEquals(actualTitle,expectedTitle);
+        softAssert.assertTrue(expectedTitle.equalsIgnoreCase(actualTitle));
+        softAssert.assertNotSame(actualTitle,expectedTitle);
+        softAssert.assertAll();
     }
 }
