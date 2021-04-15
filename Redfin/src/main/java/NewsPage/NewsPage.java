@@ -2,10 +2,18 @@ package NewsPage;
 
 import NewsPage.NewsDataDriver.DataSource;
 import common.WebAPI;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import static NewsPage.NewsWebElements.*;
 
@@ -20,6 +28,7 @@ public class NewsPage extends WebAPI {
 
     /**
      * Action Method #1
+     *
      * @return
      */
 
@@ -37,6 +46,7 @@ public class NewsPage extends WebAPI {
 
     /**
      * Action Method #2
+     *
      * @return
      */
 
@@ -85,6 +95,7 @@ public class NewsPage extends WebAPI {
 
     /**
      * Action Method #7
+     *
      * @throws Exception
      */
 
@@ -98,6 +109,7 @@ public class NewsPage extends WebAPI {
 
     /**
      * Action Method #8
+     *
      * @throws Exception
      */
 
@@ -111,6 +123,7 @@ public class NewsPage extends WebAPI {
 
     /**
      * Action Method #9
+     *
      * @throws Exception
      */
 
@@ -122,10 +135,28 @@ public class NewsPage extends WebAPI {
         typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR, word);
     }
 
-    public void navigateToNewsPage(){
+    public void navigateToNewsPage() {
         clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_CONTACT);
         navigateBack();
         WebDriverWait0(20);
     }
 
+    public void handleNewWindow() throws Exception {
+        driver.get("https://www.redfin.com/");
+        driver.manage().window().maximize();
+        switchHandlesExample();
+        find(WEB_ELEMENT_SEARCH_MAIN_PAGE);
+        DataSource.insertDataIntoDB();
+        List<String> elementFromDatabase = DataSource.getItemsListFromDB();
+        String word = elementFromDatabase.get(3);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        typeOnElement(WEB_ELEMENT_SEARCH_MAIN_PAGE, word);
+        WebDriverWait wait2 = new WebDriverWait(driver, 20);
+        driver.close();
+    }
+
+    public void getListOfDropDown(){
+
+    }
 }
+

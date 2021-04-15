@@ -328,8 +328,7 @@ public class WebAPI {
         }
     }
 
-    public void clearField(String locator) {
-        driver.findElement(By.id(locator)).clear();
+    public void clearField(String locator) { driver.findElement(By.xpath(locator)).clear();
     }
 
     public void navigateBack() {
@@ -483,14 +482,14 @@ public class WebAPI {
         }
     }
 
-    public void mouseHoverByXpath(String locator) {
+    public void mouseHoverByXNCss(String locator) {
         try {
             WebElement element = driver.findElement(By.xpath(locator));
             Actions action = new Actions(driver);
-            Actions hover = action.moveToElement(element);
+            action.moveToElement(element).perform();
         } catch (Exception ex) {
             System.out.println("First attempt has been done, This is second try");
-            WebElement element = driver.findElement(By.xpath(locator));
+            WebElement element = driver.findElement(By.cssSelector(locator));
             Actions action = new Actions(driver);
             action.moveToElement(element).perform();
         }
@@ -507,7 +506,7 @@ public class WebAPI {
             Alert alert = driver.switchTo().alert();
             alert.dismiss();
             System.out.println(alert.getText());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -685,7 +684,7 @@ public class WebAPI {
     }
 
     // ---------------- RADIO BUTTON
-    public static void assertEqualsGetText(String exp,String loc) {
+    public static void assertEqualsGetText(String exp, String loc) {
         try {
             String act = driver.findElement(By.xpath(loc)).getText();
             Assert.assertEquals(act, exp);
@@ -714,10 +713,9 @@ public class WebAPI {
 
     /**
      * Slider Handling
-      */
+     */
 
     // https://stackoverflow.com/questions/15171745/how-to-slidemove-slider-in-selenium-webdriver
-
     public void waitTimeExplicit(String locator) {
         // Explicit wait
         WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -1072,7 +1070,7 @@ public class WebAPI {
             WebElement Element = driver.findElement(By.xpath(loc));
             //This will scroll the page till the element is found
             js.executeScript("arguments[0].scrollIntoView();", Element);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -1080,7 +1078,7 @@ public class WebAPI {
                 WebElement Element = driver.findElement(By.cssSelector(loc));
                 //This will scroll the page till the element is found
                 js.executeScript("arguments[0].scrollIntoView();", Element);
-            } catch (Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
@@ -1425,19 +1423,19 @@ public class WebAPI {
     }
 
     public void acceptAlerts() {
-       try {
-           // Switching to Alert
-           Alert alert = driver.switchTo().alert();
-           // Capturing alert message.
-           String alertMessage = driver.switchTo().alert().getText();
-           // Displaying alert message
-           System.out.println(alertMessage);
-           implicitWait(20);
-           // Accepting alert
-           alert.accept();
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
+        try {
+            // Switching to Alert
+            Alert alert = driver.switchTo().alert();
+            // Capturing alert message.
+            String alertMessage = driver.switchTo().alert().getText();
+            // Displaying alert message
+            System.out.println(alertMessage);
+            implicitWait(20);
+            // Accepting alert
+            alert.accept();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void robotTab6() {
@@ -1469,7 +1467,7 @@ public class WebAPI {
             Set<String> windowHandle = driver.getWindowHandles();
             for (String handle : windowHandle) {
                 if (!(handle.equals(parentWindow))) {
-                    driver.switchTo().window(parentWindow);
+                    driver.switchTo().window(handle);
                 }
             }
         } catch (Exception e) {
@@ -1564,27 +1562,47 @@ public class WebAPI {
             }
         }
     }
-        public void click(String loc) {
+
+    public void click(String loc) {
+        try {
+            driver.findElement(By.xpath(loc)).click();
+        } catch (Exception e) {
+            e.printStackTrace();
             try {
-                driver.findElement(By.xpath(loc)).click();
-            } catch (Exception e) {
-                e.printStackTrace();
-                try {
-                    driver.findElement(By.cssSelector(loc)).click();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                driver.findElement(By.cssSelector(loc)).click();
+            } catch (Exception e1) {
+                e1.printStackTrace();
             }
         }
-            public void sliderBarAction(WebElement slider){
-                Actions actions = new Actions(driver);
-                actions.clickAndHold(slider);
-                actions.moveByOffset(40,0).build().perform();
-}
-            public void dragAndDrop(WebElement source, WebElement destination){
+    }
+
+    public void sliderBarAction(WebElement slider) {
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider);
+        actions.moveByOffset(40, 0).build().perform();
+    }
+
+    public void dragAndDrop(WebElement source, WebElement destination) {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(source, destination).build().perform();
 
-            }
+    }
 
+    public void switchToChildWindow() {
+        String MainWindow = driver.getWindowHandle();
+
+        // To handle all new opened window.
+        Set<String> s1 = driver.getWindowHandles();
+        Iterator<String> i1 = s1.iterator();
+
+        while (i1.hasNext()) {
+            String ChildWindow = i1.next();
+
+            if (!MainWindow.equalsIgnoreCase(ChildWindow)) {
+
+                // Switching to Child window
+                driver.switchTo().window(ChildWindow);
+            }
+        }
+    }
 }

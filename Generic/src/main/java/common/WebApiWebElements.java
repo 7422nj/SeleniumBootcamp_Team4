@@ -13,4 +13,7 @@ public class WebApiWebElements extends WebAPI {
 
     //Expedia
     public static final String WEB_ELEMENT_SEARCH_SUPPORT = "//input[@id='search-term']";
+
+    //Redfin
+    public static final String WEB_ELEMENT_SEARCH_MAIN_PAGE = "//div[@class='searchInputNode']//input[@id='search-box-input']";
 }

@@ -146,9 +146,25 @@ public class NewsTestPage extends WebAPI {
      * Test #11
      */
 
-    @Test
+    @Test(enabled = false)
     public void testNavigateToNewsPage(){
         news.navigateToNewsPage();
         assertEqualsGetCurrentUrl("https://www.redfin.com/news/");
+    }
+
+    /**
+     * Test #12
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void testSearchUsingMYSQLDBAndSwitchToChildWindow() throws Exception {
+        news.handleNewWindow();
+        assertTrueIsDisplayed(WEB_ELEMENT_KING_FARM);
+    }
+
+    @Test(enabled = false)
+    public void testGetListOfDropDown(){
+
     }
 }

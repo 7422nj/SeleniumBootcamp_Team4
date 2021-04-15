@@ -20,4 +20,8 @@ public class NewsWebElements {
 
     //Navigate Between Pages
     public static final String WEB_ELEMENT_BUTTON_CONTACT = "//nav[@class='elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-none']//a[.='Contact']";
+
+    //Switch To New Window & Perform Action
+    public static final String WEB_ELEMENT_SEARCH_MAIN_PAGE = "//div[@class='searchInputNode']//div[@class='SearchBox']//form[@class='SearchBoxForm']//div[@class='search-container inline-block']//div[@class='InputBox']//input[@id='search-box-input']";
+    public static final String WEB_ELEMENT_KING_FARM = "//a[.='King Farm']";
 }
