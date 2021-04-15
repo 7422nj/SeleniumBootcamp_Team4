@@ -17,4 +17,7 @@ public class NewsWebElements {
     public static final String WEB_ELEMENT_INPUT_EMAIL = "#input_1_1";
     public static final String WEB_ELEMENT_CONFIRMATION_MESSAGE = "//div[@class='gform_confirmation_message_1 gform_confirmation_message']";
     public static final String WEB_ELEMENT_ERROR_MESSAGE = "//div[@id='validation_message_1_1']";
+
+    //Navigate Between Pages
+    public static final String WEB_ELEMENT_BUTTON_CONTACT = "//nav[@class='elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-none']//a[.='Contact']";
 }

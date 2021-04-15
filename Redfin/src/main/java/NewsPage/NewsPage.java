@@ -108,4 +108,24 @@ public class NewsPage extends WebAPI {
         String email = elementFromDatabase.get(6);
         typeOnElementNEnter(WEB_ELEMENT_INPUT_EMAIL, email);
     }
+
+    /**
+     * Action Method #9
+     * @throws Exception
+     */
+
+    public void sendKeysToSearchUsingMYSQLDB() throws Exception {
+        implicitWait(20);
+        DataSource.insertDataIntoDB();
+        List<String> elementFromDatabase = DataSource.getItemsListFromDB();
+        String word = elementFromDatabase.get(3);
+        typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR, word);
+    }
+
+    public void navigateToNewsPage(){
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_CONTACT);
+        navigateBack();
+        WebDriverWait0(20);
+    }
+
 }

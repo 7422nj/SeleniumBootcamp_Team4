@@ -130,4 +130,25 @@ public class NewsTestPage extends WebAPI {
     public void testCurrentPageUrl(){
         assertEqualsGetCurrentUrl("https://www.redfin.com/news/");
     }
+
+    /**
+     * Test #10
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void testSendKeysToSearchBarUsingMYSQLDB() throws Exception {
+        news.sendKeysToSearchUsingMYSQLDB();
+        assertEqualsGetAttribute("Farm",WEB_ELEMENT_SEARCH_LOCATOR,"value");
+    }
+
+    /**
+     * Test #11
+     */
+
+    @Test
+    public void testNavigateToNewsPage(){
+        news.navigateToNewsPage();
+        assertEqualsGetCurrentUrl("https://www.redfin.com/news/");
+    }
 }
