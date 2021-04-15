@@ -69,7 +69,7 @@ public class NewsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchBoxInspectionIsDisplayed(){
         news.searchBoxInspectionIsDisplayed();
-        assertTrueIsDisplayed(WEB_ELEMENT_SEARCH_LOCATOR);
+        softAssertAssertTrueIsDisplayed(WEB_ELEMENT_SEARCH_LOCATOR);
     }
 
     /**
@@ -89,7 +89,11 @@ public class NewsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testScrollDownToElementUsingJavaScript(){
         news.scrollToElementUsingJS();
-        assertEqualsGetText("Housing Market",WEB_ELEMENT_HEADER_HOUSE);
+        try {
+            softAssertAssertEqualsGetText("Housing Market", WEB_ELEMENT_HEADER_HOUSE);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -148,8 +152,8 @@ public class NewsTestPage extends WebAPI {
      * Test #11
      */
 
-    @Test(enabled = false)
-    public void testNavigateToNewsPage(){
+    @Test(enabled = true)
+    public void testNavigateToNewsPage() throws InterruptedException {
         news.navigateToNewsPage();
         assertEqualsGetCurrentUrl("https://www.redfin.com/news/");
     }
@@ -162,7 +166,7 @@ public class NewsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchUsingMYSQLDBAndSwitchToChildWindow() throws Exception {
         news.handleNewWindow();
-        assertTrueIsDisplayed(WEB_ELEMENT_KING_FARM);
+       softAssertAssertTrueIsDisplayed(WEB_ELEMENT_KING_FARM);
     }
 
     /**
@@ -184,7 +188,7 @@ public class NewsTestPage extends WebAPI {
      * Test #14
      */
 
-    @Test
+    @Test(enabled = false)
     public void testPageTitleInspection(){
         String expectedTitle = "Redfin Real Estate News";
         String actualTitle = driver.getTitle();

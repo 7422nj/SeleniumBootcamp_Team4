@@ -24,7 +24,6 @@
         <module>Verizon</module>
         <module>Chase</module>
         <module>Airbnb</module>
-        <module>MercedesBenz</module>
     </modules>
 
     <properties>

@@ -95,7 +95,7 @@ public class HomePage extends WebAPI {
      */
 
     public void searchItemsUsingExcel() throws IOException, AWTException {
-        waitTimeUsingFluent();
+        waitTimeUsingFluent(20);
         DataSource.enterExcelDataInSearchNRefreshAirbnb();
     }
 

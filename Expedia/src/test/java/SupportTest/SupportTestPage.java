@@ -177,8 +177,9 @@ public class SupportTestPage extends WebAPI {
      */
 
     @Test
-    public void testScrollToExpediaRewards(){
+    public void testScrollToExpediaRewards() throws InterruptedException {
         support.scrollToExpediaRewards();
         assertEqualsGetText(WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS,"What is Expedia Rewards?");
+
     }
 }

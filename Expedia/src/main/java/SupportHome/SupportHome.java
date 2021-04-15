@@ -5,6 +5,7 @@ import common.WebAPI;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
 import java.awt.*;
 import java.io.IOException;
@@ -206,8 +207,11 @@ public class SupportHome extends WebAPI {
      * Action Method #11
      */
 
-    public void scrollToExpediaRewards(){
+    public void scrollToExpediaRewards() throws InterruptedException {
         scrollToElementUsingJavaScript(WEB_ELEMENT_DROP_DOWN_EXPEDIA_REWARDS);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_DROP_DOWN_EXPEDIA_REWARDS);
+        createAlert("alert('Bootcamp Arrival Point');");
+        waitTimeUsingFluent(20);
+        driver.switchTo().alert().accept();
     }
 }

@@ -23,6 +23,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.annotations.Optional;
+import org.testng.asserts.SoftAssert;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
@@ -44,7 +45,8 @@ import static common.WebApiWebElements.*;
 import static org.slf4j.helpers.Util.report;
 
 public class WebAPI {
-    // Config class :
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Robot available for all helper methods -> will not throw exceptions anymore
     public static Robot robot;
@@ -57,11 +59,24 @@ public class WebAPI {
         }
     }
 
+    //SoftAssert available for all assertion methods
+    public static SoftAssert softAssert;
+
+    static {
+        try {
+            softAssert = new SoftAssert();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static WebDriver driver;
     public static WebDriverWait driverWait;
     public DataReader dataReader;
     public Properties properties;
-
     String propertiesFilePath = "src/main/resources/secret.properties";
 
     public WebAPI() {
@@ -722,10 +737,10 @@ public class WebAPI {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
     }
 
-    public void waitTimeUsingFluent() {
+    public void waitTimeUsingFluent(long seconds) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
+                .withTimeout(Duration.ofSeconds(seconds))
+                .pollingEvery(Duration.ofSeconds(5))
                 .withMessage("Time out after 30 seconds")
                 .ignoring(NoSuchElementException.class);
     }
@@ -825,7 +840,7 @@ public class WebAPI {
 
     public void refresh() throws AWTException, InterruptedException {
         robot.keyPress(KeyEvent.VK_F5);
-        waitTimeUsingFluent();
+        waitTimeUsingFluent(25);
 
 
     }//use if click interception pops up as error
@@ -848,7 +863,8 @@ public class WebAPI {
             }
         }
 
-    }//use cssSelector
+    }
+    //use cssSelector
 
     public void clickByCssUsingJavaScript(String locator) {
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -1549,13 +1565,13 @@ public class WebAPI {
         List<String> tabs = List.copyOf(driver.getWindowHandles());
         try {
             driver.switchTo().window(tabs.get(0));
-            waitTimeUsingFluent();
+            waitTimeUsingFluent(25);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\n*** TAB SWITCH FAILED ***");
             try {
                 driver.switchTo().defaultContent();
-                waitTimeUsingFluent();
+                waitTimeUsingFluent(25);
             } catch (Exception e1) {
                 e1.printStackTrace();
                 System.out.println("\n*** DEFAULT TAB NOT FOUND ***");
@@ -1605,4 +1621,42 @@ public class WebAPI {
             }
         }
     }
+
+    public void softAssertAssertEqualsGetText(String actual, String expected){
+      try {
+          String exp = expected;
+          String act = driver.findElement(By.xpath(actual)).getText();
+          softAssert.assertEquals(act, exp);
+          softAssert.assertAll();
+      } catch (Exception e){
+          e.printStackTrace();
+          System.out.println("\n*** First Attempt Failed - Trying Again ***");
+          String exp = expected;
+          String act = driver.findElement(By.cssSelector(actual)).getText();
+          softAssert.assertEquals(act, exp);
+          softAssert.assertAll();
+      }
+    }
+
+    public void softAssertAssertTrueIsDisplayed(String actual){
+        try {
+            boolean act = driver.findElement(By.xpath(actual)).isDisplayed();
+            softAssert.assertTrue(act, "\n*** Test Failed - Try Again ***");
+            softAssert.assertAll();
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("\n*** First Attempt Failed - Trying Again ***");
+            boolean act = driver.findElement(By.cssSelector(actual)).isDisplayed();
+            softAssert.assertTrue(act, "\n*** Test Failed - Try Again ***");
+            softAssert.assertAll();
+        }
+    }
+
+    public static void createAlert(String note){
+        JavascriptExecutor js=(JavascriptExecutor)driver;
+        js.executeScript(note);//"alert('enter here');"
+
+    }
+
+
 }
