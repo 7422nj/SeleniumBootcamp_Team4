@@ -107,7 +107,7 @@ public class ShopsPage extends WebAPI {
      */
 
     public void navigateBackToShopsPage() throws InterruptedException, AWTException {
-        robotScrollDown(10);
+        robotScrollDownByChunks(10);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CAREERS);
         implicitWait(20);
         navigateBack();

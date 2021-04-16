@@ -14,12 +14,23 @@ import java.util.List;
 import static HomePage.HomePageWebElement.*;
 
 public class HomePage extends WebAPI {
-
+    /////////////////////////////////////////////////////////////////////////////////////////
     public HomePage() {
         PageFactory.initElements(driver, this);
     }
-    /////////////////////////////////////////////////////////////////////////////////////////
 
+    /////////////////////////////////////////////////////////////////////////////////////////
+    //Available for all methods
+    Robot robot;
+
+    {
+        try {
+            robot = new Robot();
+        } catch (AWTException e){
+            e.printStackTrace();
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////
 //    // Find By Annotation: First Approach
     @FindBy(xpath= WEB_ELEMENT_DRAG_START )
     public WebElement drag;
@@ -113,7 +124,7 @@ public class HomePage extends WebAPI {
         implicitWait(15);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_SUPER_HOST_AIRBNB);
         implicitWait(15);
-        robotScrollDown(4);
+        robotScrollDownByChunks(4);
     }
 
     /**
@@ -130,7 +141,7 @@ public class HomePage extends WebAPI {
         implicitWait(15);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_SUPER_HOST_AIRBNB);
         implicitWait(15);
-        robotScrollDown(4);
+        robotScrollDownByChunks(4);
         switchTabToDefault();
     }
 
@@ -197,6 +208,13 @@ public class HomePage extends WebAPI {
         click(WEB_ELEMENT_BUTTON_PRICE);
         waitTimeExplicit(WEB_ELEMENT_DRAG_START);
         dragAndDropUsingActions(WEB_ELEMENT_DRAG_START,WEB_ELEMENT_DRAG_END);
+    }
+
+    public void searchViewsUsingMYSQLDB() throws Exception {
+        DataSource.insertDataIntoDB();
+        List<String> elementFromDatabase = DataSource.getItemsListFromDB();
+        String interest = elementFromDatabase.get(1);
+        typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR, interest);
     }
 }
 

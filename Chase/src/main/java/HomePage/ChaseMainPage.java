@@ -30,7 +30,7 @@ public class ChaseMainPage extends WebAPI {
      */
 
     public void navigateToMainPage() throws InterruptedException {
-        robotScrollDown(10);
+        robotScrollDownByChunks(10);
         find(WEB_ELEMENT_LINK_CAREERS);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CAREERS);
         navigateBack();

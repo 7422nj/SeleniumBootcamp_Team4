@@ -186,9 +186,52 @@ public class ElectronicsTest extends WebAPI {
      * Right Click
      */
 
-    @Test
+    @Test(enabled = false)
     public void testRightClickNewArlo(){
         electronics.rightClick();
         assertEqualsGetTitle("Electronics products for sale | eBay");
     }
+
+    /**
+     * Test #13
+     */
+
+    @Test(enabled = false)
+    public void testScrollDownUsingRobotClass(){
+        electronics.scrollDownPageUsingRobot();
+        softAssertAssertTrueIsDisplayed(WEB_ELEMENT_SEARCH_BAR_HEAD);
+    }
+
+    /**
+     * Test #14
+     */
+
+    @Test(enabled = false)
+    public void testScrollDownToBottomUsingJavaScript(){
+        electronics.scrollDownToBottomPageUsingJavaScript();
+        softAssertAssertTrueIsDisplayed(WEB_ELEMENT_SEARCH_BAR_HEAD);
+    }
+
+    /**
+     * Test #15
+     * @throws InterruptedException
+     */
+
+    @Test(enabled = false)
+    public void testScrollDownToElementUsingActions() throws InterruptedException {
+        electronics.scrollDownUsingActionsClass();
+        softAssertAssertEqualsGetText(WEB_ELEMENT_HEADER,"Shop by Category");
+    }
+
+    /**
+     * Test #16
+     * @throws InterruptedException
+     */
+
+    @Test(enabled = false)
+    public void testScrollToElementUsingJavaScript() throws InterruptedException {
+        electronics.scrollDownToElementUsingJavaScript();
+        softAssertAssertEqualsGetText(WEB_ELEMENT_HEADER,"Shop by Category");
+    }
+
 }

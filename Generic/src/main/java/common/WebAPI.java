@@ -34,6 +34,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.Key;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -65,7 +66,7 @@ public class WebAPI {
     static {
         try {
             softAssert = new SoftAssert();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -343,7 +344,8 @@ public class WebAPI {
         }
     }
 
-    public void clearField(String locator) { driver.findElement(By.xpath(locator)).clear();
+    public void clearField(String locator) {
+        driver.findElement(By.xpath(locator)).clear();
     }
 
     public void navigateBack() {
@@ -732,8 +734,7 @@ public class WebAPI {
 
     // https://stackoverflow.com/questions/15171745/how-to-slidemove-slider-in-selenium-webdriver
     public void waitTimeExplicit(String locator) {
-        // Explicit wait
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
     }
 
@@ -743,6 +744,17 @@ public class WebAPI {
                 .pollingEvery(Duration.ofSeconds(5))
                 .withMessage("Time out after 30 seconds")
                 .ignoring(NoSuchElementException.class);
+    }
+
+    public void waitTimeUsingFluentUsingXpath(long seconds, String locator) {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(seconds))
+                .pollingEvery(Duration.ofSeconds(5))
+                .withMessage("Time out after 30 seconds")
+                .ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+
+
     }
 
 
@@ -1018,6 +1030,13 @@ public class WebAPI {
             System.out.println();
         }
         fis.close();
+    }
+
+    public void robotScrollDownByChunks(int wheelAmt) throws InterruptedException {
+        for (int i = 0; i < wheelAmt; i++) {
+            robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+            robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+        }
     }
 
     public void robotScrollDown(int i) throws InterruptedException {
@@ -1622,28 +1641,28 @@ public class WebAPI {
         }
     }
 
-    public void softAssertAssertEqualsGetText(String actual, String expected){
-      try {
-          String exp = expected;
-          String act = driver.findElement(By.xpath(actual)).getText();
-          softAssert.assertEquals(act, exp);
-          softAssert.assertAll();
-      } catch (Exception e){
-          e.printStackTrace();
-          System.out.println("\n*** First Attempt Failed - Trying Again ***");
-          String exp = expected;
-          String act = driver.findElement(By.cssSelector(actual)).getText();
-          softAssert.assertEquals(act, exp);
-          softAssert.assertAll();
-      }
+    public void softAssertAssertEqualsGetText(String actual, String expected) {
+        try {
+            String exp = expected;
+            String act = driver.findElement(By.xpath(actual)).getText();
+            softAssert.assertEquals(act, exp);
+            softAssert.assertAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** First Attempt Failed - Trying Again ***");
+            String exp = expected;
+            String act = driver.findElement(By.cssSelector(actual)).getText();
+            softAssert.assertEquals(act, exp);
+            softAssert.assertAll();
+        }
     }
 
-    public void softAssertAssertTrueIsDisplayed(String actual){
+    public void softAssertAssertTrueIsDisplayed(String actual) {
         try {
             boolean act = driver.findElement(By.xpath(actual)).isDisplayed();
             softAssert.assertTrue(act, "\n*** Test Failed - Try Again ***");
             softAssert.assertAll();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\n*** First Attempt Failed - Trying Again ***");
             boolean act = driver.findElement(By.cssSelector(actual)).isDisplayed();
@@ -1652,10 +1671,15 @@ public class WebAPI {
         }
     }
 
-    public static void createAlert(String note){
-        JavascriptExecutor js=(JavascriptExecutor)driver;
+    public static void createAlert(String note) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(note);//"alert('enter here');"
 
+    }
+
+    public static void scrollDownUsingActions(WebElement ele){
+        Actions action = new Actions(driver);
+        action.keyDown(ele,Keys.CONTROL).perform();
     }
 
 

@@ -236,6 +236,11 @@ public class HomePageTest extends WebAPI {
         assertEqualsGetAttribute("108",WEB_ELEMENT_VERIFY_PRICE,"value");
 
     }
+
+    @Test
+    public void testFindARoomUsingMYSQLDB() throws Exception {
+        home.searchViewsUsingMYSQLDB();
+    }
 }
 
 
