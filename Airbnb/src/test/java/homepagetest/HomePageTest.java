@@ -237,9 +237,15 @@ public class HomePageTest extends WebAPI {
 
     }
 
+    /**
+     * Test #15
+     * @throws Exception
+     */
+
     @Test
     public void testFindARoomUsingMYSQLDB() throws Exception {
         home.searchViewsUsingMYSQLDB();
+        assertEqualsGetAttribute("Views",WEB_ELEMENT_SEARCH_LOCATOR,"value");
     }
 }
 

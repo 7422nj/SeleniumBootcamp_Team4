@@ -105,6 +105,7 @@ public class ChaseMainPage extends WebAPI {
         find(WEB_ELEMENT_LOGO_CHASE);
         click(WEB_ELEMENT_LOGO_CHASE);
 
+
     }
 }
 

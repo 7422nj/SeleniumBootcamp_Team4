@@ -141,4 +141,14 @@ public class HomePageTest extends WebAPI {
         chase.chaseLogoInspectionIsSelected();
         assertEqualsGetCurrentUrl("https://www.chase.com/");
     }
+
+//    @Test
+//    public void testScroll(){
+//        try {
+//            robotScroll(6);
+//            sleepFor(3);
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 }

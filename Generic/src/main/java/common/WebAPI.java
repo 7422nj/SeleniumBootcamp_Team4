@@ -28,6 +28,7 @@ import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
 
+import javax.swing.plaf.basic.BasicSliderUI;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
@@ -51,6 +52,7 @@ public class WebAPI {
 
     //Robot available for all helper methods -> will not throw exceptions anymore
     public static Robot robot;
+    private static int wheelAmt;
 
     static {
         try {
@@ -272,6 +274,7 @@ public class WebAPI {
     public static void sleepFor(int seconds) throws InterruptedException {
         Thread.sleep(seconds * 1000);
     }
+
 
     public void clickOnElement(String locator) {
         try {
@@ -1682,5 +1685,14 @@ public class WebAPI {
         action.keyDown(ele,Keys.CONTROL).perform();
     }
 
+    public static Robot robotScrollInfinite(int wheelAmt) throws Exception{
+        for (int i = 0; i == wheelAmt; i++){
+            robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+            robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+            Actions actions = new Actions(driver);
+            actions.moveByOffset(1,1).build().perform();
+        }
+        return robotScrollInfinite(wheelAmt);
+    }
 
 }
