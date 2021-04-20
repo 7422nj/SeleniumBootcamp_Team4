@@ -12,17 +12,19 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static homepage.HomePageWebElement.*;
+import static homepage.HomePageWebElement.exampleLocator;
 
 public class HomePage  extends WebAPI {
 
     public HomePage() {
         PageFactory.initElements(driver, this);
-
+    }
         /////////////////////////////////////////////////////////////////////////////////////////
 
         // Action Method class
@@ -34,9 +36,38 @@ public class HomePage  extends WebAPI {
 
         // Action Method
 
+        //Robot Available for All Below Methods
+        Robot robot;
 
-    }
+        {
+            try {
+                robot = new Robot();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Find By Annotation: First Approach <- Used to Convert String into WebElements
+        @FindBy(how = How.XPATH, using = exampleLocator)
+        public WebElement ExampleName;
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Action Method class
+        public void exampleActionMethod () throws InterruptedException {
+
+
+        }
+
 }
+
+
+
+
 
 
 

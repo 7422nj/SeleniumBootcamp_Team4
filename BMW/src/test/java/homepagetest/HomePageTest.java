@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -27,6 +28,5 @@ public class HomePageTest extends WebAPI {
 
     }
 
-
-    }
+}
 

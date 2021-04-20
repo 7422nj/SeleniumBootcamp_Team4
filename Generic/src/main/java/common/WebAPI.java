@@ -775,8 +775,58 @@ public class WebAPI {
         js.executeScript("arguments[0].click()", element);
 
     }
+    public void WebWaitUntilClickByXpath(int seconds,String loc) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
+        driver.findElement(By.xpath(loc)).click();
 
 
-
-
+    }
+    public void robotScrollDown(int i) throws InterruptedException, AWTException {
+        Robot robot = new Robot();
+        if (i <= 4) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            System.out.println("\n*** Scrolled Down Page x3 ***");
+        } else if (i <= 6) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            System.out.println("\n*** Scrolled Down Page x6 ***");
+        } else if (i <= 10) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            sleepFor(1);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            System.out.println("\n*** Scrolled Down Page x10 ***");
+        } else {
+            System.out.println("\n*** Scrolled Down Limit is x10 ***");
+        }
+    }
 }
