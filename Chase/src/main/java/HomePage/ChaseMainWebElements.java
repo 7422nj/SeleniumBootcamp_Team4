@@ -24,7 +24,7 @@ public class ChaseMainWebElements {
     public static final String WEB_ELEMENT_TEXT_JPMORGAN = "//p[.='© 2021 JPMorgan Chase & Co..']";
 
     //Chase Logo Inspection
-    public static final String WEB_ELEMENT_LOGO_CHASE = "//div[@class='header-navigation__logo']";
+    public static final String WEB_ELEMENT_LOGO_CHASE = "//a[contains(.,'Chase logo links to Chase Home')]";
 
 
 

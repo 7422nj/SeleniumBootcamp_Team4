@@ -28,7 +28,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testFindPerfectEaglesJerseyUsingWebTable() throws InterruptedException, AWTException {
         shop.findPerfectEaglesJerseyUsingSizeTable();
-        assertEqualsGetAttribute("Size S",WEB_ELEMENT_VERIFY_SMALL,"aria-label");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_VERIFY_SMALL,"aria-label"),"Size S");
     }
 
     /**
@@ -37,9 +37,9 @@ public class ShopsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testHoverOverNFLButton() throws InterruptedException {
+    public void testHoverOverNFLButton(){
         shop.hoverOverNFLButton();
-        assertEqualsGetAttribute("top-nav-league-icon logo-nfl logo-c",WEB_ELEMENT_BUTTON_NFL,"class");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_BUTTON_NFL,"class"),"top-nav-league-icon logo-nfl logo-c");
     }
 
     /**
@@ -49,7 +49,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testNFLButtonIsDisplayed(){
         shop.hoverOverNFLButton();
-        assertTrueIsDisplayed(WEB_ELEMENT_BUTTON_NFL);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_BUTTON_NFL));
     }
 
     /**
@@ -59,7 +59,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testNFLButtonIsEnabled(){
         shop.hoverOverNFLButton();
-        assertTrueIsEnabled(WEB_ELEMENT_BUTTON_NFL);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_BUTTON_NFL));
     }
 
     /**
@@ -69,7 +69,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testNFLButtonIsNotSelected(){
         shop.hoverOverNFLButton();
-        assertFalseIsSelected(WEB_ELEMENT_BUTTON_NFL);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_BUTTON_NFL));
     }
 
     /**
@@ -81,7 +81,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSendKeysToSearchField() throws AWTException, InterruptedException {
         shop.sendKeysToSearchField();
-        assertEqualsGetAttribute("Bootcamp404",WEB_ELEMENT_INPUT_SEARCH_BAR,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_INPUT_SEARCH_BAR,"value"),"Bootcamp404");
     }
 
     /**
@@ -93,7 +93,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchFieldIsDisplayed() throws AWTException, InterruptedException {
         shop.sendKeysToSearchField();
-        assertTrueIsDisplayed(WEB_ELEMENT_INPUT_SEARCH_BAR);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_INPUT_SEARCH_BAR));
     }
 
     /**
@@ -105,7 +105,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchFieldIsEnabled() throws AWTException, InterruptedException {
         shop.sendKeysToSearchField();
-        assertTrueIsEnabled(WEB_ELEMENT_INPUT_SEARCH_BAR);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_INPUT_SEARCH_BAR));
     }
 
     /**
@@ -117,7 +117,7 @@ public class ShopsTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchFieldIsSelected() throws AWTException, InterruptedException {
         shop.sendKeysToSearchField();
-        assertFalseIsSelected(WEB_ELEMENT_INPUT_SEARCH_BAR);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_INPUT_SEARCH_BAR));
     }
 
     /**
@@ -175,7 +175,7 @@ public class ShopsTestPage extends WebAPI {
     @Test
     public void navigateBackToShopsPage() throws AWTException, InterruptedException {
         shop.navigateBackToShopsPage();
-        assertEqualsGetCurrentUrl("https://www.fanatics.com/");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.fanatics.com/");
     }
 
 

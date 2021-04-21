@@ -2,6 +2,7 @@ package homepagetest;
 
 import common.WebAPI;
 import HomePage.ChaseMainPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -23,7 +24,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testNavigateToMainPage() throws InterruptedException, AWTException {
         chase.navigateToMainPage();
-        assertEqualsGetCurrentUrl("https://www.chase.com/");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.chase.com/");
     }
 
     /**
@@ -35,7 +36,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testHoverOverOpenAccount() throws InterruptedException {
         chase.hoverOverOpenAccount();
-        assertEqualsGetAttribute("Open an account", WEB_ELEMENT_BUTTON_OPEN_ACCOUNT, "aria-label");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT, "aria-label"),"Open an account");
     }
 
     /**
@@ -45,7 +46,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testOpenAccountButtonIsDisplayed() {
         chase.hoverOverOpenAccount();
-        assertTrueIsDisplayed(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT));
     }
 
     /**
@@ -55,8 +56,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testOpenAccountButtonIsEnabled() {
         chase.hoverOverOpenAccount();
-        assertTrueIsEnabled(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT);
-
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT));
     }
 
     /**
@@ -66,8 +66,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testOpenAccountButtonIsNotSelected() {
         chase.hoverOverOpenAccount();
-        assertFalseIsSelected(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT);
-
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT));
     }
 
     /**
@@ -89,7 +88,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testChangeLanguageToSpanish(){
         chase.changeLanguageToEspanol();
-        assertEqualsGetCurrentUrl("https://www.chase.com/espanol");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.chase.com/espanol");
     }
 
     /**
@@ -99,7 +98,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testScrollToBottomFindCompanyOwnerJPMorganChaseNCo(){
         chase.scrollToBottomFindCompanyOwnerJPMorganChaseNCo();
-        assertEqualsGetText("© 2021 JPMorgan Chase & Co..",WEB_ELEMENT_TEXT_JPMORGAN);
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_TEXT_JPMORGAN),"© 2021 JPMorgan Chase & Co..");
     }
 
     /**
@@ -109,7 +108,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testChaseLogoInspectionIsClickable(){
         chase.chaseLogoInspectionIsClickable();
-        assertTrueIsEnabled(WEB_ELEMENT_LOGO_CHASE);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_LOGO_CHASE));
     }
 
     /**
@@ -119,7 +118,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testChaseLogoInspectionIsDisplayed(){
         chase.chaseLogoInspectionIsDisplayed();
-        assertTrueIsDisplayed(WEB_ELEMENT_LOGO_CHASE);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_LOGO_CHASE));
     }
 
     /**
@@ -129,26 +128,26 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testChaseLogoInspectionIsSelected(){
         chase.chaseLogoInspectionIsSelected();
-        assertFalseIsSelected(WEB_ELEMENT_LOGO_CHASE);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_LOGO_CHASE));
     }
 
     /**
      * Test #12
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testRefreshPageUsingChaseLogo(){
         chase.chaseLogoInspectionIsSelected();
-        assertEqualsGetCurrentUrl("https://www.chase.com/");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.chase.com/");
     }
 
-//    @Test
-//    public void testScroll(){
-//        try {
-//            robotScroll(6);
-//            sleepFor(3);
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+    @Test(enabled = false)
+    public void testScroll(){
+        try {
+            robotScrollDown2(5);
+            sleepFor(3);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
