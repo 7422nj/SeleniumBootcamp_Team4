@@ -30,7 +30,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testGoogleLinkInElectronics() throws InterruptedException {
         electronics.ElectronicsClickSmartHome();
-        assertEqualsGetText(webElementVerifyGoogleLinkText,"Google");
+        Assert.assertEquals(getTextFromElement(webElementVerifyGoogleLinkText),"Google");
     }
 
     /**
@@ -68,8 +68,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testPurchaseArloWirelessCam() throws InterruptedException {
         electronics.purchaseArloWireFreeSecurityCamera();
-        assertEqualsGetText(webElementTitleAddedToCart,"1 item added to cart");
-
+        Assert.assertEquals(getTextFromElement(webElementTitleAddedToCart),"1 item added to cart");
     }
 
     /**
@@ -83,9 +82,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindProductWithin50MilesOf19082() throws InterruptedException, AWTException {
         electronics.findItemWithin50MilesOf19082();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_HEADER_MILES,"50 miles from 19082\n" +
-                "Remove filter");
-
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_HEADER_MILES),"50 miles from 19082\n" + "Remove filter");
     }
 
     /**
@@ -98,8 +95,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testEnterDataIntoSearchNEnterUsingExcel() throws IOException, AWTException, InterruptedException {
         electronics.searchItemUsingExcel();
-        assertEqualsGetAttribute("gh-tb ui-autocomplete-input ui-autocomplete-loading",webElementSearchBox,"class");
-
+        Assert.assertEquals(getAttributeFromElement(webElementSearchBox,"class"),"gh-tb ui-autocomplete-input ui-autocomplete-loading");
     }
 
     /**
@@ -110,7 +106,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testEnterMacbookInSearchUsingExcel() throws Exception {
         electronics.enterMacBookIntoSearchUsingExcel();
-        assertEqualsGetText(WEB_ELEMENT_SEARCH_BAR_HEAD,"Macbook");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR_HEAD,"value"),"Macbook");
     }
 
     /**
@@ -126,7 +122,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindAffordableLaptopUsingExcel() throws Exception {
         electronics.findAffordableLaptopUsingExcel();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_MACBOOK_PRICE),"US $419.00");
     }
 
     /**
@@ -137,8 +133,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testFindAffordableLaptopUsingMYSQLDB() throws Exception {
         electronics.findAffordableLaptopUsingMYSQLDB();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_MACBOOK_PRICE,"US $419.00");
-
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_MACBOOK_PRICE),"US $419.00");
     }
 
     /**
@@ -150,7 +145,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testHoverOverFeaturedItems() throws InterruptedException {
         electronics.hoverOverFeaturedItems();
-        assertEqualsGetAttribute("srp-controls__control--legacy",WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS,"class");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_DROPDOWN_FEATURE_ITEMS,"class"),"srp-controls__control--legacy");
     }
 
     /**
@@ -165,7 +160,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testHoverOverFeaturedItemsNClickLowPrice() throws InterruptedException {
         electronics.hoverOverFeaturedItemsNClick();
-        assertEqualsGetText(webElementTitleAddedToCart,"1 item added to cart");
+        Assert.assertEquals(getTextFromElement(webElementTitleAddedToCart),"1 item added to cart");
     }
 
     /**
@@ -178,7 +173,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testDoubleClickDropDown() throws InterruptedException {
         electronics.doubleClickOnDropDown();
-        assertFalseIsSelected(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_DROPDOWN_DOUBLE_CLICK));
     }
 
     /**
@@ -189,7 +184,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testRightClickNewArlo(){
         electronics.rightClick();
-        assertEqualsGetTitle("Electronics products for sale | eBay");
+        Assert.assertEquals(getTitleText(driver.getTitle()),"Electronics products for sale | eBay");
     }
 
     /**
@@ -199,7 +194,8 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testScrollDownUsingRobotClass(){
         electronics.scrollDownPageUsingRobot();
-        softAssertAssertTrueIsDisplayed(WEB_ELEMENT_SEARCH_BAR_HEAD);
+        softAssert.assertTrue(isElementDisplayed(WEB_ELEMENT_SEARCH_BAR_HEAD));
+        softAssert.assertAll();
     }
 
     /**
@@ -209,7 +205,8 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testScrollDownToBottomUsingJavaScript(){
         electronics.scrollDownToBottomPageUsingJavaScript();
-        softAssertAssertTrueIsDisplayed(WEB_ELEMENT_SEARCH_BAR_HEAD);
+        softAssert.assertTrue(isElementDisplayed(WEB_ELEMENT_SEARCH_BAR_HEAD));
+        softAssert.assertAll();
     }
 
     /**
@@ -228,7 +225,7 @@ public class ElectronicsTest extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testScrollToElementUsingJavaScript() throws InterruptedException {
         electronics.scrollDownToElementUsingJavaScript();
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER),"Shop by Category");
