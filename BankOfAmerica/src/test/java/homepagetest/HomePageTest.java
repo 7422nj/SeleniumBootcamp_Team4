@@ -28,10 +28,8 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testRobotRefreshPage() throws InterruptedException, AWTException {
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_F5);
-        sleepFor(5);
-        assertEqualsGetTitle("Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
+        refresh();
+        Assert.assertEquals(driver.getTitle(),"Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
     }
 
     /**
@@ -44,7 +42,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSignInInvalidCredUsingExcel() throws Exception {
         home.signUpUsingExcel();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_ERROR_HEADER, "Forgot ID/Passcode");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR_HEADER),"Forgot ID/Passcode");
     }
 
     /**
@@ -58,7 +56,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchInterestsUsingExcel() throws IOException, AWTException, InterruptedException {
         home.searchInterestsUsingExcel();
-        assertEqualsGetAttribute("Bootcamp404", WEB_ELEMENT_SEARCH_BANK, "value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BANK, "value"),"Bootcamp404");
     }
 
     /**
@@ -71,7 +69,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSignInUsingMYSQLDB() throws Exception {
         home.signInUsingMYSQLDB();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_ERROR_HEADER, "Forgot ID/Passcode");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR_HEADER),"Forgot ID/Passcode");
     }
 
     /**
@@ -84,7 +82,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testPopUpHandling() throws AWTException, InterruptedException {
         home.popUpHandling();
-        assertEqualsGetTitle("Bank of America Financial Centers and ATMs");
+        Assert.assertEquals(driver.getTitle(),"Bank of America Financial Centers and ATMs");
     }
 
     /**
@@ -95,7 +93,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testLoginUsingFluentWait() {
         home.signInUsingFluentWait();
-        assertEqualsGetTitle("Bank of America | Online Banking | Forgot Online ID & Passcode");
+        Assert.assertEquals(driver.getTitle(),"Bank of America | Online Banking | Forgot Online ID & Passcode");
     }
 
     /**
@@ -106,7 +104,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testManageCookies() throws InterruptedException {
         home.manageCookies();
-        Cookie actualText = driver.manage().getCookieNamed("BOFA_LOCALE_COOKIE");//actualCookieName
+        Cookie actualText = driver.manage().getCookieNamed("BOFA_LOCALE_COOKIE");
         Assert.assertNotNull(actualText, "\nTest Fail");
     }
 
@@ -117,7 +115,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testChangeLanguagesFromEngToEsp(){
         home.changeLanguageFromEngToEspanol();
-        assertEqualsGetTitle("Bank of America: operaciones bancarias, tarjetas de crédito, préstamos e inversiones con Merrill");
+        Assert.assertEquals(driver.getTitle(),"Bank of America: operaciones bancarias, tarjetas de crédito, préstamos e inversiones con Merrill");
     }
 
     /**
@@ -127,7 +125,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testCheckBoxIsNotSelectedAfterDoubleClick(){
         home.doubleClickCheckBox();
-        assertFalseIsSelected(WEB_ELEMENT_CHECKBOX_SIGN_IN);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_CHECKBOX_SIGN_IN));
     }
 
     /**
@@ -139,7 +137,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testHoverOverCashRewardsImage() throws InterruptedException {
         home.hoverOverCashRewards();
-        assertEqualsGetAttribute("card-cta",WEB_ELEMENT_VERIFY_IMAGE_CARD,"class");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_VERIFY_IMAGE_CARD,"class"),"card-cta");
     }
 
     /**
@@ -150,7 +148,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testFindFinancialCenterNearMe() throws InterruptedException {
         home.findFinancialCenterNearMe();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_ERROR,"You Are Leaving Bank of America");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR),"You Are Leaving Bank of America");
     }
 
     /**
@@ -162,7 +160,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testIncognitoMode(){
         home.IncognitoMode();
-        assertEqualsGetTitle("Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
+        Assert.assertEquals(driver.getTitle(),"Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
     }
 
     /**
@@ -174,7 +172,7 @@ public class HomePageTest extends WebAPI {
     @Test
     public void testSwitchWindow(){
         home.openParentChildIncognitoWindowNCloseAll();
-        assertEqualsGetTitle("Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
+        Assert.assertEquals(driver.getTitle(),"Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
     }
 }
 
