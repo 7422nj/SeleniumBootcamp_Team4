@@ -22,6 +22,7 @@ public class NewsTestPage extends WebAPI {
 
     /**
      * Test #1
+     *
      * @param searchKey
      */
 
@@ -42,12 +43,13 @@ public class NewsTestPage extends WebAPI {
 
     /**
      * Test #2
+     *
      * @param searchKey
      */
 
     @Test(dataProvider = "SearchProvider", dataProviderClass = NewsPage.class)
     @Ignore
-    public void testSearchUsingDataProvider(String searchKey){
+    public void testSearchUsingDataProvider(String searchKey) {
         try {
             WebElement searchText = driver.findElement(By.xpath(WEB_ELEMENT_SEARCH_LOCATOR));
             clickByXNCssUsingJavaScript(WEB_ELEMENT_SEARCH_LOCATOR);
@@ -67,9 +69,9 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testSearchBoxInspectionIsDisplayed(){
+    public void testSearchBoxInspectionIsDisplayed() {
         news.searchBoxInspectionIsDisplayed();
-        softAssertAssertTrueIsDisplayed(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -77,9 +79,9 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testSearchBoxInspectionIsEnabled(){
+    public void testSearchBoxInspectionIsEnabled() {
         news.searchBoxInspectionIsEnabled();
-        assertTrueIsEnabled(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -87,11 +89,12 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testScrollDownToElementUsingJavaScript(){
+    public void testScrollDownToElementUsingJavaScript() {
         news.scrollToElementUsingJS();
         try {
-            softAssertAssertEqualsGetText("Housing Market", WEB_ELEMENT_HEADER_HOUSE);
-        } catch (Exception e){
+            softAssert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER_HOUSE),"Housing Market");
+            softAssert.assertAll();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -101,31 +104,35 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testHoverOverSellDropDownNSelectItemInList(){
+    public void testHoverOverSellDropDownNSelectItemInList() {
         news.hoverOverDropDownAndSelectSellingWorthIt();
-        assertEqualsGetText("What Can I Make from Selling My Home?",WEB_ELEMENT_HEADER_SELLING);
+        softAssert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER_SELLING),"What Can I Make from Selling My Home?");
+        softAssert.assertAll();
     }
 
     /**
      * Test #7
+     *
      * @throws Exception
      */
 
     @Test(enabled = false)
     public void testNewsLetterValidCredsEnterKeysUsingMYSQLDB() throws Exception {
         news.newsLetterValidCredsEnterKeysUsingMYSQLDB();
-        assertEqualsGetText("Thanks for signing up for Redfin updates.",WEB_ELEMENT_CONFIRMATION_MESSAGE);
+        softAssert.assertEquals(getTextFromElement(WEB_ELEMENT_CONFIRMATION_MESSAGE), "Thanks for signing up for Redfin updates.");
+        softAssert.assertAll();
     }
 
     /**
      * Test #8
+     *
      * @throws Exception
      */
 
     @Test(enabled = false)
     public void testNewsLetterInvalidCredsEnterKeysUsingMYSQLDB() throws Exception {
         news.newsLetterInvalidCredsEnterKeysUsingMYSQLDB();
-        assertEqualsGetText("Please enter a valid email address.",WEB_ELEMENT_ERROR_MESSAGE);
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_ERROR_MESSAGE),"Please enter a valid email address.");
     }
 
     /**
@@ -133,40 +140,45 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testCurrentPageUrl(){
-        assertEqualsGetCurrentUrl("https://www.redfin.com/news/");
+    public void testCurrentPageUrl() {
+        softAssert.assertTrue(isCurrentUrlTrue("https://www.redfin.com/news/"));
     }
 
     /**
      * Test #10
+     *
      * @throws Exception
      */
 
     @Test(enabled = false)
     public void testSendKeysToSearchBarUsingMYSQLDB() throws Exception {
         news.sendKeysToSearchUsingMYSQLDB();
-        assertEqualsGetAttribute("Farm",WEB_ELEMENT_SEARCH_LOCATOR,"value");
+        softAssert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_LOCATOR, "value"),"Farm");
+        softAssert.assertAll();
     }
 
     /**
      * Test #11
      */
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testNavigateToNewsPage() throws InterruptedException {
         news.navigateToNewsPage();
-        assertEqualsGetCurrentUrl("https://www.redfin.com/news/");
+        softAssert.assertTrue(isCurrentUrlTrue("https://www.redfin.com/news/"));
+        softAssert.assertAll();
     }
 
     /**
      * Test #12
+     *
      * @throws Exception
      */
 
     @Test(enabled = false)
     public void testSearchUsingMYSQLDBAndSwitchToChildWindow() throws Exception {
         news.handleNewWindow();
-       softAssertAssertTrueIsDisplayed(WEB_ELEMENT_KING_FARM);
+        softAssert.assertTrue(isElementDisplayed(WEB_ELEMENT_KING_FARM));
+        softAssert.assertAll();
     }
 
     /**
@@ -174,12 +186,9 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testVerifyPageTitle(){
-        //Page Title in All Caps
+    public void testVerifyPageTitle() {
         String exp = "REDFIN REAL ESTATE NEWS";
-        //Receives Actual Title of Page
         String act = driver.getTitle();
-        //Compares 2 Strings -> equalsIgnoreCase Will Compare Strings Even If in Higher or Lower Case
         Assert.assertTrue(exp.equalsIgnoreCase(act));
 
     }
@@ -189,12 +198,12 @@ public class NewsTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testPageTitleInspection(){
+    public void testPageTitleInspection() {
         String expectedTitle = "Redfin Real Estate News";
         String actualTitle = driver.getTitle();
-        softAssert.assertEquals(actualTitle,expectedTitle);
+        softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertTrue(expectedTitle.equalsIgnoreCase(actualTitle));
-        softAssert.assertNotSame(actualTitle,expectedTitle);
+        softAssert.assertNotSame(actualTitle, expectedTitle);
         softAssert.assertAll();
     }
 }

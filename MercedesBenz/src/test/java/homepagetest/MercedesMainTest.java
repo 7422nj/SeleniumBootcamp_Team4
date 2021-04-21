@@ -157,6 +157,7 @@ public class MercedesMainTest extends WebAPI {
         benz.findADealerNearbyUsingMYSQLDB();
         softAssert.assertTrue(compareStrings("214 West Lancaster Ave.\n" +
                 "Devon, PA, 19333",WEB_ELEMENT_BUTTON_VERIFY_LOCATION));
+        softAssert.assertAll();
     }
 
     /**
@@ -167,6 +168,7 @@ public class MercedesMainTest extends WebAPI {
     public void testNavigateBackToMainPage(){
         benz.NavigateBackToMainPage();
         softAssert.assertTrue(isCurrentUrlTrue("https://www.mbusa.com/en/home?search=boot"));
+        softAssert.assertAll();
     }
 
     /**
@@ -177,6 +179,7 @@ public class MercedesMainTest extends WebAPI {
     public void testHoverOverNearbyDealersNVerifyIsDisplayed(){
         benz.hoverOverNearbyDealers();
         softAssert.assertTrue(isElementDisplayed(WEB_ELEMENT_BUTTON_NEARBY));
+        softAssert.assertAll();
     }
 
     /**
@@ -187,7 +190,7 @@ public class MercedesMainTest extends WebAPI {
     public void testHoverOverNearbyDealersNVerifyIsNotSelected() {
         benz.hoverOverNearbyDealers();
         softAssert.assertFalse(isElementSelected(WEB_ELEMENT_BUTTON_NEARBY));
-
+        softAssert.assertAll();
     }
 
     /**
@@ -198,6 +201,7 @@ public class MercedesMainTest extends WebAPI {
     public void testHoverOverNearbyDealersNVerifyIsEnabled() {
         benz.hoverOverNearbyDealers();
         softAssert.assertTrue(isElementEnabled(WEB_ELEMENT_BUTTON_NEARBY));
+        softAssert.assertAll();
     }
 
     }
