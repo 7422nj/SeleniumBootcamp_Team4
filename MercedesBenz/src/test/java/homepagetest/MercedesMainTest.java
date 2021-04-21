@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.awt.*;
 import java.io.IOException;
@@ -15,9 +16,11 @@ import java.io.IOException;
 import static HomePage.MercedesMainWebElement.*;
 
 public class MercedesMainTest extends WebAPI {
-    // Test class
-    MercedesMainPage benz = new MercedesMainPage();
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////
+    public static MercedesMainPage benz = new MercedesMainPage();
+    SoftAssert softAssert = new SoftAssert();
+   ///////////////////////////////////////////////
 
     /**
      * Test #1
@@ -27,7 +30,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testRegisterAccountInvalidCredsUsingExcel() throws Exception {
        benz.registerAccountInvalidCredsUsingExcel();
-       assertEqualsGetText("The notification could not be delivered. Please check that the e-mail address exists and that it can receive e-mails, then try again later.",WEB_ELEMENT_VERIFY_ERROR_REGISTER);
+       Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR_REGISTER),"The notification could not be delivered. Please check that the e-mail address exists and that it can receive e-mails, then try again later.");
     }
 
     /**
@@ -38,7 +41,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testRegisterAccountValidCredsUsingExcel() throws Exception {
         benz.registerAccountValidCredsUsingExcel();
-        assertEqualsGetText("We have sent you a confirmation code to pritamdas15217@gmail.com for the purpose of verification. Please enter the code to complete the account opening process.",WEB_ELEMENT_VERIFY_VALID);
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_VALID),"We have sent you a confirmation code to pritamdas15217@gmail.com for the purpose of verification. Please enter the code to complete the account opening process.");
     }
 
     /**
@@ -49,7 +52,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchInterestUsingExcel() throws Exception {
         benz.searchInterestsUsingExcel();
-        assertEqualsGetAttribute("Finest", WEB_ELEMENT_INPUT_SEARCH_FIELD,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_INPUT_SEARCH_FIELD,"value"),"Finest");
     }
 
     /**
@@ -90,6 +93,7 @@ public class MercedesMainTest extends WebAPI {
             WebDriverWait0(20);
             searchText.sendKeys(searchKey);
             String testValue = searchText.getAttribute("value");
+            System.out.println("Author "+author+" Searches "+searchKey);
             WebDriverWait0(20);
             clearInput(WEB_ELEMENT_INPUT_SEARCH_FIELD);
             Assert.assertTrue(testValue.equalsIgnoreCase(searchKey));
@@ -107,7 +111,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchItemsUsingExcel() throws IOException, AWTException {
         benz.searchItemsUsingExcel();
-        assertFalseIsSelected(WEB_ELEMENT_INPUT_SEARCH_FIELD);
+       assertFalseIsSelected(WEB_ELEMENT_INPUT_SEARCH_FIELD);
     }
 
     /**
@@ -118,7 +122,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchItemUsingMYSQLDB() throws Exception {
         benz.searchItemUsingMYSQLDB();
-        assertEqualsGetAttribute("Auto Pilot",WEB_ELEMENT_INPUT_SEARCH_FIELD,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_INPUT_SEARCH_FIELD,"value"),"Auto Pilot");
     }
 
     /**
@@ -129,7 +133,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testSubscribeToReceivingNewsUsingMYSQLDB() throws Exception {
         benz.subscribeToReceivingNewsInvalidEmailUsingMYSQLDB();
-        assertEqualsGetText("Invalid email address", WEB_ELEMENT_VERIFY_INVALID_EMAIL);
+        Assert.assertTrue(compareStrings("Invalid email address", WEB_ELEMENT_VERIFY_INVALID_EMAIL));
     }
 
     /**
@@ -140,7 +144,7 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testSubscribeToReceivingNewsValidEmailUsingMYSQLDB() throws Exception {
         benz.subscribeToReceivingNewsValidEmailUsingMYSQLDB();
-        assertEqualsGetText("Thank you for subscribing. Please check your email to verify your subscription.",WEB_ELEMENT_VERIFY_VALID_EMAIL);
+        Assert.assertTrue(compareStrings("Thank you for subscribing. Please check your email to verify your subscription.",WEB_ELEMENT_VERIFY_VALID_EMAIL));
     }
 
     /**
@@ -151,8 +155,8 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchNearbyDealersUsingMYSQLDB() throws Exception {
         benz.findADealerNearbyUsingMYSQLDB();
-        assertEqualsGetText("214 West Lancaster Ave.\n" +
-                "Devon, PA, 19333",WEB_ELEMENT_BUTTON_VERIFY_LOCATION);
+        softAssert.assertTrue(compareStrings("214 West Lancaster Ave.\n" +
+                "Devon, PA, 19333",WEB_ELEMENT_BUTTON_VERIFY_LOCATION));
     }
 
     /**
@@ -162,37 +166,38 @@ public class MercedesMainTest extends WebAPI {
     @Test(enabled = false)
     public void testNavigateBackToMainPage(){
         benz.NavigateBackToMainPage();
-        assertEqualsGetCurrentUrl("https://www.mbusa.com/en/home?search=boot");
+        softAssert.assertTrue(isCurrentUrlTrue("https://www.mbusa.com/en/home?search=boot"));
     }
 
     /**
      * Test #12
      */
 
-    @Test
+    @Test(enabled = false)
     public void testHoverOverNearbyDealersNVerifyIsDisplayed(){
         benz.hoverOverNearbyDealers();
-        assertTrueIsDisplayed(WEB_ELEMENT_BUTTON_NEARBY);
+        softAssert.assertTrue(isElementDisplayed(WEB_ELEMENT_BUTTON_NEARBY));
     }
 
     /**
      * Test #13
      */
 
-    @Test
+    @Test(enabled = false)
     public void testHoverOverNearbyDealersNVerifyIsNotSelected() {
         benz.hoverOverNearbyDealers();
-        assertFalseIsSelected(WEB_ELEMENT_BUTTON_NEARBY);
+        softAssert.assertFalse(isElementSelected(WEB_ELEMENT_BUTTON_NEARBY));
+
     }
 
     /**
      * Test #14
      */
 
-    @Test
+    @Test(enabled = false)
     public void testHoverOverNearbyDealersNVerifyIsEnabled() {
         benz.hoverOverNearbyDealers();
-        assertTrueIsEnabled(WEB_ELEMENT_BUTTON_NEARBY);
+        softAssert.assertTrue(isElementEnabled(WEB_ELEMENT_BUTTON_NEARBY));
     }
 
     }

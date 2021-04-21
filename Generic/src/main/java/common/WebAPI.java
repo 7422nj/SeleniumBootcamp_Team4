@@ -77,7 +77,6 @@ public class WebAPI {
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static WebDriver driver;
-    public static WebDriverWait driverWait;
     public DataReader dataReader;
     public Properties properties;
     String propertiesFilePath = "src/main/resources/secret.properties";
@@ -735,7 +734,6 @@ public class WebAPI {
      * Slider Handling
      */
 
-    // https://stackoverflow.com/questions/15171745/how-to-slidemove-slider-in-selenium-webdriver
     public void waitTimeExplicit(String locator) {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
@@ -894,93 +892,11 @@ public class WebAPI {
      * Helper Methods
      */
 
-    public void sendKeysToElement(WebElement element, String keysToSend) {
-
-        try {
-            driverWait.until(ExpectedConditions.visibilityOf(element));
-            element.sendKeys(keysToSend);
-
-        } catch (StaleElementReferenceException staleElementReferenceException) {
-            staleElementReferenceException.printStackTrace();
-            System.out.println("ELEMENT IS STALE");
-
-        } catch (ElementNotVisibleException elementNotVisibleException) {
-            elementNotVisibleException.printStackTrace();
-            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT");
-        }
-    }
-
-    public void clickElement(WebElement elementToClick) {
-
-        try {
-            driverWait.until(ExpectedConditions.elementToBeClickable(elementToClick));
-            elementToClick.click();
-        } catch (StaleElementReferenceException staleElementReferenceException) {
-            staleElementReferenceException.printStackTrace();
-            System.out.println("ELEMENT IS STALE");
-
-        } catch (ElementNotVisibleException elementNotVisibleException) {
-            elementNotVisibleException.printStackTrace();
-            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("UNABLE TO CLICK ON WEB ELEMENT");
-        }
-    }
-
-    public String getTextFromElement(WebElement element) {
-        String elementText = "";
-
-        driverWait.until(ExpectedConditions.visibilityOf(element));
-
-        try {
-            elementText = element.getText();
-            return elementText;
-        } catch (StaleElementReferenceException staleElementReferenceException) {
-            staleElementReferenceException.printStackTrace();
-            System.out.println("ELEMENT IS STALE");
-        } catch (ElementNotVisibleException elementNotVisibleException) {
-            elementNotVisibleException.printStackTrace();
-            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
-        }
-
-        return elementText;
-    }
-
-    public String getAttributeFromElement(WebElement element, String attribute) {
-        String elementText = "";
-
-        driverWait.until(ExpectedConditions.visibilityOf(element));
-
-        try {
-            elementText = element.getAttribute(attribute);
-            return elementText;
-        } catch (StaleElementReferenceException staleElementReferenceException) {
-            staleElementReferenceException.printStackTrace();
-            System.out.println("ELEMENT IS STALE");
-        } catch (ElementNotVisibleException elementNotVisibleException) {
-            elementNotVisibleException.printStackTrace();
-            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
-        }
-
-        return elementText;
-    }
-
     public List<WebElement> getListOfWebElements(By by) {
         List<WebElement> elementList = new ArrayList<>();
 
-        driverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(by)));
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(by)));
 
         try {
             elementList = driver.findElements(by);
@@ -999,20 +915,6 @@ public class WebAPI {
         return elementList;
     }
 
-    /**
-     * Assertion Helper Methods
-     */
-
-    public boolean compareStrings(String str1, String str2) {
-        boolean flag = false;
-
-        if (str1.toLowerCase().equals(str2)) {
-            flag = true;
-            return flag;
-        }
-
-        return flag;
-    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1476,15 +1378,9 @@ public class WebAPI {
         }
     }
 
-    public void robotTab6() {
+    public void robotTab(int tabs) {
+        for(int i = 0; i < tabs; i++)
         robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_ENTER);
     }
 
     public void IncognitoMode(String Url) {
@@ -1689,10 +1585,150 @@ public class WebAPI {
         for (int i = 0; i == wheelAmt; i++){
             robot.keyPress(KeyEvent.VK_PAGE_DOWN);
             robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
-            Actions actions = new Actions(driver);
-            actions.moveByOffset(1,1).build().perform();
         }
         return robotScrollInfinite(wheelAmt);
     }
+
+    public void waitForVisibilityOfElement(WebElement ele){
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(ele));
+    }
+
+    public void robotScrollDown2(int numOfScrolls) throws InterruptedException {
+
+        for (int i = 0; i <= numOfScrolls; i++) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            robot.keyRelease(KeyEvent.VK_DOWN);
+        }
+        System.out.println("\n*** Scrolled Down Page " + numOfScrolls + " times ***");
+
+    }
+
+    public void sliderBarAction2(WebElement slider) {
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider);
+        actions.moveByOffset(40, 0).build().perform();
+    }
+
+    /**
+     * Assertions Helper Methods
+     * @param element
+     * @return
+     */
+
+    public String getTextFromElement(String element) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getText();
+            return elementText;
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+    public String getAttributeFromElement(String element, String attribute) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getAttribute(attribute);
+            return elementText;
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+    public boolean compareStrings(String str1, String str2) {
+        boolean flag = false;
+
+        if (str1.toLowerCase().equals(str2)) {
+            flag = true;
+            return flag;
+        }
+
+        return flag;
+    }
+
+    public boolean isElementDisplayed(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isDisplayed()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isTitleTrue(String title) {
+        boolean flag = false;
+
+        try {
+            title = driver.getTitle();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TITLE FROM PAGE");
+        }
+        if (title != null)
+            flag = true;
+        else
+            return flag;
+
+        return flag;
+    }
+
+    public boolean isElementSelected(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isSelected()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isElementEnabled(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isEnabled()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isCurrentUrlTrue(String Url) {
+        boolean flag = false;
+
+        try {
+            Url = driver.getCurrentUrl();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TITLE FROM PAGE");
+        }
+        if (Url != null)
+            flag = true;
+        else
+            return flag;
+
+        return flag;
+    }
+
 
 }

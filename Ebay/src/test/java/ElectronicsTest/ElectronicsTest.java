@@ -18,7 +18,7 @@ import static ElectronicsHome.ElectronicsWebElements.*;
 public class ElectronicsTest extends WebAPI {
 
     ///////////////////  Object of Electronics Class /////////////////////
-    ElectronicsHomePage electronics = new ElectronicsHomePage();
+    public static ElectronicsHomePage electronics = new ElectronicsHomePage();
     /////////////////////////////////////////////////////////////////////
 
     /**
@@ -31,8 +31,8 @@ public class ElectronicsTest extends WebAPI {
     public void testGoogleLinkInElectronics() throws InterruptedException {
         electronics.ElectronicsClickSmartHome();
         assertEqualsGetText(webElementVerifyGoogleLinkText,"Google");
-
     }
+
     /**
      * Test #2
      * Description: Type 3 different item names in search bar using dataProvider then get the attributes
@@ -220,7 +220,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testScrollDownToElementUsingActions() throws InterruptedException {
         electronics.scrollDownUsingActionsClass();
-        softAssertAssertEqualsGetText(WEB_ELEMENT_HEADER,"Shop by Category");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER),"Shop by Category");
     }
 
     /**
@@ -228,10 +228,10 @@ public class ElectronicsTest extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testScrollToElementUsingJavaScript() throws InterruptedException {
         electronics.scrollDownToElementUsingJavaScript();
-        softAssertAssertEqualsGetText(WEB_ELEMENT_HEADER,"Shop by Category");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER),"Shop by Category");
     }
 
 }
