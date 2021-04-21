@@ -31,7 +31,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testGetCurrentUrl() throws AWTException, InterruptedException {
         home.getCurrentSiteUrl();
-        assertEqualsGetCurrentUrl("https://www.airbnb.com/");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.airbnb.com/");
     }
 
     /**
@@ -44,7 +44,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testLocationSearchFieldIsEnabled() throws AWTException, InterruptedException {
         home.enterTextInLocationField();
-        assertTrueIsEnabled(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -57,7 +57,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testLocationSearchFieldIsDisplayed() throws AWTException, InterruptedException {
         home.enterTextInLocationField();
-        assertTrueIsDisplayed(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -70,7 +70,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testLocationSearchFieldIsSelected() throws AWTException, InterruptedException {
         home.enterTextInLocationField();
-        assertFalseIsSelected(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -83,7 +83,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testLocationSearchFieldGetAttribute() throws AWTException, InterruptedException {
         home.enterTextInLocationField();
-        assertEqualsGetAttribute("bootcamp404", WEB_ELEMENT_SEARCH_LOCATOR, "value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_LOCATOR, "value"),"bootcamp404");
     }
 
     /**
@@ -143,7 +143,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchUsingExcel() throws IOException, AWTException {
         home.searchItemsUsingExcel();
-        assertFalseIsSelected(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -156,11 +156,11 @@ public class HomePageTest extends WebAPI {
     public void testSearchCottageRoomingUsingExcel() throws Exception {
         home.searchCottageUsingExcel();
         try {
-            assertTrueIsDisplayed(WEB_ELEMENT_VERIFY_COTTAGE_HEADER);
+            Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_VERIFY_COTTAGE_HEADER));
         } catch (Exception e) {
             e.printStackTrace();
             try {
-                assertTrueIsDisplayed(WEB_ELEMENT_VERIFY_COTTAGE_HEADER2);
+                Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_VERIFY_COTTAGE_HEADER2));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -176,8 +176,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchCottageUsingExcelNSwitchTab() throws Exception {
         home.searchCottageUsingExcelSwitchTabs();
-        assertEqualsGetText("Stays in Beach", WEB_ELEMENT_VERIFY_STAYS_IN_BEACH);
-
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_STAYS_IN_BEACH),"Stays in Beach");
     }
 
     /**
@@ -189,7 +188,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testSearchFarmUsingMYSQLDB() throws Exception {
         home.searchFarmUsingMYSQLDB();
-        assertEqualsGetAttribute("Farm", WEB_ELEMENT_SEARCH_LOCATOR, "value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_LOCATOR, "value"),"Farm");
     }
 
     /**
@@ -201,11 +200,11 @@ public class HomePageTest extends WebAPI {
     public void testSignUpUsingMYSQLDB() throws Exception {
         home.signUpUsingMYSQLDB();
         try {
-            assertEqualsGetText("You'll need to use a different phone number, we can't support this one.", WEB_ELEMENT_ERROR_NUMBER_HEADER);
+            Assert.assertEquals(getTextFromElement(WEB_ELEMENT_ERROR_NUMBER_HEADER),"You'll need to use a different phone number, we can't support this one.");
         } catch (Exception e) {
             e.printStackTrace();
             try {
-                assertEqualsGetText("Check the box to verify that you're human.", WEB_ELEMENT_RECAPTCHA_HEADER);
+                Assert.assertEquals(getTextFromElement(WEB_ELEMENT_RECAPTCHA_HEADER),"Check the box to verify that you're human.");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -221,7 +220,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testFindFarmNCalendarPickDateUsingMYSQLDB() throws Exception {
         home.findADateUsingCalendarPicker();
-        assertEqualsGetText("Stays in Farmington", WEB_ELEMENT_VERIFY_FARM_HEADER);
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_FARM_HEADER),"Stays in Farmington");
     }
 
     /**
@@ -233,8 +232,7 @@ public class HomePageTest extends WebAPI {
     @Test(enabled = false)
     public void testDragPrice() throws InterruptedException {
         home.dragPrice();
-        assertEqualsGetAttribute("108",WEB_ELEMENT_VERIFY_PRICE,"value");
-
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_VERIFY_PRICE,"value"),"108");
     }
 
     /**
@@ -245,7 +243,7 @@ public class HomePageTest extends WebAPI {
     @Test
     public void testFindARoomUsingMYSQLDB() throws Exception {
         home.searchViewsUsingMYSQLDB();
-        assertEqualsGetAttribute("Views",WEB_ELEMENT_SEARCH_LOCATOR,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_LOCATOR,"value"),"Views");
     }
 }
 
