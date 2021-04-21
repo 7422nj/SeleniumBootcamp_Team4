@@ -83,7 +83,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testScrollToNVerifyQRCodeImage() throws InterruptedException {
         support.scrollToAndIdentifyQRCode();
-        assertEqualsGetAttribute("https://a.travel-assets.com/mad-service/qr-code/150/1.jpg",WEB_ELEMENT_IMG_QR_CODE_APP,"src");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_IMG_QR_CODE_APP,"src"),"https://a.travel-assets.com/mad-service/qr-code/150/1.jpg");
     }
 
     /**
@@ -95,7 +95,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testVirtualAssistanceChatNow() throws InterruptedException, AWTException {
         support.virtualAssistance();
-        assertTrueIsDisplayed(WEB_ELEMENT_VERIFY_HEADER_CHAT_NOW);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_VERIFY_HEADER_CHAT_NOW));
     }
 
     /**
@@ -107,7 +107,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testContactUs() throws InterruptedException {
         support.checkContactUsLink();
-        assertEqualsGetAttribute("virtual-travel-agent",WEB_ELEMENT_VERIFY_CONTACT_US,"class");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_VERIFY_CONTACT_US,"class"),"virtual-travel-agent");
     }
 
     /**
@@ -118,7 +118,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testChangeLanguageAndRegion(){
         support.changeLanguageAndRegion();
-        assertEqualsGetTitle("Expedia: aluguéis de temporada, hotéis, aluguel de carros, voos e mais");
+        Assert.assertEquals(getTitleText(driver.getTitle()),"Expedia: aluguéis de temporada, hotéis, aluguel de carros, voos e mais");
     }
 
     /**
@@ -130,7 +130,7 @@ public class SupportTestPage extends WebAPI {
     public void testCurrentUrl(){
         getCurrentPageUrl();
         System.out.println("Current Url : "+getCurrentPageUrl());
-        assertEqualsGetCurrentUrl("https://www.expedia.com/service/");
+        Assert.assertTrue(isCurrentUrlTrue("https://www.expedia.com/service/"));
     }
 
     /**
@@ -142,7 +142,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSendMultipleSearchItemsUsingExcel() throws Exception {
         support.searchInterestsUsingExcel();
-        assertEqualsGetAttribute("Food",WEB_ELEMENT_SEARCH_BOX_MAIN,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BOX_MAIN,"value"),"Food");
     }
 
     /**
@@ -154,9 +154,9 @@ public class SupportTestPage extends WebAPI {
      */
 
     @Test(enabled = false)
-    public void testSearchItemsUsingExcelPart2() throws IOException, AWTException, InterruptedException {
+    public void testSearchItemsUsingExcelPart2() throws IOException, AWTException{
         support.searchInterestsUsingExcelPart2();
-        assertFalseIsSelected(WEB_ELEMENT_SEARCH_BOX_MAIN);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_SEARCH_BOX_MAIN));
     }
 
     /**
@@ -168,7 +168,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchItemsUsingMYSQLDB() throws Exception {
         support.searchItemsUsingMYSQLDB();
-        assertEqualsGetAttribute("Farm",WEB_ELEMENT_SEARCH_BOX_MAIN,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BOX_MAIN,"value"),"Farm");
     }
 
     /**
@@ -176,10 +176,9 @@ public class SupportTestPage extends WebAPI {
      * Scroll to Expedia Rewards using JavaScriptExecutor
      */
 
-    @Test
+    @Test(enabled = false)
     public void testScrollToExpediaRewards() throws InterruptedException {
         support.scrollToExpediaRewards();
-        assertEqualsGetText(WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS,"What is Expedia Rewards?");
-
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_EXPEDIA_REWARDS),"What is Expedia Rewards?");
     }
 }
