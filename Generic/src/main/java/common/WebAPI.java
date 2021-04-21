@@ -28,14 +28,12 @@ import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
 
-import javax.swing.plaf.basic.BasicSliderUI;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.Key;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -817,7 +815,7 @@ public class WebAPI {
         }
     }
 
-    public void getTitle() {
+    public void getTitle() throws Exception{
         driver.getTitle();
     }
 
@@ -895,7 +893,7 @@ public class WebAPI {
     public List<WebElement> getListOfWebElements(By by) {
         List<WebElement> elementList = new ArrayList<>();
 
-        WebDriverWait wait = new WebDriverWait(driver,20);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(by)));
 
         try {
@@ -1379,8 +1377,8 @@ public class WebAPI {
     }
 
     public void robotTab(int tabs) {
-        for(int i = 0; i < tabs; i++)
-        robot.keyPress(KeyEvent.VK_TAB);
+        for (int i = 0; i < tabs; i++)
+            robot.keyPress(KeyEvent.VK_TAB);
     }
 
     public void IncognitoMode(String Url) {
@@ -1576,20 +1574,20 @@ public class WebAPI {
 
     }
 
-    public static void scrollDownUsingActions(WebElement ele){
+    public static void scrollDownUsingActions(WebElement ele) {
         Actions action = new Actions(driver);
-        action.keyDown(ele,Keys.CONTROL).perform();
+        action.keyDown(ele, Keys.CONTROL).perform();
     }
 
-    public static Robot robotScrollInfinite(int wheelAmt) throws Exception{
-        for (int i = 0; i == wheelAmt; i++){
+    public static Robot robotScrollInfinite(int wheelAmt) throws Exception {
+        for (int i = 0; i == wheelAmt; i++) {
             robot.keyPress(KeyEvent.VK_PAGE_DOWN);
             robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
         }
         return robotScrollInfinite(wheelAmt);
     }
 
-    public void waitForVisibilityOfElement(WebElement ele){
+    public void waitForVisibilityOfElement(WebElement ele) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
@@ -1612,6 +1610,7 @@ public class WebAPI {
 
     /**
      * Assertions Helper Methods
+     *
      * @param element
      * @return
      */
@@ -1655,6 +1654,7 @@ public class WebAPI {
 
         return elementText;
     }
+
     public boolean compareStrings(String str1, String str2) {
         boolean flag = false;
 
@@ -1728,6 +1728,27 @@ public class WebAPI {
             return flag;
 
         return flag;
+    }
+
+    public String getTitleText(String title) {
+        String elementText = "";
+
+        try {
+            elementText = driver.getTitle();
+            if(elementText.equals(title))
+            return elementText;
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            staleElementReferenceException.printStackTrace();
+            System.out.println("ELEMENT IS STALE");
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
+        }
+
+        return elementText;
     }
 
 

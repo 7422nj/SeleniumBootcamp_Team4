@@ -72,7 +72,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchBoxInspectionIsEnabled(){
         help.searchBoxInspectionIsEnabled();
-        assertTrueIsEnabled(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -82,7 +82,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchBoxInspectionIsDisplayed(){
         help.searchBoxInspectionIsDisplayed();
-        assertTrueIsDisplayed(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -92,7 +92,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchBoxInspectionIsNotSelected(){
         help.searchBoxInspectionIsNotSelected();
-        assertFalseIsSelected(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertFalse(isElementSelected(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -104,7 +104,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchItemsUsingExcel() throws IOException, AWTException {
         help.searchItemsUsingExcel();
-        assertTrueIsEnabled(WEB_ELEMENT_SEARCH_LOCATOR);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_SEARCH_LOCATOR));
     }
 
     /**
@@ -115,7 +115,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchFarmHousesUsingMYSQLDB() throws Exception {
         help.searchFarmUsingMYSQLDB();
-        assertEqualsGetAttribute("Farm",WEB_ELEMENT_SEARCH_LOCATOR,"value");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_LOCATOR,"value"),"Farm");
     }
 
     /**
@@ -141,7 +141,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testSearchForBeachesUsingExcel() throws Exception {
         help.searchBeachesUsingExcel();
-        assertEqualsGetText("No results for \"Beach\"",WEB_ELEMENT_VERIFY_HEADER);
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_HEADER),"No results for \"Beach\"");
     }
 
     /**
@@ -152,7 +152,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void SearchUsingExcelNavigateBackToSupportPage() throws Exception {
         help.searchBeachesUsingExcelNavigateToSupportPage();
-        assertEqualsGetTitle("trulia");
+        Assert.assertEquals(getTitleText(driver.getTitle()),"trulia");
     }
 
     /**
@@ -162,7 +162,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testClickOnLogoImage(){
         help.clickOnImageLogo();
-        assertEqualsGetCurrentUrl("https://support.trulia.com/hc/en-us");
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_LOGO_TRULIA));
     }
 
     /**
@@ -172,7 +172,7 @@ public class SupportTestPage extends WebAPI {
     @Test(enabled = false)
     public void testLogoIsClickable(){
         help.clickOnImageLogo();
-        assertTrueIsEnabled(WEB_ELEMENT_LOGO_TRULIA);
+        Assert.assertTrue(isElementEnabled(WEB_ELEMENT_LOGO_TRULIA));
     }
 
 
