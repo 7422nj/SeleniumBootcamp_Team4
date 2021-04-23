@@ -2,11 +2,9 @@ package SupportHome;
 
 import SupportHome.SupportDataDriver.DataSource;
 import common.WebAPI;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
@@ -29,28 +27,6 @@ public class SupportHome extends WebAPI {
                 robot = new Robot();
             } catch (AWTException e) {
                 e.printStackTrace();
-            }
-        }
-
-        //JavaScriptExecutor available for all below methods
-        JavascriptExecutor js;
-
-        {
-            try {
-                js = (JavascriptExecutor) driver;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            //Actions available for all below methods
-            Actions actions;
-
-            {
-                try {
-                    actions = new Actions(driver);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         }
 

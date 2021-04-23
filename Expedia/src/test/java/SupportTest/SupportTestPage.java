@@ -153,7 +153,7 @@ public class SupportTestPage extends WebAPI {
      * @throws InterruptedException
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSearchItemsUsingExcelPart2() throws IOException, AWTException{
         support.searchInterestsUsingExcelPart2();
         Assert.assertFalse(isElementSelected(WEB_ELEMENT_SEARCH_BOX_MAIN));
