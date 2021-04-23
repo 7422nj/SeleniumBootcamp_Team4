@@ -138,7 +138,7 @@ public class SupportTestPage extends WebAPI {
      * @throws Exception
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSearchForBeachesUsingExcel() throws Exception {
         help.searchBeachesUsingExcel();
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_HEADER),"No results for \"Beach\"");
