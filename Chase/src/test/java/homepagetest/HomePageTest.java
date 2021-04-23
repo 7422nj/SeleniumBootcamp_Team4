@@ -74,7 +74,7 @@ public class HomePageTest extends WebAPI {
      * @throws Exception
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSignWithInvalidCredsUsingExcelNIframeHandling() throws Exception {
         chase.signInUsingInvalidCredsUsingExcel();
         assertEqualsGetText("Important:\n" +
@@ -135,7 +135,7 @@ public class HomePageTest extends WebAPI {
      * Test #12
      */
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testRefreshPageUsingChaseLogo(){
         chase.chaseLogoInspectionIsSelected();
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.chase.com/");

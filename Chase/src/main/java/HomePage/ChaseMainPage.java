@@ -62,7 +62,6 @@ public class ChaseMainPage extends WebAPI {
         typeOnElement(WEB_ELEMENT_INPUT_PASSWORD, password);
         implicitWait(20);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SIGN_IN);
-        sleepFor(30);
     }
 
     /**
