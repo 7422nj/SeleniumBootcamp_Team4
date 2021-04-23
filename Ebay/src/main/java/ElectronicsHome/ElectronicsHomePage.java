@@ -311,6 +311,7 @@ public class ElectronicsHomePage extends WebAPI {
         click(WEB_ELEMENT_LINK_AIRPODS);
         //Click Add to Cart
         click(WEB_ELEMENT_BUTTON_ADD_TO_CART_AIRPODS);
+        //Click No Thanks Button
         click(WEB_ELEMENT_BUTTON_NO_THANKS_AIRPODS);
     }
 

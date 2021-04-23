@@ -43,7 +43,7 @@ public class DataSource extends WebAPI {
 
     //Excel file
     public static List<String> getItemsListFromExcel() throws Exception, IOException, SQLException, ClassNotFoundException{
-        String path = "../Ebay/DataTest/Ebay.xlsx";
+        String path = "../Ebay/src/test/resources/Ebay.xlsx";
         String[] myStringArray = excelReader.fileReader2(path, 0);
         for(int i=1;i<myStringArray.length; i++)
             System.out.println(myStringArray[i] + " ");
