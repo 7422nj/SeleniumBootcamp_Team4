@@ -54,7 +54,7 @@ public class DataSource extends WebAPI {
 
     //Excel file
     public static List<String> getItemsListFromExcel() throws Exception, IOException, SQLException, ClassNotFoundException {
-        String path = "../MercedesBenz/DataTest/MercedesBenz.xlsx";
+        String path = "../MercedesBenz/src/test/resources/MercedesBenz.xlsx";
         String[] myStringArray = excelReader.fileReader2(path, 0);
         for (int i = 1; i < myStringArray.length; i++)
             System.out.println(myStringArray[i] + " ");
@@ -67,7 +67,7 @@ public class DataSource extends WebAPI {
 
     public static void enterExcelDataInSearchNRefreshMercedes() throws IOException, AWTException, StaleElementReferenceException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
-        File file = new File("../MercedesBenz/DataTest/MercedesBenz.xlsx");
+        File file = new File("../MercedesBenz/src/test/resources/MercedesBenz.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("Search");

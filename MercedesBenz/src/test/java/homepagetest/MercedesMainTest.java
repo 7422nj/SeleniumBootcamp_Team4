@@ -49,7 +49,7 @@ public class MercedesMainTest extends WebAPI {
      * @throws Exception
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSearchInterestUsingExcel() throws Exception {
         benz.searchInterestsUsingExcel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_INPUT_SEARCH_FIELD,"value"),"Finest");
