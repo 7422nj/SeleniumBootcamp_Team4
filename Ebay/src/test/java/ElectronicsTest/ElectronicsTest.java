@@ -231,4 +231,26 @@ public class ElectronicsTest extends WebAPI {
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER),"Shop by Category");
     }
 
+    /**
+     * Test #17
+     * @throws Exception
+     */
+
+    @Test(enabled = false)
+    public void testSearchSamsungGalaxyUsingExcel() throws Exception {
+        electronics.searchSamsungGalaxyUsingExcel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR_HEAD,"value"),"Samsung Galaxy");
+    }
+
+    /**
+     * Test #18
+     * @throws Exception
+     */
+
+    @Test
+    public void testSearchAirpodsNAddToCartUsingExcel() throws Exception {
+        electronics.searchAirpodsNAddToCartUsingExcel();
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_HEADER_CART_AIRPODS),"Shopping cart (1 item)");
+    }
+
 }

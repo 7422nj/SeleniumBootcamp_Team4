@@ -292,9 +292,28 @@ public class ElectronicsHomePage extends WebAPI {
     public void searchSamsungGalaxyUsingExcel() throws Exception {
         //Create a List -> Get Method from DataSource Class -> getItemsListFromExcel
         List<String> sheet = DataSource.getItemsListFromExcel();
-        //Create a String -> Call the List -> use get() method  to get a index from excel sheet
+        //Create a String -> Call the List -> use get() method to get a index from excel sheet
         String galaxy = sheet.get(5);
-
+        //Send keys to Search Bar -> String galaxy
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_HEAD,galaxy);
     }
+
+    public void searchAirpodsNAddToCartUsingExcel() throws Exception{
+        //Created a List -> From DataSource Class -> Called getItemsListFromExcel method
+        List<String> air = DataSource.getItemsListFromExcel();
+        //Created a string named pods -> called the List<String> air and used get() method for index
+        String pods = air.get(2);
+        //Send keys to search field -> pods
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_HEAD,pods);
+        //Scroll to element
+        scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_AIRPODS);
+        //Click element
+        click(WEB_ELEMENT_LINK_AIRPODS);
+        //Click Add to Cart
+        click(WEB_ELEMENT_BUTTON_ADD_TO_CART_AIRPODS);
+        click(WEB_ELEMENT_BUTTON_NO_THANKS_AIRPODS);
+    }
+
+
 
 }

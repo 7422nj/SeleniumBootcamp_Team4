@@ -21,6 +21,7 @@ public class UseArrayList {
         list.add("The");
         list.add("World");
 
+
         // Displaying the list
         System.out.println("The list is: \n"
                 + list);

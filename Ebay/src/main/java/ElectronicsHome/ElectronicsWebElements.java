@@ -65,6 +65,12 @@ public class ElectronicsWebElements {
     //Scroll down using Actions
     public static final String WEB_ELEMENT_HEADER = "//div[@id='mainContent']//h2[.='Shop by Category']";
 
+    //Search Airpods & Add to Cart Using Excel
+    public static final String WEB_ELEMENT_LINK_AIRPODS = "//h4[.='100% Authentic Apple AirPods Pro with Wireless Case White MWP22AM/A']";
+    public static final String WEB_ELEMENT_BUTTON_ADD_TO_CART_AIRPODS = "//a[@id='isCartBtn_btn']";
+    public static final String WEB_ELEMENT_BUTTON_NO_THANKS_AIRPODS = "//button[.='No thanks']";
+    public static final String WEB_ELEMENT_HEADER_CART_AIRPODS = "//h1[@class='main-title']";
+
 
 
 
