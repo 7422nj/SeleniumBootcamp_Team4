@@ -1,5 +1,6 @@
-package DataDriver;
+package ElectronicsHome.ElectricData;
 
+import common.WebAPI;
 import databases.ConnectToSqlDB;
 import utilities.DataReader;
 
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataSource {
+public class DataSource extends WebAPI {
 
     public static ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
     public static DataReader excelReader = new DataReader();
@@ -53,3 +54,5 @@ public class DataSource {
         return list;
     }
 }
+
+

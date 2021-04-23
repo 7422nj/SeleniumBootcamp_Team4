@@ -1,6 +1,6 @@
 package ElectronicsHome;
 
-import DataDriver.DataSource;
+import ElectronicsHome.ElectricData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -185,7 +185,7 @@ public class ElectronicsHomePage extends WebAPI {
         robotScrollDownByChunks(4);
         clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_LAPTOP);
         scrollToElementUsingJavaScript(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS);
-        DataSource.insertDataIntoDB();
+        ElectronicsHome.ElectricData.DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
         String laptop = elementFromDatabase.get(3);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR_ELECTRONICS, laptop);
@@ -287,6 +287,14 @@ public class ElectronicsHomePage extends WebAPI {
     public void scrollDownUsingActionsClass() throws InterruptedException {
         WebElement head = driver.findElement(By.xpath(WEB_ELEMENT_HEADER));
         scrollDownUsingActions(head);
+    }
+
+    public void searchSamsungGalaxyUsingExcel() throws Exception {
+        //Create a List -> Get Method from DataSource Class -> getItemsListFromExcel
+        List<String> sheet = DataSource.getItemsListFromExcel();
+        //Create a String -> Call the List -> use get() method  to get a index from excel sheet
+        String galaxy = sheet.get(5);
+
     }
 
 }

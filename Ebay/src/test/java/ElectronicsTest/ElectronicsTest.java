@@ -184,7 +184,7 @@ public class ElectronicsTest extends WebAPI {
     @Test(enabled = false)
     public void testRightClickNewArlo(){
         electronics.rightClick();
-        Assert.assertEquals(getTitleText(driver.getTitle()),"Electronics products for sale | eBay");
+        Assert.assertEquals((driver.getTitle()),"Electronics products for sale | eBay");
     }
 
     /**

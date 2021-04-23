@@ -50,7 +50,7 @@ public class WebAPI {
 
     //Robot available for all helper methods -> will not throw exceptions anymore
     public static Robot robot;
-    private static int wheelAmt;
+    public static int wheelAmt;
 
     static {
         try {
@@ -815,7 +815,7 @@ public class WebAPI {
         }
     }
 
-    public void getTitle() throws Exception{
+    public void getTitle() throws Exception {
         driver.getTitle();
     }
 
@@ -1621,12 +1621,6 @@ public class WebAPI {
         try {
             elementText = driver.findElement(By.xpath(element)).getText();
             return elementText;
-        } catch (StaleElementReferenceException staleElementReferenceException) {
-            staleElementReferenceException.printStackTrace();
-            System.out.println("ELEMENT IS STALE");
-        } catch (ElementNotVisibleException elementNotVisibleException) {
-            elementNotVisibleException.printStackTrace();
-            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
@@ -1641,12 +1635,6 @@ public class WebAPI {
         try {
             elementText = driver.findElement(By.xpath(element)).getAttribute(attribute);
             return elementText;
-        } catch (StaleElementReferenceException staleElementReferenceException) {
-            staleElementReferenceException.printStackTrace();
-            System.out.println("ELEMENT IS STALE");
-        } catch (ElementNotVisibleException elementNotVisibleException) {
-            elementNotVisibleException.printStackTrace();
-            System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
@@ -1679,19 +1667,23 @@ public class WebAPI {
     public boolean isTitleTrue(String title) {
         boolean flag = false;
 
-        try {
-            title = driver.getTitle();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("UNABLE TO GET TITLE FROM PAGE");
-        }
-        if (title != null)
+        if (driver.getTitle().equals(title)) {
             flag = true;
-        else
             return flag;
-
+        }
         return flag;
     }
+
+
+    public boolean isUrlTrue(String url){
+        boolean flag = false;
+
+        if(driver.getCurrentUrl().equals(url)){
+            flag = true;
+            return flag;
+        }
+        return flag;
+}
 
     public boolean isElementSelected(String element) {
         boolean flag = false;
