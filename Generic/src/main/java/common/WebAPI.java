@@ -1333,7 +1333,7 @@ public class WebAPI {
 
     public void enterExcelDataInSearchNRefreshBOA() throws IOException, AWTException, StaleElementReferenceException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\prita\\IdeaProjects\\BootcampSelenium_Team4\\Generic\\BrowserDriver\\windows\\chromedriver.exe");
-        File file = new File("../BankOfAmerica/DataTest/BankOfAmerica.xlsx");
+        File file = new File("../BankOfAmerica/src/test/resources/BankOfAmerica.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("Products");

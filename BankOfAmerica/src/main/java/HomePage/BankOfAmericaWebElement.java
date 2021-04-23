@@ -1,6 +1,6 @@
 package HomePage;
 
-public class HomePageWebElement {
+public class BankOfAmericaWebElement {
 
     // Sign in Using Excel
     public static final String WEB_ELEMENT__ENTRY_USERNAME = "//div[@id='inputOnlineId']//input[@class='spa-input-text']";

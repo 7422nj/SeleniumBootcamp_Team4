@@ -240,7 +240,7 @@ public class HomePageTest extends WebAPI {
      * @throws Exception
      */
 
-    @Test
+    @Test(enabled = false)
     public void testFindARoomUsingMYSQLDB() throws Exception {
         home.searchViewsUsingMYSQLDB();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_LOCATOR,"value"),"Views");

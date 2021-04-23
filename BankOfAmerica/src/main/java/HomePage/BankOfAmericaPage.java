@@ -1,10 +1,9 @@
 package HomePage;
 
-import BOADataDriver.DataSource;
+import HomePage.BOAData.DataSource;
 import common.WebAPI;
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
@@ -12,12 +11,12 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
-import static HomePage.HomePageWebElement.*;
+import static HomePage.BankOfAmericaWebElement.*;
 
-public class HomePage extends WebAPI {
+public class BankOfAmericaPage extends WebAPI {
 
-    public HomePage() {
-        PageFactory.initElements(driver, this);
+    public BankOfAmericaPage() {
+        PageFactory.initElements(driver, this);}
 
         /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,26 +32,27 @@ public class HomePage extends WebAPI {
         }
 
         //JavaScriptExecutor available for all below methods
-        JavascriptExecutor js;
+//        JavascriptExecutor js;
+//
+//        {
+//            try {
+//                js = (JavascriptExecutor) driver;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
-        {
-            try {
-                js = (JavascriptExecutor) driver;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            //Actions available for all below methods
+//            Actions actions;
+//
+//            {
+//                try {
+//                    actions = new Actions(driver);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
 
-            //Actions available for all below methods
-            Actions actions;
-
-            {
-                try {
-                    actions = new Actions(driver);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,7 +64,7 @@ public class HomePage extends WebAPI {
 //    @FindBy (how = How.XPATH, using =searchTextLocator ) public WebElement searchText;
 
         // Action Method
-    }
+
 
     /**
      * Action Method #1
@@ -142,6 +142,7 @@ public class HomePage extends WebAPI {
 
     public void signInUsingFluentWait() {
         typeOnElement(WEB_ELEMENT__ENTRY_USERNAME, WEB_ELEMENT_SEND_KEYS_USER);
+        fluentWait();
         typeOnElementNEnter(WEB_ELEMENT_ENTRY_PASSWORD, WEB_ELEMENT_SEND_KEYS_PASS);
     }
 

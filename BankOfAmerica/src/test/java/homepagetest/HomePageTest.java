@@ -1,21 +1,21 @@
 package homepagetest;
 
+import HomePage.BankOfAmericaPage;
 import common.WebAPI;
-import HomePage.HomePage;
 import org.openqa.selenium.Cookie;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import static HomePage.HomePageWebElement.*;
+import static HomePage.BankOfAmericaWebElement.*;
 
 public class HomePageTest extends WebAPI {
-    // Test class
-    HomePage home = new HomePage();
-    // Registration registration;
+
+    ////////////////////////////////////////////
+    public static BankOfAmericaPage bank = new BankOfAmericaPage();
+    ///////////////////////////////////////////
 
 
     /**
@@ -35,13 +35,12 @@ public class HomePageTest extends WebAPI {
     /**
      * Test #2
      * Sign in with Invalid Credentials Using Excel
-     *
      * @throws Exception
      */
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSignInInvalidCredUsingExcel() throws Exception {
-        home.signUpUsingExcel();
+        bank.signUpUsingExcel();
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR_HEADER),"Forgot ID/Passcode");
     }
 
@@ -55,7 +54,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testSearchInterestsUsingExcel() throws IOException, AWTException, InterruptedException {
-        home.searchInterestsUsingExcel();
+        bank.searchInterestsUsingExcel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BANK, "value"),"Bootcamp404");
     }
 
@@ -68,7 +67,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testSignInUsingMYSQLDB() throws Exception {
-        home.signInUsingMYSQLDB();
+        bank.signInUsingMYSQLDB();
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR_HEADER),"Forgot ID/Passcode");
     }
 
@@ -81,7 +80,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testPopUpHandling() throws AWTException, InterruptedException {
-        home.popUpHandling();
+        bank.popUpHandling();
         Assert.assertEquals(driver.getTitle(),"Bank of America Financial Centers and ATMs");
     }
 
@@ -92,7 +91,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testLoginUsingFluentWait() {
-        home.signInUsingFluentWait();
+        bank.signInUsingFluentWait();
         Assert.assertEquals(driver.getTitle(),"Bank of America | Online Banking | Forgot Online ID & Passcode");
     }
 
@@ -103,7 +102,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testManageCookies() throws InterruptedException {
-        home.manageCookies();
+        bank.manageCookies();
         Cookie actualText = driver.manage().getCookieNamed("BOFA_LOCALE_COOKIE");
         Assert.assertNotNull(actualText, "\nTest Fail");
     }
@@ -114,7 +113,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testChangeLanguagesFromEngToEsp(){
-        home.changeLanguageFromEngToEspanol();
+        bank.changeLanguageFromEngToEspanol();
         Assert.assertEquals(driver.getTitle(),"Bank of America: operaciones bancarias, tarjetas de crédito, préstamos e inversiones con Merrill");
     }
 
@@ -124,7 +123,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testCheckBoxIsNotSelectedAfterDoubleClick(){
-        home.doubleClickCheckBox();
+        bank.doubleClickCheckBox();
         Assert.assertFalse(isElementSelected(WEB_ELEMENT_CHECKBOX_SIGN_IN));
     }
 
@@ -136,7 +135,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testHoverOverCashRewardsImage() throws InterruptedException {
-        home.hoverOverCashRewards();
+        bank.hoverOverCashRewards();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_VERIFY_IMAGE_CARD,"class"),"card-cta");
     }
 
@@ -147,7 +146,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testFindFinancialCenterNearMe() throws InterruptedException {
-        home.findFinancialCenterNearMe();
+        bank.findFinancialCenterNearMe();
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR),"You Are Leaving Bank of America");
     }
 
@@ -159,7 +158,7 @@ public class HomePageTest extends WebAPI {
 
     @Test(enabled = false)
     public void testIncognitoMode(){
-        home.IncognitoMode();
+        bank.IncognitoMode();
         Assert.assertEquals(driver.getTitle(),"Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
     }
 
@@ -169,9 +168,9 @@ public class HomePageTest extends WebAPI {
      * Open Incognito Window -> Close Incognito Window -> Close Parent Window
      */
 
-    @Test
+    @Test(enabled = false)
     public void testSwitchWindow(){
-        home.openParentChildIncognitoWindowNCloseAll();
+        bank.openParentChildIncognitoWindowNCloseAll();
         Assert.assertEquals(driver.getTitle(),"Bank of America - Banking, Credit Cards, Loans and Merrill Investing");
     }
 }

@@ -1,5 +1,6 @@
-package BOADataDriver;
+package HomePage.BOAData;
 
+import common.WebAPI;
 import databases.ConnectToSqlDB;
 import utilities.DataReader;
 
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataSource {
+public class DataSource extends WebAPI {
     public static ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
     public static DataReader excelReader = new DataReader();
 
@@ -37,7 +38,7 @@ public class DataSource {
 
     //Excel file
     public static List<String> getItemsListFromExcel() throws Exception, IOException, SQLException, ClassNotFoundException{
-        String path = "../BankOfAmerica/DataTest/BankOfAmerica.xlsx";
+        String path = "../BankOfAmerica/src/test/resources/BankOfAmerica.xlsx";
         String[] myStringArray = excelReader.fileReader2(path, 0);
         for(int i=1;i<myStringArray.length; i++)
             System.out.println(myStringArray[i] + " ");
@@ -47,5 +48,4 @@ public class DataSource {
         }
         return list;
     }
-
 }
