@@ -142,9 +142,10 @@ public class WebAPI {
         }
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.get(url);
-        driver.manage().window().maximize();
+
     }
 
     public WebDriver getLocalDriver(String OS, String browserName) {
@@ -250,7 +251,7 @@ public class WebAPI {
 
     public static void typeOnElementNEnter(String locator, String value) {
         try {
-            driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
+            driver.findElement(By.xpath(locator)).sendKeys(value, Keys.ENTER);
         } catch (Exception ex1) {
             try {
                 System.out.println("First Attempt was not successful");
@@ -258,7 +259,7 @@ public class WebAPI {
             } catch (Exception ex2) {
                 try {
                     System.out.println("Second Attempt was not successful");
-                    driver.findElement(By.xpath(locator)).sendKeys(value, Keys.ENTER);
+                    driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
                 } catch (Exception ex3) {
                     System.out.println("Third Attempt was not successful");
                     driver.findElement(By.id(locator)).sendKeys(value, Keys.ENTER);
@@ -828,5 +829,19 @@ public class WebAPI {
         } else {
             System.out.println("\n*** Scrolled Down Limit is x10 ***");
         }
+    }
+
+    public String getAttributeFromElement(String element, String attribute) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getAttribute(attribute);
+            return elementText;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
+        }
+
+        return elementText;
     }
 }

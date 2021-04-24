@@ -18,6 +18,7 @@ public class MortgageWebElements {
     public static final String WEB_ELEMENT_CLICK_GET_STARTED="//div[@class='tableBody']/div[1]//span[.='Get Started']";
     public static final String WEB_ELEMENT_CLICK_CONTINUE="//button[@class='StyledButton-c11n-8-30-2__wpcbcc-0 eiqsyX']";
 
+    public static final String WEB_ELEMENT_SEARCH_BAR="//div[@class='searchInputNode']//input[@id='search-box-input']";
 
 
 

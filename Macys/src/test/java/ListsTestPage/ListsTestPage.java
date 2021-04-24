@@ -19,6 +19,7 @@ public class ListsTestPage extends WebAPI {
     //////////////////////////////////////////////////////
 
 
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -26,12 +27,15 @@ public class ListsTestPage extends WebAPI {
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test
     public void testVerifyPageTitle () {
         String exp = "Macys Lists";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #3
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Macys Lists";
@@ -43,7 +47,7 @@ public class ListsTestPage extends WebAPI {
         softAssert.assertAll();
     }
 
-
+    // Test #4
     @Test(enabled = true)
     public void testExamples() throws InterruptedException, AWTException {
         Lists.exampleHover(); //called a method from toysHomepage class
@@ -53,6 +57,7 @@ public class ListsTestPage extends WebAPI {
 
     }
 
+    // Test #5
     //Test GuestList
     @Test(enabled = false)
     public void testFindGuestList() {
@@ -60,6 +65,8 @@ public class ListsTestPage extends WebAPI {
         String expectedText = "lists";
         assertEqualByXpath(WEB_ELEMENT_LINK_GUEST_LIST, expectedText);
     }
+
+    // Test #6
     @Test(enabled = false)
     public void testFindKeepBrowsing() {
         Lists.clickKeepBrowsing();
@@ -67,6 +74,7 @@ public class ListsTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_CLICK_KEEP_BROWSING, expectedText);
     }
 
+    // Test #7
     @Test(enabled = false)
     public void testFindHome() {
         Lists.clickKeepBrowsing();
@@ -74,6 +82,13 @@ public class ListsTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_HOME, expectedText);
     }
 
+    // Test #8
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Lists.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"cloths");
+
+    }
 
 
 

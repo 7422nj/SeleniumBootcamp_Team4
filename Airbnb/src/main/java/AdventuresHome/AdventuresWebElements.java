@@ -13,6 +13,8 @@ public class AdventuresWebElements {
     public static final String WEB_ELEMENT_LOCATION_TEXT = "England";
     public static final String WEB_ELEMENT_LINK_CALENDAR= "//button[@class='_opwpil7']";
     public static final String WEB_ELEMENT_LINK_WEEKEND = "//button[@class='_qc44h1f']";
+    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@id='bigsearch-query-detached-query-input']";
+
 
 
     public static final String WEB_ELEMENT_LINK_BECOME_A_HOST= "//a[@href='/host/homes']/div[@class='_iglww7']";

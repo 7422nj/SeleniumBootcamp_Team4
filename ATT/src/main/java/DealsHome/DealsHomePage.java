@@ -1,5 +1,6 @@
 package DealsHome;
 
+import DealsHome.DealsData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static DealsHome.DealsWebElement.*;
@@ -76,6 +78,20 @@ public class DealsHomePage extends WebAPI {
     public void clickCases() {
         waitTimeUsingFluent(WEB_ELEMENT_BUTTON_CASES);
         clickByXpathUsingJavaScript(WEB_ELEMENT_BUTTON_CASES);
+
+    }
+
+//    public void SearchBar() throws Exception {
+//        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
+//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
+   // }
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Deals = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Deals);
+
+
 
     }
 

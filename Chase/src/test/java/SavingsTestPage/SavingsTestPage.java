@@ -16,6 +16,7 @@ public class SavingsTestPage extends WebAPI {
     SavingsHomePage Savings = new SavingsHomePage();
 
 
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -24,7 +25,7 @@ public class SavingsTestPage extends WebAPI {
     }
 
 
-
+    // Test #2
     @Test(enabled = true)
     public void testExamples() throws InterruptedException, AWTException {
         Savings.exampleHover(); //called a method from toysHomepage class
@@ -34,13 +35,15 @@ public class SavingsTestPage extends WebAPI {
 
     }
 
-
+    // Test #3
     @Test
     public void testVerifyPageTitle () {
         String exp = "Savings Account";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #4
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Savings Account";
@@ -53,6 +56,7 @@ public class SavingsTestPage extends WebAPI {
     }
 
 
+    // Test #5
     //Test OPEN SAVINGS
     @Test(enabled = false)
     public void testFindWaiveFees() {
@@ -61,6 +65,7 @@ public class SavingsTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_WAIVE_FEES, expectedText);
     }
 
+    // Test #6
     @Test(enabled = false)
     public void testFindOpenNow() {
         Savings.clickWaiveFees();
@@ -68,7 +73,7 @@ public class SavingsTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_OPEN_NOW, expectedText);
     }
 
-
+    // Test #7
     //Test SEE INTEREST RATES
     @Test(enabled = false)
     public void testFindSeeInterestRates() {
@@ -77,6 +82,7 @@ public class SavingsTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_SEE_INTEREST_RATES, expectedText);
     }
 
+    // Test #8
     @Test(enabled = false)
     public void testFindEnterZipCode() {
         Savings.clickSeeInterestRates();
@@ -84,6 +90,14 @@ public class SavingsTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_ENTER_ZIP_CODE, expectedText);
     }
 
+    // Test #9
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Savings.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"open now");
+
+
+    }
 
 
 }

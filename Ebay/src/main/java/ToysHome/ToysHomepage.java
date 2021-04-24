@@ -1,5 +1,6 @@
 package ToysHome;
 
+import ToysHome.ToysData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static ToysHome.ToysWebElements.*;
@@ -89,4 +91,29 @@ public class ToysHomepage extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_PRICE_FILTER);
     }
 
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String phone = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,phone);
+    }
+    public void SendKeysphone() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Toys = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
+    }
+    public void SendKeysBallon() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Ballon = elementFromExcel.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Ballon);
+    }
+
+
+//    public void SendKeysToSearchBarUsingExel() throws Exception {
+//    List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+//    String Toys = elementFromExcel.get(3);
+//    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
+//}
 }

@@ -17,16 +17,16 @@ public class AdventuresTestPage extends WebAPI {
 
     AdventuresHomePage Adventures = new AdventuresHomePage();
 
-
-    @Test
+    // Test #1
+    @Test(enabled = false)
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
         String actual= driver.getCurrentUrl();
         Assert.assertEquals(actual,expect);
     }
 
-
-    @Test(enabled = true)
+    // Test #2
+    @Test(enabled = false)
     public void testExamples() throws InterruptedException, AWTException {
         Adventures.exampleHover(); //called a method from SportsLineHomepage class
         String actualAttributeValue = driver.findElement(By.className("")).getAttribute("value");
@@ -35,13 +35,16 @@ public class AdventuresTestPage extends WebAPI {
 
     }
 
-    @Test
+    // Test #3
+    @Test(enabled = false)
     public void testVerifyPageTitle(){
         String exp="Air BNB Adventures";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
-    @Test
+
+    // Test #4
+    @Test(enabled = false)
     public void testPageTitleInspection(){
         String expectedTitle= "Air BNB Adventures";
         String actualTitle= driver.getTitle();
@@ -52,13 +55,15 @@ public class AdventuresTestPage extends WebAPI {
         softAssert.assertAll();
     }
 
-    @Test(enabled = true)
+    // Test #5
+    @Test(enabled = false)
     public void testSearchBar() {
         Adventures.SearchBar();
         String expectedText= "Adventures";
         assertEqualByXpath(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH, expectedText);
     }
 
+    // Test #6
     @Test(enabled = false)
     public void testFindBecomeAHOst() {
         Adventures.clickBecomeAHost();
@@ -66,6 +71,8 @@ public class AdventuresTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_BECOME_A_HOST, expectedText);
 
     }
+
+    // Test #7
     @Test(enabled = false)
     public void testFindGetStarted() {
         Adventures.clickBecomeAHost();
@@ -73,6 +80,29 @@ public class AdventuresTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_BUTTON_GET_STARTED, expectedText);
 
     }
+
+    // Test #8
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Adventures.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"USA");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 

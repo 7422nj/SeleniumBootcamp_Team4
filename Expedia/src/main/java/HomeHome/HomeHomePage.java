@@ -1,5 +1,6 @@
 package HomeHome;
 
+import HomeHome.HomeData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static HomeHome.HomeWebElements.*;
@@ -36,7 +38,34 @@ public class HomeHomePage extends WebAPI {
         @FindBy(xpath = exampleLocator)
         public WebElement ExampleName;
 
+    @FindBy(xpath = WEB_ELEMENT_DROP_DOWN_HEADER)
+    public WebElement MoreTravel;
 
+
+
+
+
+
+    public void SearchBar() {
+        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
+    }
+//    public void SendKeysToSearchBarUsingExel() throws Exception {
+//        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+//        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+//        String Home = elementFromExcel.get(3);
+//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Home);
+//    }
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Home = elementFromExcel.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Home);
+    }
+
+    public void clickGames() {
+        waitTimeUsingFluent(WEB_ELEMENT_DROP_DOWN_HEADER);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_DROP_DOWN_HEADER);
+    }
 
 
 

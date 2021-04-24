@@ -18,7 +18,7 @@ public class WatchTestPage extends WebAPI {
     //////////////////////////////////////////////////////
 
 
-
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -26,12 +26,15 @@ public class WatchTestPage extends WebAPI {
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test
     public void testVerifyPageTitle () {
         String exp = "Home Page Search";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #3
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Home Page Search";
@@ -43,7 +46,7 @@ public class WatchTestPage extends WebAPI {
         softAssert.assertAll();
     }
 
-
+    // Test #4
     @Test(enabled = true)
     public void testExamples() throws InterruptedException, AWTException {
         Watch.exampleHover(); //called a method from WatchHomepage class
@@ -53,6 +56,7 @@ public class WatchTestPage extends WebAPI {
 
     }
 
+    // Test #5
     //Test Soccer
     @Test(enabled = false)
     public void testFindSoccer() {
@@ -61,6 +65,7 @@ public class WatchTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_SOCCER, expectedText);
     }
 
+    // Test #6
     @Test(enabled = false)
     public void testFindScores() {
         Watch.clickSoccer();
@@ -68,6 +73,7 @@ public class WatchTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_SCORES, expectedText);
     }
 
+    // Test #7
     //test NFL
     @Test(enabled = false)
     public void testFindNFL() {
@@ -76,11 +82,24 @@ public class WatchTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_NFL, expectedText);
     }
 
+    // Test #8
     @Test(enabled = false)
     public void testFindNews() {
         Watch.clickNFL();
         String expectedText = "Soccer Scores";
         assertEqualByXpath(WEB_ELEMENT_LINK_NEWS, expectedText);
+    }
+
+
+
+    // Test #9
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Watch.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Soccer");
+
+
+
     }
 
 

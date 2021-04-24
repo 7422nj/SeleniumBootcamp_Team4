@@ -10,6 +10,7 @@ public class BuyWebElements {
 
     // Search Button
     public static final String WEB_ELEMENT_LINK_SEARCH = "//input[@id='banner-search']";
+    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@id='banner-search']";
 
 
 

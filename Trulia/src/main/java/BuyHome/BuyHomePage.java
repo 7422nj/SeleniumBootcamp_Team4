@@ -1,5 +1,6 @@
 package BuyHome;
 
+import BuyHome.BuyData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static BuyHome.BuyWebElements.*;
@@ -74,8 +76,12 @@ public class BuyHomePage extends WebAPI {
         waitTimeUsingFluent(WEB_ELEMENT_LINK_SEARCH);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SEARCH);
 
-       
-
+    }
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_SEARCH);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Buy= elementFromExcel.get(0);
+        typeOnElementNEnter(WEB_ELEMENT_LINK_SEARCH,Buy);
     }
 
 }

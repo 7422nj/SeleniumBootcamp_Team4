@@ -1,5 +1,6 @@
 package MortgageHome;
 
+import MortgageHome.MortgageData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static MortgageHome.MortgageWebElements.*;
@@ -103,6 +105,17 @@ public class MortgageHomePage extends WebAPI {
 
     }
 
+//    public void SearchBar() {
+//        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
+//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
+//    }
+
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        //clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Mortgage = elementFromExcel.get(0);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Mortgage);
+    }
 
 
 

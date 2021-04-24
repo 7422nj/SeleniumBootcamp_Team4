@@ -16,7 +16,7 @@ BuyHomePage Buy= new BuyHomePage();
 
 
 
-
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -24,12 +24,15 @@ BuyHomePage Buy= new BuyHomePage();
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test
     public void testVerifyPageTitle () {
         String exp = "Trulia Buy Products";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #3
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Trulia Buy Products";
@@ -41,6 +44,7 @@ BuyHomePage Buy= new BuyHomePage();
         softAssert.assertAll();
     }
 
+    // Test #4
     @Test(enabled = true)
     public void testExamples() throws InterruptedException, AWTException {
         Buy.exampleHover(); //called a method from BuyHomepage class
@@ -50,12 +54,23 @@ BuyHomePage Buy= new BuyHomePage();
 
     }
 
+    // Test #5
     //Test Buy
     @Test(enabled = false)
     public void testFindSearch() {
         Buy.clickSearch();
         String expectedText = "search area";
         assertEqualByXpath(WEB_ELEMENT_LINK_SEARCH, expectedText);
+    }
+
+    // Test #6
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Buy.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Home");
+
+
+
     }
 
 

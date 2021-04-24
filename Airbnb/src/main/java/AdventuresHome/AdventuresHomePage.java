@@ -1,5 +1,6 @@
 package AdventuresHome;
 
+import AdventuresHome.AdventuresData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static AdventuresHome.AdventuresWebElements.*;
@@ -105,6 +107,17 @@ public class AdventuresHomePage extends WebAPI {
 
         waitTimeUsingFluent(WEB_ELEMENT_BUTTON_GET_STARTED);
         clickByXpathUsingJavaScript(WEB_ELEMENT_BUTTON_GET_STARTED);
+
+    }
+
+
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Location  = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH,Location);
+
+
 
     }
 

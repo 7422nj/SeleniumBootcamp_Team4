@@ -17,7 +17,7 @@ public class MortgageTestPage extends WebAPI {
 
 
 
-
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -25,12 +25,15 @@ public class MortgageTestPage extends WebAPI {
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test
     public void testVerifyPageTitle () {
         String exp = "Redfin Mortgage";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #3
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Redfin Mortgage";
@@ -42,7 +45,7 @@ public class MortgageTestPage extends WebAPI {
         softAssert.assertAll();
     }
 
-
+    // Test #4
     @Test(enabled = true)
     public void testExamples() throws InterruptedException, AWTException {
         Mortgage.exampleHover(); //called a method from MortgageHomepage class
@@ -52,7 +55,7 @@ public class MortgageTestPage extends WebAPI {
 
     }
 
-
+    // Test #5
     //Test Lender
     @Test(enabled = false)
     public void testFindlender() {
@@ -61,12 +64,15 @@ public class MortgageTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_LENDER, expectedText);
     }
 
+    // Test #6
     @Test(enabled = false)
     public void testFindImage() {
         Mortgage.clickLender();
         String expectedText = "NMLS:1053";
         assertEqualByXpath(WEB_ELEMENT_LINK_IMAGE, expectedText);
     }
+
+    // Test #7
     @Test(enabled = false)
     public void testFindLoanType() {
         Mortgage.clickLender();
@@ -74,6 +80,7 @@ public class MortgageTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_SELECT_LOAN_TYPE, expectedText);
     }
 
+    // Test #8
     // Test SecondPage
 
     @Test(enabled = false)
@@ -83,17 +90,30 @@ public class MortgageTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_LINK_SECOND_PAGE, expectedText);
     }
 
+    // Test #9
     @Test(enabled = false)
     public void testFindGetStarted() {
         Mortgage.clickSecondPage();
         String expectedText = "BNC national Bank";
         assertEqualByXpath(WEB_ELEMENT_CLICK_GET_STARTED, expectedText);
     }
+
+    // Test #10
     @Test(enabled = false)
     public void testFindContinue() {
         Mortgage.clickSecondPage();
         String expectedText = "Verify Zip Code";
         assertEqualByXpath(WEB_ELEMENT_CLICK_CONTINUE, expectedText);
+    }
+
+    // Test #11
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Mortgage.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Purchase");
+
+
+
     }
 
 

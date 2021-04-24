@@ -17,13 +17,16 @@ import static DealsHome.DealsWebElement.*;
         DealsHomePage Deals = new DealsHomePage();
 
 
-        @Test
+        // Test #1
+        @Test(enabled = false)
         public void testGetCurrentUrl() throws AWTException, InterruptedException{
             String expect="";
             String actual= driver.getCurrentUrl();
             Assert.assertEquals(actual,expect);
         }
-        @Test(enabled = true)
+
+        // Test #2
+        @Test(enabled = false)
         public void testExamples() throws InterruptedException, AWTException {
             Deals.exampleHover(); //called a method from Deals class
             String actualAttributeValue = driver.findElement(By.className("")).getAttribute("value");
@@ -31,20 +34,26 @@ import static DealsHome.DealsWebElement.*;
             Assert.assertEquals(actualAttributeValue, expectedAttributeValue, "");
         }
 
-            @Test(enabled = false)
-            public void testFindWireless(){
+
+        // Test #3
+        @Test(enabled = false)
+        public void testFindWireless(){
                 Deals.clickWireless();
                 String expectedText = "Get Started";
                 assertEqualByXpath(WEB_ELEMENT_LINK_WIRELESS, expectedText);
 
             }
-            @Test
+
+        // Test #4
+            @Test(enabled = false)
             public void testVerifyPageTitle () {
                 String exp = "ATT Deals";
                 String act = driver.getTitle();
                 Assert.assertTrue(exp.equalsIgnoreCase(act));
             }
-            @Test
+
+        // Test #5
+            @Test(enabled = false)
             public void testPageTitleInspection () {
                 String expectedTitle = "ATT  Deals";
                 String actualTitle = driver.getTitle();
@@ -55,6 +64,8 @@ import static DealsHome.DealsWebElement.*;
                 softAssert.assertAll();
             }
 
+
+        // Test #6
         @Test(enabled = false)
         public void testFindAccessories(){
             Deals.clickAccessories();
@@ -62,6 +73,8 @@ import static DealsHome.DealsWebElement.*;
             assertEqualByXpath(WEB_ELEMENT_BUTTON_ACCESSORIES, expectedText);
 
         }
+
+        // Test #7
         @Test(enabled = false)
         public void testFindCases(){
             Deals.clickCases();
@@ -70,6 +83,12 @@ import static DealsHome.DealsWebElement.*;
 
         }
 
+        // Test #8
+        @Test
+        public void testSendKeysToSearchBarUsingExel() throws Exception {
+            Deals.SendKeysToSearchBarUsingExel();
+            Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Bundles");
+        }
 
         }
 

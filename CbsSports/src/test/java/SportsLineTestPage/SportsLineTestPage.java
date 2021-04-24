@@ -20,7 +20,7 @@ public class SportsLineTestPage extends WebAPI {
     //Object of SportsLineHomepage class
     SpotsLineHomepage SportsLine = new SpotsLineHomepage();
 
-
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -28,6 +28,7 @@ public class SportsLineTestPage extends WebAPI {
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test(enabled = false)
     public void testExamples() throws InterruptedException, AWTException {
         SportsLine.exampleHover(); //called a method from SportsLineHomepage class
@@ -38,7 +39,7 @@ public class SportsLineTestPage extends WebAPI {
     }
 
 
-
+    // Test #3
     @Test
     public void testFindMasters() throws InterruptedException, AWTException {
         SportsLine.Masters();
@@ -51,12 +52,16 @@ public class SportsLineTestPage extends WebAPI {
 //     String expectedText = "Page opens";
 //        assertEqualByXpath(WEB_ELEMENT_LINK_ODDS, expectedText);
     }
+
+    // Test #4
     @Test
     public void testVerifyPageTitle () {
         String exp = "Sports Line";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #5
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Sports LIne";
@@ -66,6 +71,16 @@ public class SportsLineTestPage extends WebAPI {
         softAssert.assertTrue(expectedTitle.equalsIgnoreCase(actualTitle));
         softAssert.assertNotSame(actualTitle, expectedTitle);
         softAssert.assertAll();
+    }
+
+    // Test #6
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        SportsLine.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Scores");
+
+
+
     }
 
 

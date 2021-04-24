@@ -1,5 +1,6 @@
 package SavingsHome;
 
+import SavingsHome.SavingsData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static SavingsHome.SavingsWebElements.*;
@@ -98,6 +100,19 @@ public class SavingsHomePage extends WebAPI{
         waitTimeUsingFluent(WEB_ELEMENT_LINK_ENTER_ZIP_CODE);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_ENTER_ZIP_CODE);
 
+    }
+
+    public void SearchBar() {
+        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
+    }
+
+
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Savings = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Savings);
     }
 
 

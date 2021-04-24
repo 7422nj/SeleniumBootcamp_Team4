@@ -16,7 +16,7 @@ public class ToysWebElements {
     public static final String WEB_ELEMENT_HEADER_OTHER_CHESS = "//span[@class='b-pageheader__text']";
 
     //test NB3
-    public static final String WEB_ELEMENT_SEARCH_BAR= "//input[@id='gh-ac']";
+    public static final String WEB_ELEMENT_SEARCH_BAR= "/html/body/div[2]/header/table/tbody/tr/td[5]/form/table/tbody/tr/td[1]/div/div/input[1]";
     public static final String WEB_ELEMENT_TEXT_SEARCH_BAR= "CARS";
     public static final String WEB_ELEMENT_LINK_AUCTION= "//h2[.='Auction']";
     public static final String WEB_ELEMENT_LINK_PRICE_FILTER= "//div[.='Under $40.00 - apply Price filter']";

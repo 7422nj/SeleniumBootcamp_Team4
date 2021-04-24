@@ -1,5 +1,6 @@
 package SecurityHome;
 
+import SecurityHome.SecurityData.DataSource;
 import common.WebAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static SecurityHome.SecurityWebElement.*;
 
@@ -69,8 +71,20 @@ public class SecurityHomePage extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_LOCATIONS);
 
     }
+    public void SearchBar(){
+        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,WEB_ELEMENT_SEARCH_BAR);
+
+    }
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Security = elementFromExcel.get(5);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Security);
 
 
+
+    }
 
 
 

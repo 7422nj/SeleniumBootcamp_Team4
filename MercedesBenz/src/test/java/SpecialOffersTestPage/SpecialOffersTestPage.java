@@ -1,5 +1,6 @@
 package SpecialOffersTestPage;
 
+import SpecialOffersHome.OffersData.DataSource;
 import SpecialOffersHome.SpecialOffersHomePage;
 import common.WebAPI;
 import org.testng.Assert;
@@ -7,6 +8,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.awt.*;
+import java.util.List;
+
 import static SpecialOffersHome.SpecialOffersWebElements.*;
 
 public class SpecialOffersTestPage extends WebAPI {
@@ -15,7 +18,7 @@ public class SpecialOffersTestPage extends WebAPI {
 
 
 
-
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -23,12 +26,15 @@ public class SpecialOffersTestPage extends WebAPI {
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test
     public void testVerifyPageTitle () {
         String exp = "Mercedes Offers";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #3
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Mercedes Offers";
@@ -40,7 +46,7 @@ public class SpecialOffersTestPage extends WebAPI {
         softAssert.assertAll();
     }
 
-
+    // Test #4
     //Test Special Offers
     @Test(enabled = false)
     public void testFindSpecialOffers() {
@@ -48,6 +54,8 @@ public class SpecialOffersTestPage extends WebAPI {
         String expectedText = "other offers";
         assertEqualByXpath(WEB_ELEMENT_LINK_SPECIAL_OFFERS, expectedText);
     }
+
+    // Test #5
     @Test(enabled = false)
     public void testFindNewVehicleOffers() {
         SpecialOffers.clickNewVehicleOffers();
@@ -56,6 +64,15 @@ public class SpecialOffersTestPage extends WebAPI {
         assertEqualByXpath(WEB_ELEMENT_CLICK_SHOW_FILTERS, expectedText);
     }
 
+    // Test #6
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        SpecialOffers.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"2021 C 300 Sedan");
+
+
+
+    }
 
 
 

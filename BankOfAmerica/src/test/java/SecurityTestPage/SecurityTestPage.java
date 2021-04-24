@@ -17,6 +17,7 @@ public class SecurityTestPage extends WebAPI {
     SecurityHomePage Security= new SecurityHomePage();
 
 
+    // Test #1
     @Test
     public void testGetCurrentUrl() throws AWTException, InterruptedException{
         String expect="";
@@ -24,12 +25,15 @@ public class SecurityTestPage extends WebAPI {
         Assert.assertEquals(actual,expect);
     }
 
+    // Test #2
     @Test
     public void testVerifyPageTitle () {
         String exp = "Home Page Search";
         String act = driver.getTitle();
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
+    // Test #3
     @Test
     public void testPageTitleInspection () {
         String expectedTitle = "Home Page Search";
@@ -42,6 +46,7 @@ public class SecurityTestPage extends WebAPI {
     }
 
 
+    // Test #4
     @Test(enabled = false)
     public void testExamples() throws InterruptedException, AWTException {
         Security.exampleHover(); //called a method from Deals class
@@ -50,7 +55,7 @@ public class SecurityTestPage extends WebAPI {
         Assert.assertEquals(actualAttributeValue, expectedAttributeValue, "");
     }
 
-
+    // Test #5
     @Test(enabled = false)
     public void testFindSecurity(){
         Security.clickSecurity();
@@ -59,7 +64,7 @@ public class SecurityTestPage extends WebAPI {
 
     }
 
-
+    // Test #6
     @Test(enabled = false)
     public void testFindLocations(){
         Security.clickLocations();
@@ -68,6 +73,15 @@ public class SecurityTestPage extends WebAPI {
 
     }
 
+    // Test #7
+    @Test
+    public void testSendKeysToSearchBarUsingExel() throws Exception {
+        Security.SendKeysToSearchBarUsingExel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"See how to spot fraud");
+
+
+
+    }
 
 
 }
