@@ -20,6 +20,6 @@ public class SavingsWebElements {
     public static final String WEB_ELEMENT_LINK_SEE_INTEREST_RATES= "//a[@href='https://www.chase.com/personal/savings" +
             "/savings-account/interest-rates']/u[.='See interest rates']";
     public static final String WEB_ELEMENT_LINK_ENTER_ZIP_CODE="//input[@id='prePopulated']";
-    public static final String WEB_ELEMENT_SEARCH_BAR="//input[@id='prePopulated']";
+    public static final String WEB_ELEMENT_SEARCH_BAR="//input[@class='header__section--search__bar--search-input']";
 
 }

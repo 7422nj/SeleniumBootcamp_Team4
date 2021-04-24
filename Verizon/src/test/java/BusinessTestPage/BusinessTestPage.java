@@ -44,7 +44,7 @@ BusinessHomePage Business= new BusinessHomePage();
     }
 
     // Test #4
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testExamples() throws InterruptedException, AWTException {
         Business.exampleHover(); //called a method from WatchHomepage class
         String actualAttributeValue = driver.findElement(By.className("")).getAttribute("value");

@@ -39,7 +39,7 @@ public class BusinessHomePage extends WebAPI {
     @FindBy(xpath = exampleLocator)
     public WebElement ExampleName;
     @FindBy(xpath = WEB_ELEMENT_LINK_BUSINESS)
-    public WebElement Watch;
+    public WebElement Business;
 
 
 
@@ -61,17 +61,17 @@ public class BusinessHomePage extends WebAPI {
 
     }
 
-    public void SearchBar() {
-        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
-        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
-    }
+//    public void SearchBar() {
+//        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
+//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
+//    }
+public void SendKeysToSearchBarUsingExel() throws Exception {
+    clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+    List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+    String business = elementFromExcel.get(0);
+    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,business);
+}
 
-    public void SendKeysToSearchBarUsingExel() throws Exception {
-        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
-        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-        String Business = elementFromExcel.get(0);
-        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Business);
-    }
 
 
 }

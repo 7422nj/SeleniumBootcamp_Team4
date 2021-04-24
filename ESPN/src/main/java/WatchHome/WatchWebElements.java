@@ -17,7 +17,7 @@ public class WatchWebElements {
     public static final String WEB_ELEMENT_LINK_NEWS = "//span[@class='link-text'][normalize-space()='News']";
 
 
-    public static final String WEB_ELEMENT_SEARCH_BAR= "//span[@class='link-text'][normalize-space()='News']";
+    public static final String WEB_ELEMENT_SEARCH_BAR= "//input[@class='search-box']";
 
 
 

@@ -7,5 +7,5 @@ public class DealsWebElement {
     public static final String WEB_ELEMENT_LINK_WIRELESS = "//div[@class='row flex-nowrap justify-center flex']//a[.='Wireless']";
     public static final String WEB_ELEMENT_BUTTON_ACCESSORIES = "//a[@href='/buy/accessories/browse/all/']/span[@class='font-medium type-xs  ']";
     public static final String WEB_ELEMENT_BUTTON_CASES = "//a[.='Cases']";
-    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@name='q']";
+    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@id='z1-searchfield']";
 }

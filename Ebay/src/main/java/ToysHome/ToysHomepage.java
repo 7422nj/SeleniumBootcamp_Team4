@@ -111,9 +111,4 @@ public class ToysHomepage extends WebAPI {
     }
 
 
-//    public void SendKeysToSearchBarUsingExel() throws Exception {
-//    List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-//    String Toys = elementFromExcel.get(3);
-//    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
-//}
 }

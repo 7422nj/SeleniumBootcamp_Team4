@@ -15,7 +15,7 @@ public class SpecialOffersWebElements extends WebAPI {
     public static final String WEB_ELEMENT_LINK_NEW_VEHICLE_OFFERS = "//a[@href='#new-car-offers']";
     public static final String WEB_ELEMENT_CLICK_SHOW_FILTERS = "//button[@class='button button_call-out " +
             "vehicle-advanced-filters__toggle-cta vehicle-advanced-filters__header-cta-button']";
-    public static final String WEB_ELEMENT_SEARCH_BAR = "//a[@href='#new-car-offers']";
+    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@name='search']";
 
 
 

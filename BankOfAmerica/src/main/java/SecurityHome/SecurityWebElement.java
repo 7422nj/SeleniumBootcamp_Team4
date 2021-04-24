@@ -9,7 +9,7 @@ public class SecurityWebElement {
     //Test Hover
     public static final String WEB_ELEMENT_LINK_SECURITY = "//a[@id='NAV_SECURITY']";
     public static final String WEB_ELEMENT_LINK_LOCATIONS = "//a[@id='locations-route-to']";
-    public static final String WEB_ELEMENT_SEARCH_BAR = "";
+    public static final String WEB_ELEMENT_SEARCH_BAR = "//input[@id='nav-search-query']";
 
 
 

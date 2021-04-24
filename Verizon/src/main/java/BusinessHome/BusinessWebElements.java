@@ -8,5 +8,5 @@ public class BusinessWebElements {
 
     //Test Hover
     public static final String WEB_ELEMENT_LINK_BUSINESS = "//div[@class='gnav20-desktop']//a[.='Business']";
-    public static final String WEB_ELEMENT_SEARCH_BAR= "//div[@class='gnav20-desktop']//a[.='Business']";
+    public static final String WEB_ELEMENT_SEARCH_BAR= "//form[@class='formStarted']//input[@name='q']";
 }
