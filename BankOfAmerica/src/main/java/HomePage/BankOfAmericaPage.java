@@ -75,6 +75,7 @@ public class BankOfAmericaPage extends WebAPI {
     public void signUpUsingExcel() throws Exception {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String username = elementFromExcel.get(1);
+        click(WEB_ELEMENT__ENTRY_USERNAME);
         typeOnElement(WEB_ELEMENT__ENTRY_USERNAME, username);
         WebDriverWait0(10);
         String password = elementFromExcel.get(2);

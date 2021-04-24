@@ -38,7 +38,7 @@ public class HomePageTest extends WebAPI {
      * @throws Exception
      */
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testSignInInvalidCredUsingExcel() throws Exception {
         bank.signUpUsingExcel();
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_VERIFY_ERROR_HEADER),"Forgot ID/Passcode");

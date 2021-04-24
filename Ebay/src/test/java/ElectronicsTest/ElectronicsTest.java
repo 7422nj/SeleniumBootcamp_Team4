@@ -56,7 +56,6 @@ public class ElectronicsTest extends WebAPI {
         searchText.clear();
         //verify if search box has correct value
         Assert.assertTrue(testValue.equalsIgnoreCase(searchKey));
-
     }
 
     /**

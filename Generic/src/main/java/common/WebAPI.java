@@ -8,8 +8,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,8 +21,8 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
 import org.testng.annotations.Optional;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
@@ -37,12 +37,11 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static common.WebApiWebElements.*;
-import static org.slf4j.helpers.Util.report;
 
 public class WebAPI {
 
@@ -1606,6 +1605,11 @@ public class WebAPI {
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider);
         actions.moveByOffset(40, 0).build().perform();
+    }
+
+    public static void scrollNClickElementUsingActions(WebElement ele) {
+        Actions action = new Actions(driver);
+        action.keyDown(ele, Keys.CONTROL).perform();
     }
 
     /**
