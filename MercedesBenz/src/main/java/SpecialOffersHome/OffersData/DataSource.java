@@ -23,12 +23,12 @@ public class DataSource {
     //  From Class/ Same class
     public static List<String> getItemValue() {
         List<String> itemsList = new ArrayList<String>();
-        itemsList.add("2021 C 300 Sedan");
-        itemsList.add("2021 GLA 250 SUV");
-        itemsList.add("2021 GLC 300 SUV");
-        itemsList.add("2020 A 220 Sedan");
-        itemsList.add("2021 AMG A 35 Sedan");
-        itemsList.add("2020 AMG A 35 Sedan");
+        itemsList.add(" C 300 Sedan");
+        itemsList.add(" GLA 250 SUV");
+        itemsList.add(" GLC 300 SUV");
+        itemsList.add(" A 220 Sedan");
+        itemsList.add(" AMG A 35 Sedan");
+        itemsList.add(" AMG A 36 Sedan");
         return itemsList;
     }
 

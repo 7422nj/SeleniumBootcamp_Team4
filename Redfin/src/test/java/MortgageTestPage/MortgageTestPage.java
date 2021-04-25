@@ -112,8 +112,22 @@ public class MortgageTestPage extends WebAPI {
         Mortgage.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Purchase");
 
+    }
 
 
+    // Test #12
+    @Test(enabled = false)
+    public void testSearchRefinanceUsingExel() throws Exception {
+        Mortgage.SendKeysRefinance();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Refinance");
+    }
+
+
+    //Test #13
+    @Test(enabled = false)
+    public void testSearchlandUsingExel() throws Exception {
+        Mortgage.SendKeysland();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"land");
     }
 
 

@@ -58,20 +58,6 @@ public class ListsHomePage extends WebAPI {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Action Method class
     public void exampleHover() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -110,5 +96,29 @@ public class ListsHomePage extends WebAPI {
         String Toys = elementFromExcel.get(0);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
     }
+
+
+    public void SendKeystoys() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String toys = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,toys);
+    }
+
+
+    public void SendKeysTV() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String TV = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,TV);
+    }
+
+
+
+
+
+
+
+
 
     }

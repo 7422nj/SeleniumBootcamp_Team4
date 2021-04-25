@@ -59,8 +59,22 @@ BusinessHomePage Business= new BusinessHomePage();
         Business.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"SmallBusiness");
 
+    }
 
 
+    // Test #6
+    @Test(enabled = false)
+    public void testSearchSupportUsingExel() throws Exception {
+        Business.SendKeySupport();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Support");
+    }
+
+
+    // Test #7
+    @Test(enabled = false)
+    public void testSearchwifiUsingExel() throws Exception {
+        Business.SendKeysWifi();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Wifi");
     }
 
 

@@ -105,6 +105,20 @@ public class SpecialOffersHomePage extends WebAPI {
     }
 
 
+    public void SendKeysGLA250SUV() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String GLA250SUV = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,GLA250SUV);
+    }
+
+    public void SendKeysA220Sedan() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String A220Sedan = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,A220Sedan);
+    }
+
 
 
 

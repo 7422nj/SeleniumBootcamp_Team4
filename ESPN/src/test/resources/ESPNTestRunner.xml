@@ -19,7 +19,7 @@
     <!--        <parameter name="browserVersion" value="76.0"/>-->
     <parameter name="url" value="https://www.espn.com/"/>
     <parameter name="browserName" value="chrome"/>
-    <parameter name="browserVersion" value="89"/>
+    <parameter name="browserVersion" value="90"/>
 
     <test name="ESPN Automation Test Script using chrome">
 <!--        <parameter name="browserName" value="chrome"/>-->

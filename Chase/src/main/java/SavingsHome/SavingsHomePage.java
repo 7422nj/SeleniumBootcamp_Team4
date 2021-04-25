@@ -115,6 +115,20 @@ public class SavingsHomePage extends WebAPI{
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Savings);
     }
 
+    public void SendKeysSignin() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Signin = elementFromExcel.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Signin);
+    }
+
+    public void SendKeysTotal() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Total = elementFromExcel.get(5);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Total);
+    }
+
 
 }
 

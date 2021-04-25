@@ -19,7 +19,7 @@
     <!--        <parameter name="browserVersion" value="76.0"/>-->
     <parameter name="url" value="https://www.bankofamerica.com/security-center/overview/"/>
     <parameter name="browserName" value="chrome"/>
-    <parameter name="browserVersion" value="89"/>
+    <parameter name="browserVersion" value="90"/>
 
     <test name="ATT Automation Test Script using chrome">
 <!--        <parameter name="browserName" value="chrome"/>-->

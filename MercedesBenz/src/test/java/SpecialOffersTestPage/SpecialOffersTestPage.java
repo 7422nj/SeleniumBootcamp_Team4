@@ -69,9 +69,22 @@ public class SpecialOffersTestPage extends WebAPI {
     public void testSendKeysToSearchBarUsingExel() throws Exception {
         SpecialOffers.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"2021 C 300 Sedan");
+    }
 
 
+    // Test #7
+    @Test(enabled = false)
+    public void testSearchGLA250SUVUsingExel() throws Exception {
+        SpecialOffers.SendKeysGLA250SUV();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"GLA250SUV");
+    }
 
+
+    // Test #8
+    @Test(enabled = false)
+    public void testSearchA220SedanUsingExel() throws Exception {
+        SpecialOffers.SendKeysA220Sedan();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"A220Sedan");
     }
 
 

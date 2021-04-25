@@ -67,10 +67,6 @@ public class SpotsLineHomepage extends WebAPI {
 
     }
 
-    public void SearchBar() {
-        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
-        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
-    }
 
     public void SendKeysToSearchBarUsingExel() throws Exception {
         clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
@@ -78,6 +74,26 @@ public class SpotsLineHomepage extends WebAPI {
         String SportsLine = elementFromExcel.get(0);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,SportsLine);
     }
+
+
+    public void SendKeyPlay() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Play = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Play);
+    }
+
+
+    public void SendKeysBet() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Bet = elementFromExcel.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Bet);
+    }
+
+
+
+
 
 
     }

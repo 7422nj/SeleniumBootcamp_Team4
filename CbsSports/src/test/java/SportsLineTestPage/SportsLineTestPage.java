@@ -45,14 +45,7 @@ public class SportsLineTestPage extends WebAPI {
         SportsLine.Masters();
         String expectedText = "MASTERS";
         assertEqualByXpath(WEB_ELEMENT_LINK_MASTERS, expectedText);
-
-//    }@Test(enabled = false)
-//    public void testFindOdds() {
-//      SportsLine.Odds();
-//     String expectedText = "Page opens";
-//        assertEqualByXpath(WEB_ELEMENT_LINK_ODDS, expectedText);
     }
-
     // Test #4
     @Test
     public void testVerifyPageTitle () {
@@ -79,8 +72,21 @@ public class SportsLineTestPage extends WebAPI {
         SportsLine.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Scores");
 
+    }
 
 
+    // Test #7
+    @Test(enabled = false)
+    public void testSearchPlayUsingExel() throws Exception {
+        SportsLine.SendKeyPlay();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Play");
+    }
+
+    // Test #8
+    @Test(enabled = false)
+    public void testSearchBetUsingExel() throws Exception {
+        SportsLine.SendKeysBet();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Bet");
     }
 
 

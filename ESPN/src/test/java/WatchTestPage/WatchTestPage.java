@@ -98,8 +98,22 @@ public class WatchTestPage extends WebAPI {
         Watch.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Soccer");
 
+    }
 
 
+    // Test #10
+    @Test(enabled = false)
+    public void testSearchTennisUsingExel() throws Exception {
+        Watch.SendKeyTennis();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Tennis");
+    }
+
+
+    //Test #11
+    @Test(enabled = false)
+    public void testSearchGolfUsingExel() throws Exception {
+        Watch.SendKeysGolf();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Golf");
     }
 
 

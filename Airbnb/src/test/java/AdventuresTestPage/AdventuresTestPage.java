@@ -90,6 +90,22 @@ public class AdventuresTestPage extends WebAPI {
     }
 
 
+    // Test #9
+    @Test(enabled = false)
+    public void testSearchAfricaUsingExel() throws Exception {
+        Adventures.SendKeysAfrica();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Africa");
+    }
+
+
+    // Test #10
+    @Test(enabled = false)
+    public void testSearchAlgeriaUsingExel() throws Exception {
+        Adventures.SendKeysAlgeria();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Algeria");
+    }
+
+
 
 
 

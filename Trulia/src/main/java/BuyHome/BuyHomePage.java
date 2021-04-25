@@ -84,4 +84,19 @@ public class BuyHomePage extends WebAPI {
         typeOnElementNEnter(WEB_ELEMENT_LINK_SEARCH,Buy);
     }
 
+
+    public void SendKeysCar() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Car = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Car);
+    }
+
+
+    public void SendKeysMore() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String More = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,More);
+    }
 }

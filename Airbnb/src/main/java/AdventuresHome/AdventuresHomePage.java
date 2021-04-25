@@ -114,11 +114,20 @@ public class AdventuresHomePage extends WebAPI {
     public void SendKeysToSearchBarUsingExel() throws Exception {
         clickByXpathUsingJavaScript(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-        String Location  = elementFromExcel.get(2);
+        String Location  = elementFromExcel.get(0);
         typeOnElementNEnter(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH,Location);
-
-
-
+    }
+    public void SendKeysAfrica() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Africa  = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH,Africa);
+    }
+    public void SendKeysAlgeria() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Algeria  = elementFromExcel.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_BUTTON_START_YOUR_SEARCH,Algeria);
     }
 
 

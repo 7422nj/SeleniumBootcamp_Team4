@@ -79,8 +79,22 @@ public class SecurityTestPage extends WebAPI {
         Security.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"See how to spot fraud");
 
+    }
 
 
+    // Test #8
+    @Test(enabled = false)
+    public void testSearchCheckingUsingExel() throws Exception {
+        Security.SendKeyChecking();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Checking");
+    }
+
+
+    // Test #9
+    @Test(enabled = false)
+    public void testSearchHelpUsingExel() throws Exception {
+        Security.SendKeysHelp();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Help");
     }
 
 

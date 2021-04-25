@@ -90,8 +90,20 @@ public class MyBMWHomePage extends WebAPI {
         String Toys = elementFromExcel.get(3);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
 
+    }
 
+    public void SendKeyserieX2() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String serieX2 = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,serieX2);
+    }
 
+    public void SendKeyserieX5() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String serieX5 = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,serieX5);
     }
 
 

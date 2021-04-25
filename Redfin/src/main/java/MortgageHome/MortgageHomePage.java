@@ -105,16 +105,29 @@ public class MortgageHomePage extends WebAPI {
 
     }
 
-//    public void SearchBar() {
-//        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
-//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
-//    }
+
 
     public void SendKeysToSearchBarUsingExel() throws Exception {
         //clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String Mortgage = elementFromExcel.get(0);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Mortgage);
+    }
+
+
+    public void SendKeysRefinance() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Refinance = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Refinance);
+    }
+
+
+    public void SendKeysland() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String land = elementFromExcel.get(5);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,land);
     }
 
 

@@ -91,6 +91,22 @@ public class ListsTestPage extends WebAPI {
     }
 
 
+    // Test #9
+    @Test(enabled = false)
+    public void testSearchtoysUsingExel() throws Exception {
+        Lists.SendKeystoys();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"toys");
+    }
+
+
+    // Test #10
+    @Test(enabled = false)
+    public void testSearchTVUsingExel() throws Exception {
+        Lists.SendKeysTV();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"TV");
+    }
+
+
 
 
 }

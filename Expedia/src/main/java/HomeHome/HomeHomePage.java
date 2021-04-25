@@ -50,12 +50,7 @@ public class HomeHomePage extends WebAPI {
         waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
     }
-//    public void SendKeysToSearchBarUsingExel() throws Exception {
-//        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
-//        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-//        String Home = elementFromExcel.get(3);
-//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Home);
-//    }
+
     public void SendKeysToSearchBarUsingExel() throws Exception {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String Home = elementFromExcel.get(3);
@@ -65,6 +60,21 @@ public class HomeHomePage extends WebAPI {
     public void clickGames() {
         waitTimeUsingFluent(WEB_ELEMENT_DROP_DOWN_HEADER);
         clickByXpathUsingJavaScript(WEB_ELEMENT_DROP_DOWN_HEADER);
+    }
+
+
+    public void SendKeysFlights() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Flights = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Flights);
+    }
+
+    public void SendKeysTrips() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Trips = elementFromExcel.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Trips);
     }
 
 

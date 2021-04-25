@@ -94,14 +94,14 @@ public class ToysHomepage extends WebAPI {
     public void SendKeysToSearchBarUsingExel() throws Exception {
         clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-        String phone = elementFromExcel.get(2);
-        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,phone);
+        String Toys = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
     }
     public void SendKeysphone() throws Exception {
         clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-        String Toys = elementFromExcel.get(1);
-        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Toys);
+        String phone = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,phone);
     }
     public void SendKeysBallon() throws Exception {
         clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);

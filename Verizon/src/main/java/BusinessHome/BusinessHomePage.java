@@ -61,16 +61,27 @@ public class BusinessHomePage extends WebAPI {
 
     }
 
-//    public void SearchBar() {
-//        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
-//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
-//    }
-public void SendKeysToSearchBarUsingExel() throws Exception {
-    clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
-    List<String> elementFromExcel = DataSource.getItemsListFromExcel();
-    String business = elementFromExcel.get(0);
-    typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,business);
-}
+    public void SendKeysToSearchBarUsingExel() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String business = elementFromExcel.get(0);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,business);
+    }
+
+    public void SendKeySupport() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Support = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Support);
+    }
+
+
+    public void SendKeysWifi() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Wifi = elementFromExcel.get(5);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Wifi);
+    }
 
 
 

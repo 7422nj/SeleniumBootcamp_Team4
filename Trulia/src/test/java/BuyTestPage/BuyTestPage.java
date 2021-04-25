@@ -69,8 +69,21 @@ BuyHomePage Buy= new BuyHomePage();
         Buy.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Home");
 
+    }
+
+    // Test #7
+    @Test(enabled = false)
+    public void testSearchCarUsingExel() throws Exception {
+        Buy.SendKeysCar();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Car");
+    }
 
 
+    // Test #8
+    @Test(enabled = false)
+    public void testSearchMoreUsingExel() throws Exception {
+        Buy.SendKeysMore();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"More");
     }
 
 

@@ -95,8 +95,22 @@ public class SavingsTestPage extends WebAPI {
     public void testSendKeysToSearchBarUsingExel() throws Exception {
         Savings.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"open now");
+    }
 
 
+    // Test #10
+    @Test(enabled = false)
+    public void testSearchSigninUsingExel() throws Exception {
+        Savings.SendKeysSignin();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Signin");
+    }
+
+
+    // Test #11
+    @Test(enabled = false)
+    public void testSearchTotalUsingExel() throws Exception {
+        Savings.SendKeysTotal();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Total");
     }
 
 

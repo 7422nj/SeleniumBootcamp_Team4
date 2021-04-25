@@ -81,19 +81,29 @@ public class DealsHomePage extends WebAPI {
 
     }
 
-//    public void SearchBar() throws Exception {
-//        waitTimeUsingFluent(WEB_ELEMENT_SEARCH_BAR);
-//        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR, WEB_ELEMENT_SEARCH_BAR);
-   // }
     public void SendKeysToSearchBarUsingExel() throws Exception {
         clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String Deals = elementFromExcel.get(1);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Deals);
 
-
-
     }
+
+    public void SendKeysInternet() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Internet = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Internet);
+    }
+
+    public void SendKeysTelevision() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Television = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Television);
+    }
+
+
 
 
 

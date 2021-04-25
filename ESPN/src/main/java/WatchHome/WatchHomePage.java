@@ -105,4 +105,19 @@ public class WatchHomePage extends WebAPI {
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Watch);
     }
 
+    public void SendKeyTennis() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Tennis = elementFromExcel.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Tennis);
+    }
+
+    public void SendKeysGolf() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Golf = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Golf);
+    }
+
+
 }

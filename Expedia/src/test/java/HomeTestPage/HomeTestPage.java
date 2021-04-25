@@ -58,8 +58,22 @@ public class HomeTestPage extends WebAPI {
         Home.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Hotels");
 
+    }
 
 
+    // Test #6
+    @Test(enabled = false)
+    public void testSearchFlightsUsingExel() throws Exception {
+        Home.SendKeysFlights();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Flights");
+    }
+
+
+    //Test #7
+    @Test(enabled = false)
+    public void testSearchTripsUsingExel() throws Exception {
+        Home.SendKeysTrips();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Trips");
     }
 
 

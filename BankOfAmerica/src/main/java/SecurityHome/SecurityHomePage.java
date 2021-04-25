@@ -82,8 +82,21 @@ public class SecurityHomePage extends WebAPI {
         String Security = elementFromExcel.get(5);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Security);
 
+    }
+
+    public void SendKeyChecking() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Checking = elementFromExcel.get(1);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Checking);
+    }
 
 
+    public void SendKeysHelp() throws Exception {
+        clickByXpathUsingJavaScript(WEB_ELEMENT_SEARCH_BAR);
+        List<String> elementFromExcel = DataSource.getItemsListFromExcel();
+        String Help = elementFromExcel.get(4);
+        typeOnElementNEnter(WEB_ELEMENT_SEARCH_BAR,Help);
     }
 
 

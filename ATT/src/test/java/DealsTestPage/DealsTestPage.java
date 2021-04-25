@@ -90,6 +90,23 @@ import static DealsHome.DealsWebElement.*;
             Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Bundles");
         }
 
+
+        // Test #9
+        @Test(enabled = false)
+        public void testSearchInternetUsingExel() throws Exception {
+            Deals.SendKeysInternet();
+            Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Internet");
+        }
+
+
+        // Test #10
+        @Test(enabled = false)
+        public void testSearchTelevisionUsingExel() throws Exception {
+            Deals.SendKeysTelevision();
+            Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Television");
+        }
+
+
         }
 
 

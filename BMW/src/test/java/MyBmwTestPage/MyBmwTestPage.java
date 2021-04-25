@@ -75,7 +75,22 @@ public class MyBmwTestPage extends WebAPI {
         MyBMW.SendKeysToSearchBarUsingExel();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"serie X1");
 
+    }
 
+
+    // Test #8
+    @Test(enabled = false)
+    public void testSearchserieX2UsingExel() throws Exception {
+        MyBMW.SendKeyserieX2();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"serieX2");
+    }
+
+
+    // Test #9
+    @Test(enabled = false)
+    public void testSearchserieX5UsingExel() throws Exception {
+        MyBMW.SendKeyserieX5();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"serieX5");
     }
 
 }
