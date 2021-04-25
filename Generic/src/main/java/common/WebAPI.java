@@ -793,7 +793,13 @@ public class WebAPI {
 
     public void WebWaitUntilClickByXpath(int seconds, String loc) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc)));
-        driver.findElement(By.xpath(loc)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(loc))).click();
+
+    }
+
+    public void assertEqualsGetTitle(String exp){
+        String expectedtitle = exp;
+        String actualtitle = driver.getTitle();
+        Assert.assertEquals(actualtitle,expectedtitle);
     }
 }
