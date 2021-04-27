@@ -81,17 +81,17 @@ public class ToysTestPage extends WebAPI {
     }
 
     //Test #8
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testSearchPhoneUsingExel() throws Exception {
         toys.SendKeysphone();
         Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"plane");
     }
 
     //Test #9
-    @Test(enabled = true)
-    public void testSearchBallonUsingExel() throws Exception {
+    @Test(enabled = false)
+    public void testSearchUsingExel() throws Exception {
         toys.SendKeysBallon();
-        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"animals");
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_SEARCH_BAR,"value"),"Ballon");
     }
 
 
