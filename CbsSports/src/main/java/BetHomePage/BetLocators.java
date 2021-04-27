@@ -4,7 +4,7 @@ public class BetLocators {
 
     public static final String WEB_ELEMENT_LINK_CBS_BET= "//span[.='Bet']";
     public static final String WEB_ELEMENT_LINK_CBS_BET_FOOTBALL= "//a[contains(.,'BET FOOTBALL')]";
-    public static final String WEB_ELEMENT_LINK_CBS_BET_IFRAME= "iframe[src*='javascript:void(0)']";
+    //public static final String WEB_ELEMENT_LINK_CBS_BET_IFRAME= "iframe[src*='javascript:void(0)']";
     public static final String WEB_ELEMENT_LINK_CBS_BET_PLAY= "//button[@class='d-none d-sm-inline-block btn btn-success btn-lg']";
     public static final String WEB_ELEMENT_LINK_CBS_FOOTBALL= "//div[@class='SideNavigation']/ul[1]//span[.='Football']";
     public static final String WEB_ELEMENT_LINK_CBS_BET_VERIFY= "//a[.='2021 AFC East Division']";

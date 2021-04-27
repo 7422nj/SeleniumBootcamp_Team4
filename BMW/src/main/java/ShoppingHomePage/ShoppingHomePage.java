@@ -1,8 +1,6 @@
 package ShoppingHomePage;
 
 import  common.WebAPI;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import static ShoppingHomePage.ShoppingLocators.*;
@@ -13,8 +11,8 @@ public class ShoppingHomePage extends WebAPI {
     public ShoppingHomePage() { PageFactory.initElements(driver,this);}
 
     public void Shopping() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_TRADEIN);
@@ -29,8 +27,8 @@ public class ShoppingHomePage extends WebAPI {
     }
 
     public void Payment() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_SHOPPING_PAYMENT);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PAYMENT);
@@ -45,31 +43,32 @@ public class ShoppingHomePage extends WebAPI {
     }
 
     public void Quote() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_QUOTE_SHOPPING);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
+        clickByXpath(WEB_ELEMENT_LINK_BMW_QUOTE_SHOPPING);
         sleepFor(3);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_QUOTE);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_QUOTE_SERIES);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_QUOTE_MODEL);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_QUOTE_VERIFY);
+        clickByXpath(WEB_ELEMENT_LINK_BMW_QUOTE);
+        clickByXpath(WEB_ELEMENT_LINK_BMW_QUOTE_SERIES);
+        clickByXpath(WEB_ELEMENT_LINK_BMW_QUOTE_SERIES1);
+        clickByXpath(WEB_ELEMENT_LINK_BMW_QUOTE_MODEL);
+        clickByXpath(WEB_ELEMENT_LINK_BMW_QUOTE_VERIFY);
     }
 
     public void Parts() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_MATS);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_MATS1);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_YEAR);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_SHOP);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_EXTERIOR);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_INTERIOR);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_PARTS_VERIFY);
     }
 
     public void OnlineShopping() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_ONLINE_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_ONLINE);
@@ -79,8 +78,8 @@ public class ShoppingHomePage extends WebAPI {
     }
 
     public void Lease() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_LEASE_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_LEASE);
@@ -90,8 +89,8 @@ public class ShoppingHomePage extends WebAPI {
     }
 
     public void Offer() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER);
@@ -99,17 +98,17 @@ public class ShoppingHomePage extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_FIRSTNAME);
         typeOnElement(WEB_ELEMENT_LINK_BMW_OFFER_FIRSTNAME,WEB_ELEMENT_LINK_BMW_OFFER_FIRSTNAME1);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_LASTNAME);
-        typeOnElement(WEB_ELEMENT_LINK_BMW_OFFER_LASTNAME,WEB_ELEMENT_LINK_BMW_OFFER_LASTNAME1);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_EMAIL);
-        scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_ZIP);
-        clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_ZIP);
-        typeOnElement(WEB_ELEMENT_LINK_BMW_OFFER_ZIP,WEB_ELEMENT_LINK_BMW_OFFER_ZIP2);
+        //typeOnElement(WEB_ELEMENT_LINK_BMW_OFFER_LASTNAME,WEB_ELEMENT_LINK_BMW_OFFER_LASTNAME1);
+        //clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_EMAIL);
+        //scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_ZIP);
+        //clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_ZIP);
+        //typeOnElement(WEB_ELEMENT_LINK_BMW_OFFER_ZIP,WEB_ELEMENT_LINK_BMW_OFFER_ZIP2);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_OFFER_VERIFY);
     }
 
     public void Finance() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_FINANCE_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_FINANCE);
@@ -123,8 +122,8 @@ public class ShoppingHomePage extends WebAPI {
     }
 
     public void Services() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_BMW_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_SERVICES_SHOPPING);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_BMW_SERVICES);

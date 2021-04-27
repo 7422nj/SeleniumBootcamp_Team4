@@ -2,6 +2,7 @@ package ShoppingTestPage;
 
 import ShoppingHomePage.ShoppingHomePage;
 import common.WebAPI;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.awt.*;
 import static ShoppingHomePage.ShoppingLocators.*;
@@ -11,58 +12,58 @@ public class ShoppingTestPage extends WebAPI {
 
     ShoppingHomePage Shopping = new ShoppingHomePage();
 
-    @Test
+    @Test(enabled = false)
     public void Shopping() throws Exception{
         Shopping.Shopping();
         assertEqualsGetTitle("Next: Vechile Option");
     }
 
-    @Test
+    @Test(enabled = false)
     public void Payment() throws Exception{
         Shopping.Payment();
-        assertEqualsGetTitle("Estimated Add-On Value");
+        Assert.assertTrue(isTitleTrue("Car Payment Estimator - Lease and Finance Options - BMW USA"));
     }
 
-    @Test
+    @Test(enabled = false)
     public void Quote() throws Exception{
         Shopping.Quote();
-        assertEqualsGetTitle("");
+        Assert.assertTrue(isTitleTrue("Request a Quote - Pricing, Offers & Product Information - BMW USA"));
     }
 
-    @Test
+    @Test(enabled = false)
     public void Parts() throws Exception{
         Shopping.Parts();
         assertEqualsGetTitle("");
     }
 
-    @Test
+    @Test(enabled = false)
     public void OnlineShopping() throws Exception{
         Shopping.OnlineShopping();
-        assertEqualsGetTitle("Search");
+        assertEqualsGetTitle("Shop From Home – Online Retail Experience | BMW USA");
     }
 
-    @Test
+    @Test(enabled = false)
     public void Lease() throws Exception{
         Shopping.Lease();
-        assertEqualsGetTitle("Search");
+        assertEqualsGetTitle("Lease & Finance Offers - BMW USA");
     }
 
-    @Test
+    @Test(enabled = false)
     public void Offer() throws Exception{
         Shopping.Offer();
         assertEqualsGetTitle("Submit");
     }
 
-    @Test
+    @Test(enabled = false)
     public void Finance() throws Exception{
         Shopping.Finance();
-        assertEqualsGetTitle("Zip Code");
+        assertEqualsGetTitle("Apply for Financing - BMW Credit Application");
     }
 
-    @Test
+    @Test(enabled = true)
     public void Services() throws Exception{
         Shopping.Services();
-        assertEqualsGetTitle("Search");
+        assertEqualsGetTitle("Lease & Finance Offers - BMW USA");
     }
 
 

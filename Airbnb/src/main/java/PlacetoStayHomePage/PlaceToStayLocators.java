@@ -6,10 +6,10 @@ public class PlaceToStayLocators {
     public static final String WEB_ELEMENT_AIRBNB_LOCATION = "//div[@class='_gor68n']/div[@class='_wtz1co']";
     public static final String WEB_ELEMENT_AIRBNB_DESTINATION = "//div[@class='_91tt0g']";
     public static final String WEB_ELEMENT_AIRBNB_CHECKIN = "//div[.='Check in']";
-    public static final String WEB_ELEMENT_AIRBNB_MONTH = "//div[@class='_754zdu7']//div[@class='_gucugi']/div[.='May 2021']";
-    public static final String WEB_ELEMENT_AIRBNB_DAY = "//div[@class='_754zdu7']//tr[2]//div[@class='_1258d0t']/div[.='2']";
+    public static final String WEB_ELEMENT_AIRBNB_MONTH = "//div[@class='_1l6jpwo']/div[1]//div[@class='_uh2dzp']";
+    public static final String WEB_ELEMENT_AIRBNB_DAY = "//div[@class='_754zdu7']/div[@class='_1lds9wb']//div[@class='_f8btejl']/div[.='2']";
     public static final String WEB_ELEMENT_AIRBNB_CHECKOUT = "//div[.='Check out']";
-    public static final String WEB_ELEMENT_AIRBNB_CHECKOUT_DAY = "//div[@class='_754zdu7']/div[@class='_1lds9wb']//div[@class='_f8btejl']/div[.='4']";
+    public static final String WEB_ELEMENT_AIRBNB_CHECKOUT_DAY = "//div[@class='_th2fvde']/div[@class='_seuyf']";
     public static final String WEB_ELEMENT_AIRBNB_VERIFY = "//div[@class='_1hb5o3s']";
 
 //OceanCity

@@ -802,4 +802,116 @@ public class WebAPI {
         String actualtitle = driver.getTitle();
         Assert.assertEquals(actualtitle,expectedtitle);
     }
+
+    public String getTextFromElement(String element) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getText();
+            return elementText;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+    public String getAttributeFromElement(String element, String attribute) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getAttribute(attribute);
+            return elementText;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+    public boolean compareStrings(String str1, String str2) {
+        boolean flag = false;
+
+        if (str1.toLowerCase().equals(str2)) {
+            flag = true;
+            return flag;
+        }
+
+        return flag;
+    }
+
+    public boolean isElementDisplayed(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isDisplayed()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isTitleTrue(String title) {
+        boolean flag = false;
+
+        if (driver.getTitle().equals(title)){
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isElementSelected(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isSelected()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isElementEnabled(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isEnabled()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isCurrentUrlTrue(String Url) {
+        boolean flag = false;
+
+        if (driver.getCurrentUrl().equals(Url)){
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public String getTitleText(String title) {
+        String elementText = "";
+
+        try {
+            elementText = driver.getTitle();
+            if(elementText.equals(title))
+                return elementText;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+
 }
+
+
+
+
+
+

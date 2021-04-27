@@ -1,5 +1,6 @@
 package PlaceToStayTestPage;
 
+import PlacetoStayHomePage.PlaceToStay;
 import common.WebAPI;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,31 +12,31 @@ import static PlacetoStayHomePage.PlaceToStayLocators.*;
 
 public class PlaceToStayTest extends WebAPI {
 
-    PlaceToStayTest PlacetoStay = new PlaceToStayTest();
+    PlaceToStay PlacetoStay = new PlaceToStay();
 
-    @Test
+    @Test(enabled = true)
     public void PlacetoStay() throws Exception{
         PlacetoStay.PlacetoStay();
         assertEqualsGetTitle("Search");
     }
 
-    @Test
+    @Test(enabled = false)
     public void OceanCity() throws Exception{
         PlacetoStay.OceanCity();
         assertEqualsGetTitle("Save");
     }
-    @Test
+    @Test(enabled = false)
     public void VirginiaBeach() throws Exception{
-        PlacetoStay.VirginiaBeach();
+        PlacetoStay.Virginiabeach();
         assertEqualsGetTitle((""));
     }
 
-    @Test
+    @Test(enabled = false)
     public void DevilHills() throws Exception{
         PlacetoStay.DevilHills();
         assertEqualsGetTitle("Save");
     }
-    @Test
+    @Test(enabled = false)
     public void Norfolk() throws Exception{
         PlacetoStay.Norfolk();
         assertEqualsGetTitle("Save");

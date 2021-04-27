@@ -20,6 +20,7 @@ public class PlaceToStay extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_AIRBNB_DAY);
         clickByXpathUsingJavaScript(WEB_ELEMENT_AIRBNB_CHECKOUT);
         clickByXpathUsingJavaScript(WEB_ELEMENT_AIRBNB_CHECKOUT_DAY);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_AIRBNB_VERIFY);
     }
 
     public void OceanCity() throws Exception{

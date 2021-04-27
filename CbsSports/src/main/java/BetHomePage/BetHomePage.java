@@ -12,8 +12,8 @@ public class BetHomePage extends WebAPI {
     public BetHomePage() { PageFactory.initElements(driver,this);}
 
     public void Bet() throws Exception {
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_FOOTBALL);
@@ -23,8 +23,8 @@ public class BetHomePage extends WebAPI {
     }
 
     public void Basketball() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_BASKETBALL);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BASKETBALL);
@@ -33,8 +33,8 @@ public class BetHomePage extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BASKETBALL_VERIFY);
     }
     public void Baseball() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_BASEBALL);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BASEBALL);
@@ -43,8 +43,8 @@ public class BetHomePage extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BASEBALL_VERIFY);
     }
     public void Hockey() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_HOCKEY);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_HOCKEY);
@@ -54,8 +54,8 @@ public class BetHomePage extends WebAPI {
 
     }
     public void Golf() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_GOLF);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_GOLF);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_GOLF_PLAY);
@@ -64,8 +64,8 @@ public class BetHomePage extends WebAPI {
     }
 
     public void Futures() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_FUTURES);
         sleepFor(3);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_FUTURES);
@@ -73,8 +73,8 @@ public class BetHomePage extends WebAPI {
     }
 
     public void Inplay() throws Exception{
-        WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
-        iframeHandle(loginBox);
+        //WebElement loginBox = driver.findElement(By.xpath(WEB_ELEMENT_LINK_CBS_BET_IFRAME));
+        //iframeHandle(loginBox);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_BET_INPLAY);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_INPLAY);
         clickByXpathUsingJavaScript(WEB_ELEMENT_LINK_CBS_INPLAY_VERIFY);
