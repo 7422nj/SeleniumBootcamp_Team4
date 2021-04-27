@@ -35,6 +35,11 @@ public class dealsTestPage extends WebAPI {
     }
 
     @Test
+    public void Beauty() throws Exception{
+        Deals.Beauty();
+        String expectedText = "Best Sellers";
+        assertEqualByXpath(WEB_ELEMENT_DEALS_BEAUTY_VERIFY,expectedText);
+    }
 
 
 

@@ -47,6 +47,13 @@ public class dealsHomePage extends WebAPI {
         clickByXpathUsingJavaScript(WEB_ELEMENT_DEALS_KIDSANDBABIES_VERIFY);
     }
 
+    public void Beauty() throws Exception{
+        clickByXpathUsingJavaScript(WEB_ELEMENT_DEALS_BEAUTY);
+        sleepFor(3);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_DEALS_BEAUTY1);
+        clickByXpathUsingJavaScript(WEB_ELEMENT_DEALS_BEAUTY_VERIFY);
+    }
+
 
 
 }
