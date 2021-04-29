@@ -64,7 +64,7 @@ public class MercedesMainTest extends WebAPI {
     @Ignore
     public void testSearchUsingDataProvider(String searchKey) {
         try {
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
+            clickUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
             WebElement searchText = driver.findElement(By.xpath(WEB_ELEMENT_INPUT_SEARCH_FIELD));
             WebDriverWait0(20);
             searchText.sendKeys(searchKey);
@@ -88,7 +88,7 @@ public class MercedesMainTest extends WebAPI {
     @Ignore
     public void testSearchUsingDataProvider2(String author, String searchKey) throws InterruptedException, AWTException {
         try {
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
+            clickUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
             WebElement searchText = driver.findElement(By.xpath(WEB_ELEMENT_INPUT_SEARCH_FIELD));
             WebDriverWait0(20);
             searchText.sendKeys(searchKey);

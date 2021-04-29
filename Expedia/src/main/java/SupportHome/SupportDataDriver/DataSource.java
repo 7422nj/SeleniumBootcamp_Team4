@@ -82,7 +82,7 @@ public class DataSource extends WebAPI {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_LOGO);
+            clickUsingJavaScript(WEB_ELEMENT_LOGO);
         }
         //Close
         wb.close();

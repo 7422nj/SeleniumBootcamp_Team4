@@ -32,7 +32,7 @@ public class HondaMainPage extends WebAPI {
      */
 
     public void searchReliabilitiesUsingExcel() throws Exception {
-    clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH_ICON);
+    clickUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH_ICON);
     List<String> reliabilities = DataSource.getItemsListFromExcel();
     String search = reliabilities.get(1);
     typeOnElementNEnter(WEB_ELEMENT_SEARCH_FIELD,search);
@@ -48,9 +48,9 @@ public class HondaMainPage extends WebAPI {
         List<String> search = DataSource.getItemsListFromDB();
         String hybrid = search.get(2);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_FIELD,hybrid);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CLICK_HERE);
+        clickUsingJavaScript(WEB_ELEMENT_LINK_CLICK_HERE);
         scrollToElementUsingJavaScript(WEB_ELEMENT_LINK_PLUGIN_HYBRID);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_PLUGIN_HYBRID);
+        clickUsingJavaScript(WEB_ELEMENT_LINK_PLUGIN_HYBRID);
         WebElement element = driver.findElement(By.xpath(WEB_ELEMENT_LINK_PDF));
         scrollNClickElementUsingActions(element);
         robotScrollDown(6);
@@ -72,7 +72,7 @@ public class HondaMainPage extends WebAPI {
     }
 
     public void searchItemsUsingDataProvider(){
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH_ICON);
+        clickUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH_ICON);
     }
 
 

@@ -2,6 +2,7 @@ package HomePage;
 
 import HomePage.BenzDataDriver.DataSource;
 import common.WebAPI;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.DataProvider;
 
@@ -34,8 +35,8 @@ public class MercedesMainPage extends WebAPI {
      */
 
     public void registerAccountInvalidCredsUsingExcel() throws Exception {
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_MY_ACCOUNT);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_REGISTER);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_MY_ACCOUNT));
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_REGISTER));
         implicitWait(15);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String username = elementFromExcel.get(1);
@@ -49,8 +50,8 @@ public class MercedesMainPage extends WebAPI {
         implicitWait(15);
         String password = elementFromExcel.get(4);
         typeOnElement(WEB_ELEMENT_INPUT_PASSWORD, password);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_CHECKBOX_SUBMIT);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_CONTINUE);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_CHECKBOX_SUBMIT));
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_CONTINUE));
     }
 
     /**
@@ -59,8 +60,8 @@ public class MercedesMainPage extends WebAPI {
      */
 
     public void registerAccountValidCredsUsingExcel() throws Exception {
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_MY_ACCOUNT);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_REGISTER);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_MY_ACCOUNT));
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_REGISTER));
         implicitWait(15);
         List<String> elementFromExcel = DataSource.getItemsListFromExcel2();
         String username = elementFromExcel.get(1);
@@ -74,8 +75,8 @@ public class MercedesMainPage extends WebAPI {
         implicitWait(15);
         String password = elementFromExcel.get(4);
         typeOnElement(WEB_ELEMENT_INPUT_PASSWORD, password);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_CHECKBOX_SUBMIT);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_CONTINUE);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_CHECKBOX_SUBMIT));
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_CONTINUE));
     }
 
     /**
@@ -86,11 +87,11 @@ public class MercedesMainPage extends WebAPI {
     public void searchInterestsUsingExcel() throws Exception {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel3();
         String interest = elementFromExcel.get(1);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_SEARCH));
         typeOnElementNEnter(WEB_ELEMENT_INPUT_SEARCH_FIELD, interest);
         implicitWait(20);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BENZ_LOGO);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BENZ_LOGO));
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_SEARCH));
         String item = elementFromExcel.get(2);
         typeOnElement(WEB_ELEMENT_INPUT_SEARCH_FIELD, item);
     }
@@ -145,7 +146,7 @@ public class MercedesMainPage extends WebAPI {
     public void searchItemUsingMYSQLDB() throws Exception {
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_SEARCH));
         String interest = elementFromDatabase.get(3);
         typeOnElementNEnter(WEB_ELEMENT_INPUT_SEARCH_FIELD, interest);
     }
@@ -159,10 +160,10 @@ public class MercedesMainPage extends WebAPI {
         scrollToElementUsingJavaScript(WEB_ELEMENT_HEADER_STAY);
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_EMAIL_NEWS);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_INPUT_EMAIL_NEWS));
         String email = elementFromDatabase.get(3);
         typeOnElement(WEB_ELEMENT_INPUT_EMAIL_NEWS, email);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBSCRIBE);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_SUBSCRIBE));
     }
 
     /**
@@ -174,10 +175,10 @@ public class MercedesMainPage extends WebAPI {
         scrollToElementUsingJavaScript(WEB_ELEMENT_HEADER_STAY);
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_EMAIL_NEWS);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_INPUT_EMAIL_NEWS));
         String email = elementFromDatabase.get(6);
         typeOnElement(WEB_ELEMENT_INPUT_EMAIL_NEWS, email);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBSCRIBE);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_SUBSCRIBE));
     }
 
     /**
@@ -186,13 +187,13 @@ public class MercedesMainPage extends WebAPI {
      */
 
     public void findADealerNearbyUsingMYSQLDB() throws Exception {
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_NEARBY);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_ZIP_CODE);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_NEARBY));
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_INPUT_ZIP_CODE));
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
         String zipcode = elementFromDatabase.get(7);
         typeOnElementNEnter(WEB_ELEMENT_INPUT_ZIP_CODE, zipcode);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_CLICK_LOCATION);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_CLICK_LOCATION));
     }
 
     /**
@@ -200,7 +201,7 @@ public class MercedesMainPage extends WebAPI {
      */
 
     public void NavigateBackToMainPage(){
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CONTACT_US);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_LINK_CONTACT_US));
         navigateBack();
     }
 
@@ -209,7 +210,7 @@ public class MercedesMainPage extends WebAPI {
      */
 
     public void hoverOverNearbyDealers(){
-        basicHoverUsingXpath(WEB_ELEMENT_BUTTON_NEARBY);
+        basicHover(By.xpath(WEB_ELEMENT_BUTTON_NEARBY));
     }
 }
 

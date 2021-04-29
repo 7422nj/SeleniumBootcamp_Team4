@@ -132,10 +132,9 @@ public class NewsPage extends WebAPI {
     }
 
     public void navigateToNewsPage() throws InterruptedException {
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_CONTACT);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_CONTACT));
         navigateBack();
         createAlert("alert('Welcome to Bootcamp');");
-        fluentWait();
         acceptAlerts();
     }
 
@@ -144,7 +143,6 @@ public class NewsPage extends WebAPI {
         driver.manage().window().maximize();
         switchHandlesExample();
         find(WEB_ELEMENT_SEARCH_MAIN_PAGE);
-        implicitWait(20);
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
         String word = elementFromDatabase.get(3);

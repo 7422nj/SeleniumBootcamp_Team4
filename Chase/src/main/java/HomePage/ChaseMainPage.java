@@ -32,7 +32,7 @@ public class ChaseMainPage extends WebAPI {
     public void navigateToMainPage() throws InterruptedException {
         robotScrollDownByChunks(10);
         find(WEB_ELEMENT_LINK_CAREERS);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CAREERS);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_LINK_CAREERS));
         navigateBack();
     }
 
@@ -41,7 +41,7 @@ public class ChaseMainPage extends WebAPI {
      */
 
     public void hoverOverOpenAccount() {
-        basicHoverUsingXpath(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT);
+        basicHover(By.xpath(WEB_ELEMENT_BUTTON_OPEN_ACCOUNT));
     }
 
     /**
@@ -52,16 +52,16 @@ public class ChaseMainPage extends WebAPI {
     public void signInUsingInvalidCredsUsingExcel() throws Exception {
         WebElement element = driver.findElement(By.xpath(WEB_ELEMENT_IFRAME_HANDLE));
         iframeHandle(element);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_USER_ID);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_INPUT_USER_ID));
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String username = elementFromExcel.get(1);
         typeOnElement(WEB_ELEMENT_INPUT_USER_ID, username);
         implicitWait(20);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_PASSWORD);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_INPUT_PASSWORD));
         String password = elementFromExcel.get(2);
         typeOnElement(WEB_ELEMENT_INPUT_PASSWORD, password);
         implicitWait(20);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SIGN_IN);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_BUTTON_SUBMIT_SIGN_IN));
     }
 
     /**

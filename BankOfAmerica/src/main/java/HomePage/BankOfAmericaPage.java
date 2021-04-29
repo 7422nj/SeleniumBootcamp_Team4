@@ -2,6 +2,7 @@ package HomePage;
 
 import HomePage.BOAData.DataSource;
 import common.WebAPI;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.support.PageFactory;
@@ -143,7 +144,6 @@ public class BankOfAmericaPage extends WebAPI {
 
     public void signInUsingFluentWait() {
         typeOnElement(WEB_ELEMENT__ENTRY_USERNAME, WEB_ELEMENT_SEND_KEYS_USER);
-        fluentWait();
         typeOnElementNEnter(WEB_ELEMENT_ENTRY_PASSWORD, WEB_ELEMENT_SEND_KEYS_PASS);
     }
 
@@ -180,7 +180,7 @@ public class BankOfAmericaPage extends WebAPI {
      */
 
     public void hoverOverCashRewards() {
-        basicHoverUsingXpath(WEB_ELEMENT_IMAGE_CARD);
+        basicHover(By.xpath(WEB_ELEMENT_IMAGE_CARD));
     }
 
     /**
@@ -190,9 +190,9 @@ public class BankOfAmericaPage extends WebAPI {
      */
 
     public void findFinancialCenterNearMe() throws InterruptedException {//needs work
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_NEAR_ME);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_LINK_NEAR_ME));
         WebDriverWait0(20);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_MAP_NEAR_ME);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_MAP_NEAR_ME));
     }
 
     /**

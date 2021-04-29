@@ -83,7 +83,7 @@ public class DataSource extends WebAPI {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_LOGO_TRULIA);
+            clickUsingJavaScript(WEB_ELEMENT_LOGO_TRULIA);
         }
         //Close
         wb.close();

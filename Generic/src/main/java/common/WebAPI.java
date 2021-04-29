@@ -34,6 +34,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -76,6 +77,7 @@ public class WebAPI {
     public static WebDriver driver;
     public DataReader dataReader;
     public Properties properties;
+    public static DataReader excelReader = new DataReader();
     String propertiesFilePath = "src/main/resources/secret.properties";
 
     public WebAPI() {
@@ -781,36 +783,20 @@ public class WebAPI {
     }
 
 
-    public void typeOnElement1(String locator, String value) {
+    public void typeOnElement1(By by, String value) {
         try {
-            driver.findElement(By.cssSelector(locator)).sendKeys(value);
+            driver.findElement(by).sendKeys(value);
         } catch (Exception ex) {
-            try {
-                driver.findElement(By.xpath(locator)).sendKeys(value);
-            } catch (Exception ex1) {
-                try {
-                    driver.findElement(By.id(locator)).sendKeys(value);
-                } catch (Exception ex2) {
-                    try {
-                        driver.findElement(By.name(locator)).sendKeys(value);
-                    } catch (Exception ex3) {
-                        try {
-                            driver.findElement(By.className(locator)).sendKeys(value);
-                        } catch (Exception ex4) {
-                            driver.findElement(By.tagName(locator)).sendKeys(value);
-                        }
+            ex.printStackTrace();
                     }
-                }
-            }
-        }
     }
 
 
-    public void clickOnLink(String locator) {
+    public void clickOnElement(By by) {
         try {
-            driver.findElement(By.linkText(locator)).click();
+            driver.findElement(by).click();
         } catch (Exception ex) {
-            driver.findElement(By.partialLinkText(locator)).click();
+            ex.printStackTrace();
         }
     }
 
@@ -855,22 +841,14 @@ public class WebAPI {
 
     }//use if click interception pops up as error
 
-    public static void clickByXNCssUsingJavaScript(String locator) {
-        try {
-            WebElement element = driver.findElement(By.xpath(locator));
+    public static void clickUsingJavaScript(By by) {
+        try {// driver.findElement(By.
+            WebElement element = driver.findElement(by);
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click()", element);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\n*** First Attempt Failed ***");
-            try {
-                WebElement element = driver.findElement(By.cssSelector(locator));
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("arguments[0].click()", element);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-                System.out.println("\n** Final Attempt Failed ***");
-            }
         }
 
     }
@@ -1090,7 +1068,7 @@ public class WebAPI {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON_LOCATOR);
+            clickUsingJavaScript(By.xpath(WEB_ELEMENT_SUBMIT_BUTTON_LOCATOR));
         }
         //Close
         wb.close();
@@ -1143,12 +1121,9 @@ public class WebAPI {
         }
     }
 
-    public void basicHoverUsingXpath(String loc) {
-        //Hover over Like-New Cams link using Actions
-        WebElement ele = driver.findElement(By.xpath(loc));
-        //Creating object of an Actions class
+    public void basicHover(By by) {
+        WebElement ele = driver.findElement(by);
         Actions action = new Actions(driver);
-        //Performing the mouse hover action on the target element.
         action.moveToElement(ele).perform();
     }
 
@@ -1207,12 +1182,13 @@ public class WebAPI {
         act.dragAndDrop(From, To).build().perform();
     }
 
-    public void fluentWait() {
+    public void fluentWaitForVisibilityOf(WebElement element){
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
                 .withMessage("\nFluent Wait Successful")
                 .ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void doubleClickUsingXAndCSS(String locator) {
@@ -1347,13 +1323,13 @@ public class WebAPI {
                 try {
                     implicitWait(15);
                     typeOnElementNEnter(WEB_ELEMENT_SEARCH_BANK, sheet.getRow(i).getCell(0).getStringCellValue());
-                    clickByXNCssUsingJavaScript(WEB_ELEMENT_SUBMIT_BUTTON);
+                    clickUsingJavaScript(By.xpath(WEB_ELEMENT_SUBMIT_BUTTON));
                     WebDriverWait0(15);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_LOGO_BANK);
+            clickUsingJavaScript(By.xpath(WEB_ELEMENT_LOGO_BANK));
         }
         //Close
         wb.close();
@@ -1747,5 +1723,18 @@ public class WebAPI {
         return elementText;
     }
 
-
+    //Excel file
+    public static List<String> getItemsFromExcel(String excelPath) throws Exception, IOException, SQLException, ClassNotFoundException{
+        String path = excelPath;
+        String[] myStringArray = excelReader.fileReader2(path, 0);
+        for(int i=1;i<myStringArray.length; i++)
+            System.out.println(myStringArray[i] + " ");
+        ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < myStringArray.length; i++) {
+            list.add(myStringArray[i]);
+        }
+        return list;
+    }
 }
+
+

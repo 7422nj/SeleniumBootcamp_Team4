@@ -46,7 +46,7 @@ public class HomePage extends WebAPI {
 
     public void enterTextInLocationField() throws InterruptedException, AWTException {
         refresh();
-        fluentWait();
+        fluentWaitForVisibilityOf();
         typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR, WEB_ELEMENT_VALUE_SEARCH_LOCATION);
         implicitWait(10);
     }
@@ -120,9 +120,9 @@ public class HomePage extends WebAPI {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String interest = elementFromExcel.get(1);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_LOCATOR, interest);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+        clickUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
         implicitWait(15);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_SUPER_HOST_AIRBNB);
+        clickUsingJavaScript(WEB_ELEMENT_SUPER_HOST_AIRBNB);
         implicitWait(15);
         robotScrollDownByChunks(4);
     }
@@ -137,9 +137,9 @@ public class HomePage extends WebAPI {
         List<String> elementFromExcel = DataSource.getItemsListFromExcel();
         String interest = elementFromExcel.get(1);
         typeOnElementNEnter(WEB_ELEMENT_SEARCH_LOCATOR, interest);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+        clickUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
         implicitWait(15);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_SUPER_HOST_AIRBNB);
+        clickUsingJavaScript(WEB_ELEMENT_SUPER_HOST_AIRBNB);
         implicitWait(15);
         robotScrollDownByChunks(4);
         switchTabToDefault();
@@ -163,7 +163,7 @@ public class HomePage extends WebAPI {
      */
 
     public void signUpUsingMYSQLDB() throws Exception {
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_DROP_DOWN_MENU);
+        clickUsingJavaScript(WEB_ELEMENT_DROP_DOWN_MENU);
         enterKey();
         DataSource.insertDataIntoDB();
         List<String> elementFromDatabase = DataSource.getItemsListFromDB();
@@ -186,13 +186,13 @@ public class HomePage extends WebAPI {
         find(WEB_ELEMENT_CALENDAR);
         click(WEB_ELEMENT_CALENDAR);
         implicitWait(15);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_DATE_STAY_PICKED);
+        clickUsingJavaScript(WEB_ELEMENT_DATE_STAY_PICKED);
         implicitWait(15);
         find(WEB_ELEMENT_CALENDAR_LEAVE);
         click(WEB_ELEMENT_CALENDAR_LEAVE);
         implicitWait(15);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_DATE_LEAVE_PICKED);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_SUBMIT_DATE);
+        clickUsingJavaScript(WEB_ELEMENT_DATE_LEAVE_PICKED);
+        clickUsingJavaScript(WEB_ELEMENT_SUBMIT_DATE);
         implicitWait(20);
     }
 
@@ -203,12 +203,17 @@ public class HomePage extends WebAPI {
 
     public void dragPrice() throws InterruptedException {
         typeOnElement(WEB_ELEMENT_SEARCH_LOCATOR,WEB_ELEMENT_ENTRY_DRAG);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+        clickUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
         find(WEB_ELEMENT_BUTTON_PRICE);
         click(WEB_ELEMENT_BUTTON_PRICE);
         waitTimeExplicit(WEB_ELEMENT_DRAG_START);
         dragAndDropUsingActions(WEB_ELEMENT_DRAG_START,WEB_ELEMENT_DRAG_END);
     }
+
+    /**
+     * Action Method #12
+     * @throws Exception
+     */
 
     public void searchViewsUsingMYSQLDB() throws Exception {
         DataSource.insertDataIntoDB();

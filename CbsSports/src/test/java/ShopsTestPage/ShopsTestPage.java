@@ -129,7 +129,7 @@ public class ShopsTestPage extends WebAPI {
     @Ignore
     public void testSearchUsingDataProvider(String searchKey) {
         try {
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_SEARCH_BAR);
+            clickUsingJavaScript(WEB_ELEMENT_INPUT_SEARCH_BAR);
             WebElement searchText = driver.findElement(By.xpath(WEB_ELEMENT_INPUT_SEARCH_BAR));
             WebDriverWait0(20);
             searchText.sendKeys(searchKey);
@@ -153,7 +153,7 @@ public class ShopsTestPage extends WebAPI {
     @Ignore
     public void testSearchUsingDataProvider2(String author, String searchKey) throws InterruptedException, AWTException {
         try {
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_INPUT_SEARCH_BAR);
+            clickUsingJavaScript(WEB_ELEMENT_INPUT_SEARCH_BAR);
             WebElement searchText = driver.findElement(By.xpath(WEB_ELEMENT_INPUT_SEARCH_BAR));
             WebDriverWait0(20);
             searchText.sendKeys(searchKey);

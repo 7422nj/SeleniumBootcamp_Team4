@@ -83,8 +83,8 @@ public class DataSource extends WebAPI {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_AIRBNB_LOGO);
+            clickUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT_SEARCH);
+            clickUsingJavaScript(WEB_ELEMENT_AIRBNB_LOGO);
         }
         //Close
         wb.close();

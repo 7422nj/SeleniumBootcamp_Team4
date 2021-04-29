@@ -125,7 +125,7 @@ public class SupportPage extends WebAPI {
         String password = elementFromDatabase.get(6);
         typeOnElement(WEB_ELEMENT_INPUT_PASSWORD, password);
         find(WEB_ELEMENT_BUTTON_SUBMIT);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT);
+        clickUsingJavaScript(WEB_ELEMENT_BUTTON_SUBMIT);
         sleepFor(120);
     }
 

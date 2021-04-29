@@ -100,7 +100,7 @@ public class HomePageTest extends WebAPI {
     public void testSearchUsingDataProvider(String author, String searchKey) throws InterruptedException, AWTException {
         try {
             WebElement searchText = driver.findElement(By.xpath(WEB_ELEMENT_SEARCH_LOCATOR));
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_SEARCH_LOCATOR);
+            clickUsingJavaScript(WEB_ELEMENT_SEARCH_LOCATOR);
             WebDriverWait0(20);
             searchText.sendKeys(searchKey);
             String testValue = searchText.getAttribute("value");

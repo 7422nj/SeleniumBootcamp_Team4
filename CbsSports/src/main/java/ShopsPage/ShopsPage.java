@@ -1,6 +1,7 @@
 package ShopsPage;
 
 import common.WebAPI;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,13 +31,13 @@ public class ShopsPage extends WebAPI {
     public void findPerfectEaglesJerseyUsingSizeTable() throws InterruptedException, AWTException {
         try {
             implicitWait(25);
-            basicHoverUsingXpath(WEB_ELEMENT_BUTTON_NFL);
+            basicHover(By.xpath(WEB_ELEMENT_BUTTON_NFL));
             hoverOverDropdownNClickUsingXpath(WEB_ELEMENT_BUTTON_NFL, WEB_ELEMENT_LINK_EAGLES);
             implicitWait(25);
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_RADIO_BUTTON_MEN);
+            clickUsingJavaScript(By.xpath(WEB_ELEMENT_RADIO_BUTTON_MEN));
             implicitWait(15);
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_TABLE_SMALL);
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_JERSEY);
+            clickUsingJavaScript(By.xpath(WEB_ELEMENT_TABLE_SMALL));
+            clickUsingJavaScript(By.xpath(WEB_ELEMENT_LINK_JERSEY));
             implicitWait(15);
             click(WEB_ELEMENT_TABLE_SMALL);
         } catch (Exception e) {
@@ -51,7 +52,7 @@ public class ShopsPage extends WebAPI {
 
     public void hoverOverNFLButton() {
         try {
-            basicHoverUsingXpath(WEB_ELEMENT_BUTTON_NFL);
+            basicHover(By.xpath(WEB_ELEMENT_BUTTON_NFL));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,7 +109,7 @@ public class ShopsPage extends WebAPI {
 
     public void navigateBackToShopsPage() throws InterruptedException, AWTException {
         robotScrollDownByChunks(10);
-        clickByXNCssUsingJavaScript(WEB_ELEMENT_LINK_CAREERS);
+        clickUsingJavaScript(By.xpath(WEB_ELEMENT_LINK_CAREERS));
         implicitWait(20);
         navigateBack();
         implicitWait(20);

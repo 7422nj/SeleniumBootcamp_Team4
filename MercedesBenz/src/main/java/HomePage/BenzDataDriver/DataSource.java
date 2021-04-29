@@ -78,13 +78,13 @@ public class DataSource extends WebAPI {
             } else {
                 wb.close();
                 try {
-                    clickByXNCssUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
+                    clickUsingJavaScript(WEB_ELEMENT_BUTTON_SEARCH);
                     typeOnElementNEnter(WEB_ELEMENT_INPUT_SEARCH_FIELD, sheet.getRow(i).getCell(0).getStringCellValue());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            clickByXNCssUsingJavaScript(WEB_ELEMENT_BENZ_LOGO);
+            clickUsingJavaScript(WEB_ELEMENT_BENZ_LOGO);
             }
             //Close
             wb.close();
