@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage  extends WebAPI {
 
     public HomePage() {
-        PageFactory.initElements(driver1, this);
+        PageFactory.initElements(driver, this);
     }
         /////////////////////////////////////////////////////////////////////////////////////////
     // Action Method class

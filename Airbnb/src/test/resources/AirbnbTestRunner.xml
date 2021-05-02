@@ -1,5 +1,6 @@
+
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="AirbnbTestSuit" parallel="none" thread-count="2">
 <!--    parallel="none"  Working Fine-->
@@ -7,39 +8,39 @@
 <!--    parallel="tests"  Working Fine but have issue-->
 
 
-    <parameter name="useCloudEnv" value="false"/>
-    <parameter name="cloudEnvName" value="browserStack"/>
-    <parameter name="OS" value="windows"/>
-    <parameter name="os_version" value="10"/>
-    <!--    <parameter name="OS" value="OS X"/>-->
-    <!--    <parameter name="os_version" value="Sierra"/>-->
+<parameter name="useCloudEnv" value="false"/>
+<parameter name="cloudEnvName" value="browserStack"/>
+<parameter name="OS" value="windows"/>
+<parameter name="os_version" value="10"/>
+<!--    <parameter name="OS" value="OS X"/>-->
+<!--    <parameter name="os_version" value="Sierra"/>-->
 <!--    <parameter name="browserName" value="chrome"/>-->
 <!--    <parameter name="browserVersion" value="89"/>-->
-    <!--        <parameter name="browserName" value="firefox"/>-->
-    <!--        <parameter name="browserVersion" value="76.0"/>-->
+<!--        <parameter name="browserName" value="firefox"/>-->
+<!--        <parameter name="browserVersion" value="76.0"/>-->
     <parameter name="url" value="https://www.airbnb.com/"/>
     <parameter name="browserName" value="chrome"/>
-    <parameter name="browserVersion" value="89"/>
+    <parameter name="browserVersion" value="90"/>
 
-    <test name="Airbnb Automation Test Script using chrome">
-<!--        <parameter name="browserName" value="chrome"/>-->
-<!--        <parameter name="browserVersion" value="89"/>-->
-        <classes>
-            <!--        Calling Test class-->
-            <class name="homepagetest.HomePageTest">
-                <methods>
-                    <!--               Test case include or exclude-->
-                    <!--               <exclude name="testSearchbox"></exclude>-->
-                    <!--               <include name="testLogin"></include>-->
-                </methods>
+<test name="ATT Automation Test Script using chrome">
+    <!--        <parameter name="browserName" value="chrome"/>-->
+    <!--        <parameter name="browserVersion" value="89"/>-->
+    <classes>
+        <!--        Calling Test class-->
+        <class name="homepagetest.HomePageTest">
+            <methods>
+                <!--               Test case include or exclude-->
+                <!--               <exclude name="testSearchbox"></exclude>-->
+                <!--               <include name="testLogin"></include>-->
+            </methods>
 
-            </class>
+        </class>
 
-            <!--        Add more Test classes-->
+        <!--        Add more Test classes-->
 
-        </classes>
+    </classes>
 
-    </test>
+</test>
 
 <!--    <test name="Amazon Automation Test Script using Firefox">-->
 <!--                <parameter name="browserName" value="firefox"/>-->
@@ -59,6 +60,9 @@
 <!--    </test>-->
 
 </suite>
+
+
+
 
 
 
